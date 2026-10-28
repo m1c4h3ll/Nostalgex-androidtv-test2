@@ -1,0 +1,160 @@
+{
+  "_about": [
+    "Shared vectors for seasonal bundles: when one is in season, which one the invite above channel one offers, which channels lead the guide, the NOT THIS YEAR and DON'T ASK AGAIN answers, and what the invite and the Settings row say.",
+    "Read by Nostalgex/NostalgexTests/SeasonGoldenTests.swift and scripts/nostalgex-season-smoke.mjs (npm run test:season). Both must pass every case in every zone below.",
+    "`at` is a local wall-clock time on the device, with no zone. Each runner checks every case in each of `zones`.",
+    "`bundle` names a bundle in the shipped channels.json; `def` gives one inline. Offers and leads run over the shipped bundles.",
+    "Answer steps: {answer, bundle, at} records yes, notNow (NOT THIS YEAR) or never (DON'T ASK AGAIN); yes also switches the bundle on. {at, offer} checks the invite; {at, silenced, want} checks one bundle.",
+    "`label` is compared in capitals: Apple TV writes \"Spotlighted NOV 19 to DEC 31\", the web \"SPOTLIGHTED NOV 19 TO DEC 31\"."
+  ],
+  "zones": [
+    "America/New_York",
+    "America/Los_Angeles",
+    "America/St_Johns",
+    "Europe/London",
+    "Asia/Kolkata",
+    "Pacific/Kiritimati",
+    "Pacific/Pago_Pago"
+  ],
+  "thanksgiving": [
+    { "year": 2024, "thanksgiving": "2024-11-28", "tisTheSeasonStart": "2024-11-21" },
+    { "year": 2025, "thanksgiving": "2025-11-27", "tisTheSeasonStart": "2025-11-20" },
+    { "year": 2026, "thanksgiving": "2026-11-26", "tisTheSeasonStart": "2026-11-19" },
+    { "year": 2027, "thanksgiving": "2027-11-25", "tisTheSeasonStart": "2027-11-18" },
+    { "year": 2028, "thanksgiving": "2028-11-23", "tisTheSeasonStart": "2028-11-16" },
+    { "year": 2029, "thanksgiving": "2029-11-22", "tisTheSeasonStart": "2029-11-15" },
+    { "year": 2030, "thanksgiving": "2030-11-28", "tisTheSeasonStart": "2030-11-21" },
+    { "year": 2031, "thanksgiving": "2031-11-27", "tisTheSeasonStart": "2031-11-20" },
+    { "year": 2032, "thanksgiving": "2032-11-25", "tisTheSeasonStart": "2032-11-18" },
+    { "year": 2033, "thanksgiving": "2033-11-24", "tisTheSeasonStart": "2033-11-17" },
+    { "year": 2034, "thanksgiving": "2034-11-23", "tisTheSeasonStart": "2034-11-16" },
+    { "year": 2035, "thanksgiving": "2035-11-22", "tisTheSeasonStart": "2035-11-15" }
+  ],
+  "inSeason": [
+    { "name": "TIS THE SEASON 2025: the minute before the start", "bundle": "tis-the-season", "at": "2025-11-19T23:59", "want": false },
+    { "name": "TIS THE SEASON 2025: Nov 20, a week before Thanksgiving", "bundle": "tis-the-season", "at": "2025-11-20T00:00", "want": true },
+    { "name": "TIS THE SEASON 2026: Nov 1", "bundle": "tis-the-season", "at": "2026-11-01T12:00", "want": false },
+    { "name": "TIS THE SEASON 2026: the minute before the start", "bundle": "tis-the-season", "at": "2026-11-18T23:59", "want": false },
+    { "name": "TIS THE SEASON 2026: Nov 19 at midnight", "bundle": "tis-the-season", "at": "2026-11-19T00:00", "want": true },
+    { "name": "TIS THE SEASON 2026: Thanksgiving evening", "bundle": "tis-the-season", "at": "2026-11-26T18:00", "want": true },
+    { "name": "TIS THE SEASON 2026: Nov 30", "bundle": "tis-the-season", "at": "2026-11-30T23:59", "want": true },
+    { "name": "TIS THE SEASON 2026: Dec 1", "bundle": "tis-the-season", "at": "2026-12-01T00:00", "want": true },
+    { "name": "TIS THE SEASON 2026: Dec 25", "bundle": "tis-the-season", "at": "2026-12-25T09:00", "want": true },
+    { "name": "TIS THE SEASON 2026: the last minute of Dec 31", "bundle": "tis-the-season", "at": "2026-12-31T23:59", "want": true },
+    { "name": "TIS THE SEASON: over at midnight on Jan 1", "bundle": "tis-the-season", "at": "2027-01-01T00:00", "want": false },
+    { "name": "TIS THE SEASON 2027: the minute before the start", "bundle": "tis-the-season", "at": "2027-11-17T23:59", "want": false },
+    { "name": "TIS THE SEASON 2027: Nov 18", "bundle": "tis-the-season", "at": "2027-11-18T00:00", "want": true },
+    { "name": "TIS THE SEASON 2028: the minute before the start", "bundle": "tis-the-season", "at": "2028-11-15T23:59", "want": false },
+    { "name": "TIS THE SEASON 2028: Nov 16", "bundle": "tis-the-season", "at": "2028-11-16T00:00", "want": true },
+    { "name": "TIS THE SEASON 2029 (earliest Thanksgiving): Nov 14", "bundle": "tis-the-season", "at": "2029-11-14T23:59", "want": false },
+    { "name": "TIS THE SEASON 2029 (earliest Thanksgiving): Nov 15", "bundle": "tis-the-season", "at": "2029-11-15T00:00", "want": true },
+    { "name": "TIS THE SEASON 2030 (latest Thanksgiving): Nov 20", "bundle": "tis-the-season", "at": "2030-11-20T23:59", "want": false },
+    { "name": "TIS THE SEASON 2030 (latest Thanksgiving): Nov 21", "bundle": "tis-the-season", "at": "2030-11-21T00:00", "want": true },
+    { "name": "TIS THE SEASON: Halloween", "bundle": "tis-the-season", "at": "2026-10-31T12:00", "want": false },
+    { "name": "TIS THE SEASON: July", "bundle": "tis-the-season", "at": "2026-07-04T12:00", "want": false },
+    { "name": "TIS THE SEASON: a leap day", "bundle": "tis-the-season", "at": "2028-02-29T12:00", "want": false },
+    { "name": "SCREAM unchanged: Sep 30", "bundle": "seasonal", "at": "2026-09-30T23:59", "want": false },
+    { "name": "SCREAM unchanged: Oct 1", "bundle": "seasonal", "at": "2026-10-01T00:00", "want": true },
+    { "name": "SCREAM unchanged: Oct 31", "bundle": "seasonal", "at": "2026-10-31T23:59", "want": true },
+    { "name": "SCREAM unchanged: Nov 1", "bundle": "seasonal", "at": "2026-11-01T00:00", "want": false },
+    { "name": "SCREAM unchanged: Nov 19", "bundle": "seasonal", "at": "2026-11-19T12:00", "want": false },
+    { "name": "SCREAM unchanged: Dec 25", "bundle": "seasonal", "at": "2026-12-25T12:00", "want": false },
+    { "name": "a bundle without activeMonths always is", "bundle": "nostalgex", "at": "2026-07-04T12:00", "want": true },
+    { "name": "December only, no seasonStart: not in November", "def": { "activeMonths": [12] }, "at": "2026-11-19T12:00", "want": false },
+    { "name": "negative control: an unknown anchor starts nothing early", "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "easter", "days": -7 } }, "at": "2026-11-20T12:00", "want": false },
+    { "name": "negative control: an unknown anchor keeps its activeMonths", "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "easter", "days": -7 } }, "at": "2026-12-02T12:00", "want": true },
+    { "name": "days left out means Thanksgiving itself: the day before", "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "usThanksgiving" } }, "at": "2026-11-25T23:59", "want": false },
+    { "name": "days left out means Thanksgiving itself", "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "usThanksgiving" } }, "at": "2026-11-26T00:00", "want": true },
+    { "name": "days after the anchor: Thanksgiving is too early", "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "usThanksgiving", "days": 1 } }, "at": "2026-11-26T23:59", "want": false },
+    { "name": "days after the anchor: the day after Thanksgiving", "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "usThanksgiving", "days": 1 } }, "at": "2026-11-27T00:00", "want": true },
+    { "name": "September is gated to the 15th: the 14th", "def": { "activeMonths": [9, 10] }, "at": "2026-09-14T23:59", "want": false },
+    { "name": "September is gated to the 15th: the 15th", "def": { "activeMonths": [9, 10] }, "at": "2026-09-15T00:00", "want": true }
+  ],
+  "offer": [
+    { "name": "October offers SCREAM", "at": "2026-10-15T20:00", "want": "seasonal" },
+    { "name": "early November offers nothing", "at": "2026-11-10T20:00", "want": null },
+    { "name": "the minute before the holiday start offers nothing", "at": "2026-11-18T23:59", "want": null },
+    { "name": "a week before Thanksgiving offers TIS THE SEASON", "at": "2026-11-19T00:00", "want": "tis-the-season" },
+    { "name": "Christmas offers TIS THE SEASON", "at": "2026-12-25T09:00", "want": "tis-the-season" },
+    { "name": "New Year's Day offers nothing", "at": "2027-01-01T00:00", "want": null },
+    { "name": "never a package that is already on", "at": "2026-11-20T20:00", "on": ["tis-the-season"], "want": null }
+  ],
+  "lead": [
+    { "name": "SCREAM leads in October", "at": "2026-10-20T20:00", "on": ["nostalgex", "seasonal", "tis-the-season"], "want": ["seasonal"] },
+    { "name": "nothing leads the minute before the holiday start", "at": "2026-11-18T23:59", "on": ["nostalgex", "seasonal", "tis-the-season"], "want": [] },
+    { "name": "TIS THE SEASON leads from a week before Thanksgiving", "at": "2026-11-19T00:00", "on": ["nostalgex", "seasonal", "tis-the-season"], "want": ["tis-the-season"] },
+    { "name": "TIS THE SEASON leads to the end of December", "at": "2026-12-31T23:59", "on": ["nostalgex", "seasonal", "tis-the-season"], "want": ["tis-the-season"] },
+    { "name": "nothing leads on New Year's Day", "at": "2027-01-01T00:00", "on": ["nostalgex", "seasonal", "tis-the-season"], "want": [] },
+    { "name": "a package that is off never leads", "at": "2026-11-20T20:00", "on": ["nostalgex"], "want": [] }
+  ],
+  "answers": [
+    {
+      "name": "NOT THIS YEAR on the first day holds through Dec 31 and asks again next season",
+      "steps": [
+        { "answer": "notNow", "bundle": "tis-the-season", "at": "2026-11-19T00:05" },
+        { "at": "2026-11-26T12:00", "offer": null },
+        { "at": "2026-12-31T23:59", "offer": null },
+        { "at": "2027-11-17T23:59", "offer": null },
+        { "at": "2027-11-18T00:00", "offer": "tis-the-season" }
+      ]
+    },
+    {
+      "name": "DON'T ASK AGAIN in November is for good",
+      "steps": [
+        { "answer": "never", "bundle": "tis-the-season", "at": "2026-11-20T20:00" },
+        { "at": "2026-12-10T20:00", "offer": null },
+        { "at": "2027-11-18T00:00", "offer": null },
+        { "at": "2030-11-21T00:00", "offer": null },
+        { "at": "2030-11-21T00:00", "silenced": "tis-the-season", "want": true }
+      ]
+    },
+    {
+      "name": "NOT THIS YEAR last December does not silence this November",
+      "steps": [
+        { "answer": "notNow", "bundle": "tis-the-season", "at": "2025-12-10T20:00" },
+        { "at": "2025-12-31T23:59", "offer": null },
+        { "at": "2026-11-19T00:00", "offer": "tis-the-season" }
+      ]
+    },
+    {
+      "name": "DON'T ASK AGAIN to SCREAM leaves the holiday invite alone",
+      "steps": [
+        { "answer": "never", "bundle": "seasonal", "at": "2026-10-02T20:00" },
+        { "at": "2026-10-20T20:00", "offer": null },
+        { "at": "2026-11-19T00:00", "offer": "tis-the-season" }
+      ]
+    },
+    {
+      "name": "NOT THIS YEAR to the holidays leaves next October's SCREAM alone",
+      "steps": [
+        { "answer": "notNow", "bundle": "tis-the-season", "at": "2026-11-20T20:00" },
+        { "at": "2027-10-05T20:00", "offer": "seasonal" },
+        { "at": "2027-10-05T20:00", "silenced": "seasonal", "want": false }
+      ]
+    },
+    {
+      "name": "yes switches it on and silences nothing",
+      "steps": [
+        { "answer": "yes", "bundle": "tis-the-season", "at": "2026-11-19T08:00" },
+        { "at": "2026-11-20T20:00", "offer": null },
+        { "at": "2026-11-20T20:00", "silenced": "tis-the-season", "want": false }
+      ]
+    }
+  ],
+  "headline": [
+    { "bundle": "seasonal", "at": "2026-10-15T20:00", "want": "IT'S OCTOBER. ARE YOU READY TO SCREAM?" },
+    { "bundle": "tis-the-season", "at": "2026-11-19T00:00", "want": "THE HOLIDAYS ARE HERE. DECK THE CHANNELS." },
+    { "bundle": "tis-the-season", "at": "2026-11-30T23:59", "want": "THE HOLIDAYS ARE HERE. DECK THE CHANNELS." },
+    { "bundle": "tis-the-season", "at": "2026-12-01T00:00", "want": "IT'S DECEMBER. DECK THE CHANNELS." },
+    { "def": { "id": "spooky", "name": "SPOOKY", "activeMonths": [10] }, "at": "2026-10-15T20:00", "want": "SPOOKY IS IN SEASON." }
+  ],
+  "label": [
+    { "bundle": "seasonal", "at": "2026-07-04T12:00", "want": "SPOTLIGHTED OCT" },
+    { "bundle": "tis-the-season", "at": "2026-07-04T12:00", "want": "SPOTLIGHTED NOV 19 TO DEC 31" },
+    { "bundle": "tis-the-season", "at": "2027-01-01T00:00", "want": "SPOTLIGHTED NOV 18 TO DEC 31" },
+    { "bundle": "tis-the-season", "at": "2029-03-01T12:00", "want": "SPOTLIGHTED NOV 15 TO DEC 31" },
+    { "bundle": "nostalgex", "at": "2026-07-04T12:00", "want": "" },
+    { "def": { "activeMonths": [11, 12] }, "at": "2026-07-04T12:00", "want": "SPOTLIGHTED NOV, DEC" },
+    { "def": { "activeMonths": [12], "seasonStart": { "relativeTo": "easter", "days": -7 } }, "at": "2026-07-04T12:00", "want": "SPOTLIGHTED DEC" }
+  ]
+}

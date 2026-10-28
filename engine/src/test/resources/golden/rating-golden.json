@@ -1,0 +1,1495 @@
+{
+  "version": 1,
+  "about": "Golden cases for the rating normalizer: the US label each engine's channel rules read for a rating from another country. Read by scripts/nostalgex-rating-smoke.mjs (scripts/nostalgex-channel-filter.cjs usContentRating, web tuner and Docker; npm run test:ratings), Nostalgex/NostalgexTests/RatingGoldenTests.swift (ContentRating.usLabel, Apple TV) and roku/tests/RatingGoldenTests.brs (NxUsContentRating, copied to tests/vectors/ by gen-vectors.mjs). `raw` is the rating as the server sends it (null for none), `type` the item type (an episode gets a TV label, anything else a film label), `us` what the rules must read. A US label, an empty rating and anything not recognised come back unchanged. The node test also fails if a label in the engine's tables has no case here, so a new label needs a case before it ships.",
+  "cases": [
+    {
+      "raw": null,
+      "type": "movie",
+      "us": null,
+      "about": "US labels, empty and unknown labels come back exactly as they went in, so a US library builds the same pools as before."
+    },
+    {
+      "raw": null,
+      "type": "episode",
+      "us": null
+    },
+    {
+      "raw": "",
+      "type": "movie",
+      "us": ""
+    },
+    {
+      "raw": "",
+      "type": "episode",
+      "us": ""
+    },
+    {
+      "raw": "  ",
+      "type": "movie",
+      "us": "  "
+    },
+    {
+      "raw": "  ",
+      "type": "episode",
+      "us": "  "
+    },
+    {
+      "raw": "G",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "G",
+      "type": "episode",
+      "us": "G"
+    },
+    {
+      "raw": "PG",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "PG",
+      "type": "episode",
+      "us": "PG"
+    },
+    {
+      "raw": "PG-13",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "PG-13",
+      "type": "episode",
+      "us": "PG-13"
+    },
+    {
+      "raw": "R",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "R",
+      "type": "episode",
+      "us": "R"
+    },
+    {
+      "raw": "NC-17",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "NC-17",
+      "type": "episode",
+      "us": "NC-17"
+    },
+    {
+      "raw": "NR",
+      "type": "movie",
+      "us": "NR"
+    },
+    {
+      "raw": "NR",
+      "type": "episode",
+      "us": "NR"
+    },
+    {
+      "raw": "TV-Y",
+      "type": "movie",
+      "us": "TV-Y"
+    },
+    {
+      "raw": "TV-Y",
+      "type": "episode",
+      "us": "TV-Y"
+    },
+    {
+      "raw": "TV-Y7",
+      "type": "movie",
+      "us": "TV-Y7"
+    },
+    {
+      "raw": "TV-Y7",
+      "type": "episode",
+      "us": "TV-Y7"
+    },
+    {
+      "raw": "TV-Y7-FV",
+      "type": "movie",
+      "us": "TV-Y7-FV"
+    },
+    {
+      "raw": "TV-Y7-FV",
+      "type": "episode",
+      "us": "TV-Y7-FV"
+    },
+    {
+      "raw": "TV-G",
+      "type": "movie",
+      "us": "TV-G"
+    },
+    {
+      "raw": "TV-G",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "TV-PG",
+      "type": "movie",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "TV-PG",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "TV-14",
+      "type": "movie",
+      "us": "TV-14"
+    },
+    {
+      "raw": "TV-14",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "TV-MA",
+      "type": "movie",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "TV-MA",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "pg-13",
+      "type": "movie",
+      "us": "pg-13"
+    },
+    {
+      "raw": "pg-13",
+      "type": "episode",
+      "us": "pg-13"
+    },
+    {
+      "raw": "tv-ma",
+      "type": "movie",
+      "us": "tv-ma"
+    },
+    {
+      "raw": "tv-ma",
+      "type": "episode",
+      "us": "tv-ma"
+    },
+    {
+      "raw": "nc-17",
+      "type": "movie",
+      "us": "nc-17"
+    },
+    {
+      "raw": "nc-17",
+      "type": "episode",
+      "us": "nc-17"
+    },
+    {
+      "raw": "TV-14 ",
+      "type": "movie",
+      "us": "TV-14 "
+    },
+    {
+      "raw": "TV-14 ",
+      "type": "episode",
+      "us": "TV-14 "
+    },
+    {
+      "raw": "Not Rated",
+      "type": "movie",
+      "us": "Not Rated"
+    },
+    {
+      "raw": "Not Rated",
+      "type": "episode",
+      "us": "Not Rated"
+    },
+    {
+      "raw": "Unrated",
+      "type": "movie",
+      "us": "Unrated"
+    },
+    {
+      "raw": "Unrated",
+      "type": "episode",
+      "us": "Unrated"
+    },
+    {
+      "raw": "Approved",
+      "type": "movie",
+      "us": "Approved"
+    },
+    {
+      "raw": "Approved",
+      "type": "episode",
+      "us": "Approved"
+    },
+    {
+      "raw": "X",
+      "type": "movie",
+      "us": "X"
+    },
+    {
+      "raw": "X",
+      "type": "episode",
+      "us": "X"
+    },
+    {
+      "raw": "TV-MA-L",
+      "type": "movie",
+      "us": "TV-MA-L"
+    },
+    {
+      "raw": "TV-MA-L",
+      "type": "episode",
+      "us": "TV-MA-L"
+    },
+    {
+      "raw": "TV-14-DLV",
+      "type": "movie",
+      "us": "TV-14-DLV"
+    },
+    {
+      "raw": "TV-14-DLV",
+      "type": "episode",
+      "us": "TV-14-DLV"
+    },
+    {
+      "raw": "M",
+      "type": "movie",
+      "us": "M"
+    },
+    {
+      "raw": "M",
+      "type": "episode",
+      "us": "M"
+    },
+    {
+      "raw": "A",
+      "type": "movie",
+      "us": "A"
+    },
+    {
+      "raw": "A",
+      "type": "episode",
+      "us": "A"
+    },
+    {
+      "raw": "100",
+      "type": "movie",
+      "us": "100"
+    },
+    {
+      "raw": "100",
+      "type": "episode",
+      "us": "100"
+    },
+    {
+      "raw": "GB-E",
+      "type": "movie",
+      "us": "GB-E"
+    },
+    {
+      "raw": "GB-E",
+      "type": "episode",
+      "us": "GB-E"
+    },
+    {
+      "raw": "GB-15A",
+      "type": "movie",
+      "us": "GB-15A"
+    },
+    {
+      "raw": "GB-15A",
+      "type": "episode",
+      "us": "GB-15A"
+    },
+    {
+      "raw": "AU-RC",
+      "type": "movie",
+      "us": "AU-RC"
+    },
+    {
+      "raw": "AU-RC",
+      "type": "episode",
+      "us": "AU-RC"
+    },
+    {
+      "raw": "ES-APTA",
+      "type": "movie",
+      "us": "ES-APTA"
+    },
+    {
+      "raw": "ES-APTA",
+      "type": "episode",
+      "us": "ES-APTA"
+    },
+    {
+      "raw": "SE-Btl",
+      "type": "movie",
+      "us": "SE-Btl"
+    },
+    {
+      "raw": "SE-Btl",
+      "type": "episode",
+      "us": "SE-Btl"
+    },
+    {
+      "raw": "FI-K16",
+      "type": "movie",
+      "us": "FI-K16"
+    },
+    {
+      "raw": "FI-K16",
+      "type": "episode",
+      "us": "FI-K16"
+    },
+    {
+      "raw": "GB-U",
+      "type": "movie",
+      "us": "G",
+      "about": "United Kingdom (BBFC), as Jellyfin and Emby store it, as Plex does (unverified), and bare. 12A is the reporter's own label (GitHub #41), seen once as TV-12A."
+    },
+    {
+      "raw": "GB-U",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "GB-Uc",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "GB-Uc",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "GB-PG",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "GB-PG",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "GB-12",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "GB-12",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "GB-12A",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "GB-12A",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "GB-12PG",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "GB-12PG",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "GB-15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "GB-15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "GB-18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "GB-18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "GB-R18",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "GB-R18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "UK-15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "UK-15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "gb/15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "gb/15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "gb-12a",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "gb-12a",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": " GB-U ",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": " GB-U ",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "GB-X",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "GB-X",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "U",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "U",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "Uc",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "Uc",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "12A",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "12A",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "12PG",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "12PG",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "R18",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "R18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "12",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "12",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "18+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "18+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "TV-12A",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "TV-12A",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "TV-15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "TV-15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "TV-U",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "TV-U",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "FSK-0",
+      "type": "movie",
+      "us": "G",
+      "about": "Germany (FSK). Jellyfin and Emby write DE- as FSK-."
+    },
+    {
+      "raw": "FSK-0",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "FSK-6",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "FSK-6",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "FSK-12",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "FSK-12",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "FSK-16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "FSK-16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "FSK-18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "FSK-18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "FSK 16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "FSK 16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "FSK16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "FSK16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "DE-16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "DE-16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "de/12",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "de/12",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "DE-0",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "DE-0",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "IE-G",
+      "type": "movie",
+      "us": "G",
+      "about": "Ireland (IFCO)."
+    },
+    {
+      "raw": "IE-G",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "IE-PG",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "IE-PG",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "IE-12A",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "IE-12A",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "IE-12PG",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "IE-12PG",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "IE-15A",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "IE-15A",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "IE-15PG",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "IE-15PG",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "IE-16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "IE-16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "IE-18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "IE-18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "15A",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "15A",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "AU-P",
+      "type": "movie",
+      "us": "G",
+      "about": "Australia. M is advised for 15 and up, so it takes the stricter band."
+    },
+    {
+      "raw": "AU-P",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "AU-C",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "AU-C",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "AU-G",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "AU-G",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "AU-PG",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "AU-PG",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "AU-M",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "AU-M",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "AU-MA15+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "AU-MA15+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "AU-MA 15+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "AU-MA 15+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "AU-AV15+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "AU-AV15+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "AU-R18+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "AU-R18+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "AU-X18+",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "AU-X18+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "MA15+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "MA15+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "R18+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "R18+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "X18+",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "X18+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-G",
+      "type": "movie",
+      "us": "G",
+      "about": "New Zealand. M is advised for 16 and up."
+    },
+    {
+      "raw": "NZ-G",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "NZ-PG",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "NZ-PG",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "NZ-R13",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "NZ-R13",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "NZ-RP13",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "NZ-RP13",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "NZ-M",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NZ-M",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-R15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NZ-R15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-R16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NZ-R16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-RP16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NZ-RP16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-R18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NZ-R18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-RP18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NZ-RP18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NZ-R",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "NZ-R",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "CA-C",
+      "type": "movie",
+      "us": "G",
+      "about": "Canada, film and TV."
+    },
+    {
+      "raw": "CA-C",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "CA-G",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "CA-G",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "CA-C8",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "CA-C8",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "CA-PG",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "CA-PG",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "CA-14A",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "CA-14A",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "CA-14+",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "CA-14+",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "CA-13+",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "CA-13+",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "CA-18A",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "CA-18A",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "CA-18+",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "CA-18+",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "CA-R",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "CA-R",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "CA-A",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "CA-A",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "14A",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "14A",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "18A",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "18A",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "FR-U",
+      "type": "movie",
+      "us": "G",
+      "about": "France and the Netherlands."
+    },
+    {
+      "raw": "FR-U",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "FR-TP",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "FR-TP",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "FR-10",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "FR-10",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "FR-12",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "FR-12",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "FR-16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "FR-16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "FR-18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "FR-18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NL-AL",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "NL-AL",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "NL-MG6",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "NL-MG6",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "NL-6",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "NL-6",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "NL-9",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "NL-9",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "NL-12",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "NL-12",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "NL-14",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "NL-14",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "NL-16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NL-16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NL-18",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "NL-18",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "0",
+      "type": "movie",
+      "us": "G",
+      "about": "A number from any country is an age: 0 is everyone, up to 10 PG, up to 14 PG-13 or TV-14, older R or TV-MA."
+    },
+    {
+      "raw": "0",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "0+",
+      "type": "movie",
+      "us": "G"
+    },
+    {
+      "raw": "0+",
+      "type": "episode",
+      "us": "TV-G"
+    },
+    {
+      "raw": "6",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "6",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "7",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "7",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "10",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "10",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "11",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "11",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "12+",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "12+",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "14",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "14",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "16",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "16",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "17",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "17",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "21",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "21",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "SE-15",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "SE-15",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "NO-11",
+      "type": "movie",
+      "us": "PG-13"
+    },
+    {
+      "raw": "NO-11",
+      "type": "episode",
+      "us": "TV-14"
+    },
+    {
+      "raw": "BR-10",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "BR-10",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "KR-19",
+      "type": "movie",
+      "us": "R"
+    },
+    {
+      "raw": "KR-19",
+      "type": "episode",
+      "us": "TV-MA"
+    },
+    {
+      "raw": "DK-7",
+      "type": "movie",
+      "us": "PG"
+    },
+    {
+      "raw": "DK-7",
+      "type": "episode",
+      "us": "TV-PG"
+    },
+    {
+      "raw": "ES-X",
+      "type": "movie",
+      "us": "NC-17"
+    },
+    {
+      "raw": "ES-X",
+      "type": "episode",
+      "us": "TV-MA"
+    }
+  ]
+}

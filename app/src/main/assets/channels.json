@@ -1,0 +1,5592 @@
+{
+  "version": 43,
+  "exclusiveRules": [
+    {
+      "channelIDs": [
+        130,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414
+      ],
+      "type": "movie",
+      "source": "movie",
+      "genres": [
+        "Holiday",
+        "Christmas"
+      ],
+      "titleContains": [
+        "Christmas",
+        "Xmas",
+        "Mistletoe",
+        "Noel",
+        "Rudolph",
+        "Frosty",
+        "Hanukkah",
+        "Kwanzaa",
+        "Yuletide",
+        "Winter Wonderland",
+        "Jingle",
+        "Santa Claus",
+        "Santa Clause",
+        "Holiday Special"
+      ],
+      "editorialTitles": [
+        "Home Alone",
+        "Home Alone 2",
+        "Home Alone 3",
+        "Elf",
+        "It's a Wonderful Life",
+        "The Holiday",
+        "Love Actually",
+        "Klaus",
+        "Noelle",
+        "A Christmas Story",
+        "A Christmas Story Christmas",
+        "The Polar Express",
+        "Jingle All the Way",
+        "The Santa Clause",
+        "The Santa Clause 2",
+        "The Santa Clause 3",
+        "How the Grinch Stole Christmas",
+        "The Grinch",
+        "National Lampoon's Christmas Vacation",
+        "Miracle on 34th Street",
+        "White Christmas",
+        "Bad Santa",
+        "Bad Santa 2",
+        "The Night Before",
+        "Scrooged",
+        "Arthur Christmas",
+        "The Muppet Christmas Carol",
+        "Krampus",
+        "Violent Night",
+        "Happiest Season",
+        "Spirited",
+        "Last Christmas",
+        "The Christmas Chronicles",
+        "The Christmas Chronicles 2",
+        "The Family Stone",
+        "Four Christmases",
+        "Fred Claus",
+        "Jack Frost",
+        "8-Bit Christmas",
+        "Jingle Jangle",
+        "A Boy Called Christmas",
+        "Holiday Inn",
+        "The Santa Clause 3: The Escape Clause",
+        "Trolls Holiday",
+        "Trolls Holiday in Harmony",
+        "The Bad Guys: A Very Bad Holiday",
+        "A Merry Little Ex-Mas"
+      ]
+    },
+    {
+      "genres": [
+        "Anime"
+      ],
+      "channelIDs": [
+        32,
+        60
+      ],
+      "manifestExclusive": true
+    },
+    {
+      "channelIDs": [
+        132,
+        415
+      ],
+      "type": "movie",
+      "source": "movie",
+      "editorialTitles": [
+        "Scream",
+        "Scream 2",
+        "Scream 3",
+        "Scream 4",
+        "Scream (2022)",
+        "Scream VI",
+        "Scream 7",
+        "Halloween",
+        "Halloween II",
+        "Halloween III: Season of the Witch",
+        "Halloween 4: The Return of Michael Myers",
+        "Halloween 5: The Revenge of Michael Myers",
+        "Halloween: The Curse of Michael Myers",
+        "Halloween 6: The Curse of Michael Myers",
+        "Halloween H20: 20 Years Later",
+        "Halloween H20",
+        "Halloween: Resurrection",
+        "Halloween (2007)",
+        "Halloween II (2009)",
+        "Halloween (2018)",
+        "Halloween Kills",
+        "Halloween Ends"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "id": "nostalgex",
+      "name": "NOSTALGEX",
+      "description": "The 80s and 90s. All retro, all the time",
+      "channelIDs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        215,
+        405,
+        406,
+        407,
+        216
+      ]
+    },
+    {
+      "id": "kids",
+      "name": "KIDZ ZONE",
+      "description": "Disney, Nickelodeon, Pixar, and more",
+      "channelIDs": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        33,
+        34,
+        218,
+        400
+      ]
+    },
+    {
+      "id": "truecrime",
+      "name": "CASE FILES",
+      "description": "True crime, thrillers & mystery",
+      "channelIDs": [
+        419,
+        40,
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    {
+      "id": "essentials",
+      "name": "PRIME TIME",
+      "description": "Everyday favorites and feel-good viewing",
+      "channelIDs": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        56,
+        57,
+        59,
+        62,
+        66,
+        200,
+        210,
+        404,
+        402,
+        403,
+        420
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "MARQUEE",
+      "description": "Premium channels",
+      "channelIDs": [
+        60,
+        61,
+        55,
+        63,
+        64,
+        58,
+        201,
+        67,
+        68,
+        69,
+        217
+      ]
+    },
+    {
+      "id": "arthouse",
+      "name": "ARTHOUSE",
+      "description": "Criterion, foreign films, midnight movies, and cult classics",
+      "channelIDs": [
+        211,
+        212,
+        213,
+        214
+      ]
+    },
+    {
+      "id": "adventureland",
+      "name": "ADVENTURELAND",
+      "description": "Epic quests, disasters, and adrenaline",
+      "channelIDs": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        65,
+        219
+      ]
+    },
+    {
+      "id": "sports",
+      "name": "OVERTIME",
+      "description": "Movies, shows, and docs",
+      "channelIDs": [
+        80,
+        81,
+        82
+      ]
+    },
+    {
+      "id": "decades",
+      "name": "DECADES",
+      "description": "Movies and shows sorted by decade",
+      "channelIDs": [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ]
+    },
+    {
+      "id": "franchises",
+      "name": "FRANCHISES",
+      "description": "Movie franchise marathons",
+      "channelIDs": [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106
+      ]
+    },
+    {
+      "id": "streamers",
+      "name": "NETWORKS",
+      "description": "Channels by streaming service and studio",
+      "channelIDs": [
+        421,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        401
+      ]
+    },
+    {
+      "id": "seasonal",
+      "name": "SCREAM",
+      "description": "Horror, all year's worth, front and centre every October",
+      "channelIDs": [
+        131,
+        141,
+        132,
+        408,
+        415,
+        416,
+        417,
+        418
+      ],
+      "activeMonths": [
+        10
+      ]
+    },
+    {
+      "id": "tis-the-season",
+      "name": "TIS THE SEASON",
+      "description": "Christmas, Thanksgiving and holiday channels",
+      "channelIDs": [
+        130,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        422
+      ],
+      "activeMonths": [
+        12
+      ],
+      "seasonStart": {
+        "relativeTo": "usThanksgiving",
+        "days": -7
+      }
+    },
+    {
+      "id": "high-rotation",
+      "name": "HIGH ROTATION",
+      "description": "Music videos by genre",
+      "channelIDs": [
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164
+      ]
+    }
+  ],
+  "channels": [
+    {
+      "id": 1,
+      "number": 1,
+      "name": "REWATCHABLES MOVIES",
+      "colorHex": "#FFE500",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "rewatched": true
+      }
+    },
+    {
+      "id": 2,
+      "number": 2,
+      "name": "REWATCHABLES TV",
+      "colorHex": "#FFD000",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "rewatched": true
+      }
+    },
+    {
+      "id": 3,
+      "name": "NOSTALGEX LOL",
+      "colorHex": "#F1C40F",
+      "category": "nostalgex",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Animation",
+            "Animated"
+          ]
+        },
+        "keywordsExclude": [
+          "dark comedy",
+          "black comedy",
+          "satire"
+        ],
+        "yearRange": {
+          "min": 1980,
+          "max": 1999
+        }
+      },
+      "number": 3
+    },
+    {
+      "id": 4,
+      "number": 4,
+      "name": "SAT MORNING CARTOONS",
+      "colorHex": "#00DD88",
+      "category": "nostalgex",
+      "minItems": 15,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Animation",
+            "Kids",
+            "Children",
+            "Cartoon",
+            "Animated"
+          ]
+        },
+        "yearRange": {
+          "min": 1960,
+          "max": 1999
+        },
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "G"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 5,
+      "number": 5,
+      "name": "90S SITCOMS",
+      "colorHex": "#9B59B6",
+      "category": "nostalgex",
+      "minItems": 10,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Anime",
+            "Animation"
+          ]
+        },
+        "yearRange": {
+          "min": 1990,
+          "max": 1999
+        }
+      }
+    },
+    {
+      "id": 6,
+      "number": 6,
+      "name": "AFTER SCHOOL TV",
+      "colorHex": "#F39C12",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Comedy",
+            "Drama",
+            "Family"
+          ],
+          "exclude": [
+            "Animation",
+            "Anime",
+            "Cartoon"
+          ]
+        },
+        "yearRange": {
+          "min": 1980,
+          "max": 1999
+        },
+        "contentRatings": [
+          "TV-G",
+          "TV-PG",
+          "TV-14"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 7,
+      "number": 7,
+      "name": "VHS VAULT",
+      "colorHex": "#E67E22",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "yearRange": {
+          "min": 1980,
+          "max": 1999
+        }
+      },
+      "timeRestrictions": {
+        "blockRatings": {
+          "ratings": [
+            "R",
+            "NC-17"
+          ],
+          "blockBefore": 21
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "CLASSIC FAM JAMS",
+      "colorHex": "#E05A32",
+      "category": "nostalgex",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "requireAll": [
+            "Family"
+          ],
+          "exclude": [
+            "Animation",
+            "Anime"
+          ]
+        },
+        "yearRange": {
+          "min": 1960,
+          "max": 1999
+        }
+      },
+      "number": 8
+    },
+    {
+      "id": 9,
+      "number": 9,
+      "name": "GIRLS NIGHT",
+      "colorHex": "#FF85A1",
+      "category": "nostalgex",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "requireAll": [
+            "Romance"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Action",
+            "Adventure",
+            "Horror",
+            "Thriller",
+            "Crime",
+            "War",
+            "Western",
+            "Science Fiction",
+            "Documentary"
+          ]
+        },
+        "yearRange": {
+          "min": 1960,
+          "max": 2004
+        },
+        "keywordsExclude": [
+          "kidnapping",
+          "domestic abuse",
+          "domestic violence",
+          "rape",
+          "murder",
+          "revenge",
+          "hostage",
+          "torture",
+          "stalking",
+          "sexual abuse"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "number": 10,
+      "name": "TEEN MOVIES",
+      "colorHex": "#FF5E8A",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Comedy",
+            "Drama",
+            "Romance"
+          ],
+          "exclude": [
+            "Animation",
+            "Horror",
+            "Family"
+          ]
+        },
+        "keywords": [
+          "high school",
+          "coming of age",
+          "teenager",
+          "teen movie",
+          "first love",
+          "prom",
+          "nerd",
+          "teen comedy",
+          "teen romance",
+          "school",
+          "summer camp",
+          "college",
+          "fraternity",
+          "sorority",
+          "graduation",
+          "cheerleader",
+          "adolescence",
+          "young love",
+          "high school student",
+          "teenage rebellion"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Comedy",
+          "Romance",
+          "Drama"
+        ],
+        "titleExcludes": [
+          "Boyz N the Hood"
+        ],
+        "yearRange": {
+          "min": 1980,
+          "max": 1999
+        },
+        "keywordGatedGenres": [
+          "Comedy",
+          "Drama",
+          "Romance"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "number": 11,
+      "name": "RETRO TOONS",
+      "colorHex": "#2DC7B0",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Animation"
+          ]
+        },
+        "yearRange": {
+          "max": 1999
+        },
+        "contentRatings": [
+          "G",
+          "PG",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG"
+        ],
+        "allowUnrated": true,
+        "keywords": [
+          "villain",
+          "musical",
+          "cartoon",
+          "good versus evil",
+          "princess",
+          "fairy tale",
+          "talking animals"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Animation",
+          "Family",
+          "Adventure"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "number": 12,
+      "name": "ACTION ADVENTURE",
+      "colorHex": "#E74C3C",
+      "category": "nostalgex",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Action",
+            "Adventure"
+          ],
+          "exclude": [
+            "Thriller",
+            "Crime",
+            "War",
+            "Horror",
+            "Animation"
+          ]
+        },
+        "yearRange": {
+          "min": 1980,
+          "max": 1999
+        }
+      }
+    },
+    {
+      "id": 13,
+      "number": 13,
+      "name": "LAST ACTION HEROES",
+      "colorHex": "#B7410E",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Action",
+            "Thriller"
+          ],
+          "exclude": [
+            "Family",
+            "Kids",
+            "Children",
+            "Animation",
+            "Animated",
+            "Fantasy",
+            "Comedy"
+          ]
+        },
+        "yearRange": {
+          "min": 1980,
+          "max": 2002
+        },
+        "durationRange": {
+          "min": 85
+        },
+        "keywords": [
+          "one man army",
+          "action hero",
+          "shootout",
+          "explosion",
+          "hostage",
+          "mercenary",
+          "terrorism",
+          "special forces",
+          "revenge",
+          "vigilante",
+          "martial arts",
+          "hand-to-hand combat",
+          "assassin"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Action",
+          "Thriller"
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "number": 14,
+      "name": "BUDDIES",
+      "colorHex": "#F39C12",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Action",
+            "Comedy"
+          ],
+          "exclude": [
+            "Animation",
+            "Animated",
+            "Horror",
+            "Kids",
+            "Children",
+            "Family",
+            "Romance"
+          ]
+        },
+        "yearRange": {
+          "min": 1980,
+          "max": 2004
+        },
+        "keywords": [
+          "buddy comedy",
+          "buddy cop",
+          "buddy film",
+          "mismatched pair",
+          "odd couple",
+          "road trip",
+          "duo",
+          "partners in crime",
+          "unlikely duo",
+          "fish out of water"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Action",
+          "Comedy"
+        ]
+      }
+    },
+    {
+      "id": 405,
+      "number": 16,
+      "name": "DVD SHELF",
+      "colorHex": "#C0392B",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "yearRange": {
+          "min": 2000,
+          "max": 2009
+        }
+      }
+    },
+    {
+      "id": 406,
+      "number": 17,
+      "name": "Y2K COMEDY",
+      "colorHex": "#E67E22",
+      "category": "nostalgex",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Animation",
+            "Animated"
+          ]
+        },
+        "keywordsExclude": [
+          "dark comedy",
+          "black comedy",
+          "satire"
+        ],
+        "yearRange": {
+          "min": 2000,
+          "max": 2009
+        }
+      }
+    },
+    {
+      "id": 407,
+      "number": 18,
+      "name": "Y2K SITCOMS",
+      "colorHex": "#F1C40F",
+      "category": "nostalgex",
+      "minItems": 10,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Anime",
+            "Animation"
+          ]
+        },
+        "yearRange": {
+          "min": 2000,
+          "max": 2009
+        }
+      }
+    },
+    {
+      "id": 215,
+      "number": 15,
+      "name": "CARTOON NETWORK",
+      "colorHex": "#00BFFF",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "networks": [
+          "Cartoon Network"
+        ],
+        "titleContains": [
+          "Dexter's Laboratory",
+          "Johnny Bravo",
+          "Cow and Chicken",
+          "I Am Weasel",
+          "The Powerpuff Girls",
+          "Ed, Edd n Eddy",
+          "Courage the Cowardly Dog",
+          "Time Squad",
+          "Sheep in the Big City",
+          "The Grim Adventures of Billy & Mandy",
+          "Evil Con Carne",
+          "Codename: Kids Next Door",
+          "Samurai Jack",
+          "Foster's Home for Imaginary Friends",
+          "Camp Lazlo",
+          "My Gym Partner's a Monkey",
+          "Squirrel Boy",
+          "Ben 10",
+          "Chowder",
+          "The Marvelous Misadventures of Flapjack",
+          "The Life and Times of Juniper Lee",
+          "Class of 3000",
+          "Robotboy",
+          "Megas XLR",
+          "Hi Hi Puffy AmiYumi",
+          "The Cramp Twins",
+          "Whatever Happened to Robot Jones?",
+          "Sym-Bionic Titan",
+          "Generator Rex",
+          "Secret Mountain Fort Awesome",
+          "Adventure Time",
+          "Regular Show",
+          "The Amazing World of Gumball",
+          "Steven Universe",
+          "Clarence",
+          "Uncle Grandpa",
+          "We Bare Bears",
+          "Teen Titans",
+          "Total Drama"
+        ]
+      }
+    },
+    {
+      "id": 408,
+      "number": 140,
+      "name": "NOSTALGEX HORROR",
+      "colorHex": "#8E44AD",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Horror"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Animation",
+            "Animated"
+          ]
+        },
+        "yearRange": {
+          "min": 1975,
+          "max": 1999
+        }
+      }
+    },
+    {
+      "id": 415,
+      "number": 141,
+      "name": "SLASHER",
+      "colorHex": "#C0001A",
+      "category": "seasonal",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Horror"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Animation",
+            "Animated"
+          ]
+        },
+        "titleContains": [
+          "Scream",
+          "Halloween",
+          "Friday the 13th",
+          "Nightmare on Elm Street",
+          "Freddy vs",
+          "Freddy's Dead",
+          "Jason X",
+          "Jason Goes to Hell",
+          "Texas Chain Saw",
+          "Texas Chainsaw",
+          "Child's Play",
+          "Chucky",
+          "Terrifier",
+          "Final Destination",
+          "Sleepaway Camp",
+          "I Know What You Did",
+          "I Still Know What You Did",
+          "Urban Legend",
+          "My Bloody Valentine",
+          "Fear Street",
+          "Happy Death Day",
+          "Candyman",
+          "Wrong Turn"
+        ],
+        "titleExcludes": [
+          "Hubie",
+          "Scary Movie",
+          "Hollow Man"
+        ],
+        "keywords": [
+          "slasher",
+          "masked killer",
+          "teen slasher",
+          "final girl"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Horror"
+        ],
+        "keywordGatedGenres": [
+          "Horror"
+        ]
+      }
+    },
+    {
+      "id": 416,
+      "number": 142,
+      "name": "HORROR COMEDY",
+      "colorHex": "#8BC34A",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Horror"
+          ],
+          "requireAll": [
+            "Horror",
+            "Comedy"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Animation",
+            "Animated"
+          ]
+        },
+        "contentRatings": [
+          "PG",
+          "PG-13",
+          "R",
+          "NC-17",
+          "TV-14",
+          "TV-MA",
+          "NR"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 417,
+      "number": 143,
+      "name": "FOUND FOOTAGE",
+      "colorHex": "#5D6D5F",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Horror"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Animation",
+            "Animated"
+          ]
+        },
+        "titleContains": [
+          "Blair Witch",
+          "Paranormal Activity",
+          "V/H/S",
+          "Grave Encounters",
+          "Hell House LLC",
+          "Lake Mungo",
+          "The Last Exorcism",
+          "The Taking of Deborah Logan",
+          "Trollhunter",
+          "As Above, So Below"
+        ],
+        "keywords": [
+          "found footage",
+          "found footage horror"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Horror",
+          "Science Fiction"
+        ],
+        "keywordGatedGenres": [
+          "Horror"
+        ]
+      }
+    },
+    {
+      "id": 418,
+      "number": 144,
+      "name": "WORLD HORROR",
+      "colorHex": "#6A1B9A",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "manifestOnly": true,
+        "genres": {
+          "include": [
+            "Horror"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Animation",
+            "Animated"
+          ]
+        }
+      }
+    },
+    {
+      "id": 20,
+      "number": 20,
+      "name": "FAMILY HOUR",
+      "colorHex": "#00C4FF",
+      "category": "kids",
+      "minItems": 10,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "requireAll": [
+            "Family"
+          ]
+        },
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 21,
+      "number": 21,
+      "name": "DIZ FLICKS",
+      "colorHex": "#7B2FBE",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Disney",
+          "Walt Disney",
+          "Walt Disney Pictures",
+          "Walt Disney Animation Studios"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG",
+          "TV-14"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 22,
+      "number": 22,
+      "name": "DIZNEY TOONS",
+      "colorHex": "#9C27B0",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Disney",
+          "Walt Disney",
+          "Walt Disney Pictures",
+          "Walt Disney Animation Studios"
+        ],
+        "genres": {
+          "requireAll": [
+            "Animation"
+          ]
+        },
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 23,
+      "number": 23,
+      "name": "DIZ JUNIOR",
+      "colorHex": "#7B68EE",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "studios": [
+          "Disney Junior",
+          "Disney Television Animation",
+          "Ludo Studio",
+          "Brown Bag Films",
+          "Wild Canary Animation",
+          "Mercury Filmworks"
+        ],
+        "titleContains": [
+          "Bluey",
+          "Mickey Mouse Clubhouse",
+          "Doc McStuffins",
+          "Sofia the First",
+          "Puppy Dog Pals",
+          "Vampirina",
+          "PJ Masks",
+          "Fancy Nancy",
+          "T.O.T.S.",
+          "Mira Royal Detective",
+          "Muppet Babies",
+          "Alice's Wonderland Bakery",
+          "Eureka!",
+          "Firebuds",
+          "SuperKitties",
+          "Marvel's Spidey",
+          "Minnie's Bow-Toons",
+          "Handy Manny",
+          "Special Agent Oso"
+        ],
+        "yearRange": {
+          "min": 2010
+        },
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "G"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 24,
+      "number": 24,
+      "name": "DIZ TV",
+      "colorHex": "#AB47BC",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "studios": [
+          "Disney",
+          "Disney Channel",
+          "Disney Television Animation",
+          "Disney XD",
+          "Disney+"
+        ],
+        "networks": [
+          "Disney Channel",
+          "Disney XD",
+          "Disney+"
+        ],
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG",
+          "TV-14",
+          "G",
+          "PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 25,
+      "number": 25,
+      "name": "ANIMATION",
+      "colorHex": "#FF5722",
+      "category": "kids",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Animation"
+          ]
+        },
+        "productionCompanies": [
+          "DreamWorks Animation",
+          "Sony Pictures Animation",
+          "Warner Bros. Animation",
+          "Paramount Animation",
+          "Blue Sky Studios",
+          "Laika",
+          "Aardman Animations",
+          "Cartoon Saloon",
+          "Locksmith Animation",
+          "Netflix Animation",
+          "Nickelodeon Movies",
+          "Illumination Mac Guff"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13",
+          "TV-G",
+          "TV-PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 26,
+      "number": 26,
+      "name": "SLIME TV",
+      "colorHex": "#FF6600",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "studios": [
+          "Nickelodeon",
+          "Nickelodeon Animation Studio",
+          "Nickelodeon Productions",
+          "Nick at Nite",
+          "Paramount",
+          "Paramount+",
+          "Paramount Television"
+        ],
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG",
+          "TV-14",
+          "G",
+          "PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 27,
+      "number": 27,
+      "name": "PIXAR MOVIES",
+      "colorHex": "#00B894",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Pixar",
+          "Pixar Animation Studios"
+        ],
+        "productionCompanies": [
+          "Pixar Animation Studios",
+          "Pixar"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 28,
+      "number": 28,
+      "name": "MINION HQ",
+      "colorHex": "#FDCB6E",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Illumination",
+          "Illumination Entertainment"
+        ],
+        "productionCompanies": [
+          "Illumination Entertainment",
+          "Illumination"
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "number": 29,
+      "name": "TWEEN TV",
+      "colorHex": "#FF69B4",
+      "category": "kids",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "studios": [
+          "Disney Channel",
+          "Nickelodeon",
+          "Nickelodeon Productions",
+          "Nick",
+          "Disney XD",
+          "Freeform",
+          "ABC Family",
+          "Teen Nick",
+          "It's a Laugh Productions",
+          "Schneider's Bakery"
+        ],
+        "genres": {
+          "exclude": [
+            "Animation",
+            "Anime",
+            "Cartoon"
+          ]
+        },
+        "titleContains": [
+          "Hannah Montana",
+          "iCarly",
+          "Wizards of Waverly Place",
+          "Lizzie McGuire",
+          "That's So Raven",
+          "Drake & Josh",
+          "Zoey 101",
+          "Victorious",
+          "Sam & Cat",
+          "Suite Life",
+          "Good Luck Charlie",
+          "Jessie",
+          "Austin & Ally",
+          "Liv and Maddie",
+          "Kim Possible",
+          "Even Stevens",
+          "Cory in the House",
+          "Phil of the Future",
+          "Henry Danger",
+          "Big Time Rush",
+          "Saved by the Bell",
+          "Boy Meets World",
+          "Girl Meets World",
+          "Andi Mack",
+          "Bunk'd",
+          "Raven's Home"
+        ],
+        "yearRange": {
+          "min": 1989
+        },
+        "contentRatings": [
+          "TV-G",
+          "TV-PG",
+          "TV-Y7"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 30,
+      "number": 30,
+      "name": "TEEN DRAMA",
+      "colorHex": "#E74C8B",
+      "category": "kids",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Drama",
+            "Romance",
+            "Comedy"
+          ],
+          "exclude": [
+            "Animation",
+            "Anime"
+          ]
+        },
+        "keywords": [
+          "teenager",
+          "high school",
+          "coming of age",
+          "teen drama",
+          "first love",
+          "young adult",
+          "adolescence"
+        ],
+        "keywordsExclude": [
+          "office politics",
+          "advertising agency",
+          "workplace",
+          "workplace drama",
+          "law firm",
+          "medical drama",
+          "political drama",
+          "corporate"
+        ],
+        "yearRange": {
+          "min": 2000
+        },
+        "contentRatings": [
+          "TV-14",
+          "TV-PG"
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "number": 31,
+      "name": "FAMILY TV",
+      "colorHex": "#FF7043",
+      "category": "kids",
+      "minItems": 10,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Family",
+            "Comedy",
+            "Drama"
+          ],
+          "exclude": [
+            "Kids",
+            "Children",
+            "Cartoon"
+          ]
+        },
+        "yearRange": {
+          "min": 2000
+        },
+        "contentRatings": [
+          "TV-G",
+          "TV-PG",
+          "TV-14"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 34,
+      "number": 32,
+      "name": "NETFLIX KIDS",
+      "colorHex": "#E50914",
+      "category": "kids",
+      "minItems": 3,
+      "rules": {
+        "studios": [
+          "Netflix",
+          "Netflix Animation",
+          "Netflix Family"
+        ],
+        "genres": {
+          "include": [
+            "Family",
+            "Kids",
+            "Children",
+            "Comedy",
+            "Adventure"
+          ],
+          "exclude": [
+            "Horror",
+            "Thriller"
+          ]
+        },
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "G",
+          "PG",
+          "TV-PG"
+        ],
+        "allowUnrated": true,
+        "titleContains": [
+          "CoComelon",
+          "Gabby's Dollhouse",
+          "Carmen Sandiego",
+          "The Dragon Prince",
+          "Hilda",
+          "She-Ra and the Princesses of Power",
+          "Kipo and the Age of Wonderbeasts",
+          "The Last Kids on Earth",
+          "Trollhunters",
+          "Wizards: Tales of Arcadia",
+          "3Below: Tales of Arcadia",
+          "Spirit Riding Free",
+          "The Boss Baby: Back in Business",
+          "Captain Underpants",
+          "The Epic Tales of Captain Underpants",
+          "The Sea Beast",
+          "The Mitchells vs. the Machines",
+          "Klaus",
+          "Over the Moon",
+          "Wendell & Wild",
+          "Vivo",
+          "The Willoughbys",
+          "My Little Pony: A New Generation",
+          "Chicken Run: Dawn of the Nugget",
+          "Leo",
+          "Nimona",
+          "The Magician's Elephant",
+          "Pinocchio"
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "number": 40,
+      "name": "SITCOMS",
+      "colorHex": "#9B59B6",
+      "category": "essentials",
+      "minItems": 10,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Animation",
+            "Anime",
+            "Kids",
+            "Children",
+            "Family"
+          ]
+        },
+        "keywords": [
+          "sitcom",
+          "ensemble cast",
+          "workplace comedy",
+          "family sitcom",
+          "apartment",
+          "laugh track",
+          "multicamera"
+        ]
+      }
+    },
+    {
+      "id": 51,
+      "number": 41,
+      "name": "FLICKS",
+      "colorHex": "#FF6600",
+      "category": "essentials",
+      "minItems": 10,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "exclude": [
+            "Horror",
+            "Kids",
+            "Children",
+            "Family"
+          ]
+        }
+      }
+    },
+    {
+      "id": 52,
+      "number": 42,
+      "name": "ROM COMS",
+      "colorHex": "#FF85A1",
+      "category": "essentials",
+      "minItems": 50,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "requireAll": [
+            "Romance",
+            "Comedy"
+          ],
+          "exclude": [
+            "Horror",
+            "Thriller",
+            "Action",
+            "Animation",
+            "Family"
+          ]
+        }
+      }
+    },
+    {
+      "id": 53,
+      "number": 43,
+      "name": "FEEL GOOD TV",
+      "colorHex": "#7ED957",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "titleContains": [
+          "Shrinking",
+          "Ted Lasso",
+          "Schitt's Creek",
+          "Parks and Recreation",
+          "New Girl",
+          "Superstore",
+          "Younger",
+          "Brooklyn Nine-Nine",
+          "The Good Place",
+          "The Office",
+          "Friends",
+          "Northern Exposure",
+          "Fisk",
+          "Broad City",
+          "My Name Is Earl",
+          "A Man on the Inside",
+          "How I Met Your Mother",
+          "Unbreakable Kimmy Schmidt",
+          "Derry Girls",
+          "Raising Hope",
+          "Scrubs",
+          "Sprung",
+          "Abbott Elementary",
+          "Ghosts",
+          "Loot",
+          "Only Murders in the Building",
+          "Hacks",
+          "Detroiters",
+          "Somebody Somewhere",
+          "Letterkenny",
+          "What We Do in the Shadows",
+          "Bless This Mess",
+          "Kim's Convenience",
+          "Fresh Off the Boat",
+          "Jane the Virgin",
+          "Zoey's Extraordinary Playlist",
+          "Pushing Daisies",
+          "Community",
+          "Cougar Town",
+          "Happy Endings",
+          "Psych",
+          "Chuck",
+          "Gilmore Girls",
+          "Parenthood",
+          "Modern Family",
+          "Reba",
+          "Home Improvement",
+          "Emily in Paris",
+          "Stick",
+          "Nobody Wants This",
+          "Platonic"
+        ]
+      }
+    },
+    {
+      "id": 54,
+      "number": 44,
+      "name": "REALITY TV",
+      "colorHex": "#FF4500",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Reality",
+            "Reality-TV",
+            "Docuseries"
+          ],
+          "exclude": [
+            "Game Show",
+            "Game-Show",
+            "Competition"
+          ]
+        }
+      }
+    },
+    {
+      "id": 56,
+      "number": 45,
+      "name": "DOCS",
+      "colorHex": "#2E86C1",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "genres": {
+          "include": [
+            "Documentary"
+          ],
+          "exclude": [
+            "Sport"
+          ]
+        },
+        "keywords": [
+          "nature",
+          "biography",
+          "based on true story",
+          "food",
+          "wildlife",
+          "history",
+          "science"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Documentary"
+        ]
+      }
+    },
+    {
+      "id": 57,
+      "number": 46,
+      "name": "LOL",
+      "colorHex": "#F1C40F",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Horror",
+            "War",
+            "History",
+            "Documentary"
+          ]
+        },
+        "keywordsExclude": [
+          "dark comedy",
+          "black comedy",
+          "satire"
+        ],
+        "ratingMin": 7
+      }
+    },
+    {
+      "id": 59,
+      "number": 47,
+      "name": "MAN CAVE",
+      "colorHex": "#4A6741",
+      "category": "essentials",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Crime",
+            "Action"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids"
+          ]
+        },
+        "titleContains": [
+          "Entourage",
+          "Suits",
+          "Billions",
+          "Letterkenny",
+          "Trailer Park Boys",
+          "Eastbound & Down",
+          "Archer",
+          "Invincible"
+        ]
+      }
+    },
+    {
+      "id": 66,
+      "number": 49,
+      "name": "BLOCKBUSTER",
+      "colorHex": "#F39C12",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Action",
+            "Adventure",
+            "Science Fiction"
+          ]
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 62,
+      "number": 48,
+      "name": "FRESH",
+      "colorHex": "#00E5FF",
+      "category": "essentials",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "releasedWithinMonths": 6,
+        "durationRange": {
+          "min": 60
+        }
+      }
+    },
+    {
+      "id": 200,
+      "number": 50,
+      "name": "DRAMA TV",
+      "colorHex": "#5A3E8A",
+      "category": "essentials",
+      "minItems": 10,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Drama"
+          ],
+          "exclude": [
+            "Animation",
+            "Comedy",
+            "Documentary",
+            "Horror",
+            "Reality",
+            "Kids",
+            "Children",
+            "Family"
+          ]
+        },
+        "keywords": [
+          "drama series",
+          "prestige drama",
+          "limited series",
+          "critically acclaimed",
+          "character study"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Drama"
+        ]
+      }
+    },
+    {
+      "id": 210,
+      "number": 51,
+      "name": "RECORD STORE",
+      "colorHex": "#FF6B35",
+      "category": "essentials",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Music"
+          ]
+        },
+        "keywordsExclude": [
+          "musical",
+          "based on play or musical",
+          "song and dance",
+          "broadway"
+        ]
+      }
+    },
+    {
+      "id": 60,
+      "number": 59,
+      "name": "ANIME",
+      "colorHex": "#FF3D6E",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "genres": {
+          "include": [
+            "Animation"
+          ]
+        },
+        "keywords": [
+          "anime",
+          "based on manga",
+          "seinen",
+          "shounen",
+          "dark fantasy",
+          "supernatural",
+          "mecha"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Animation",
+          "Action & Adventure",
+          "Sci-Fi & Fantasy"
+        ],
+        "manifestOnly": true,
+        "editorialOverrides": [
+          "Pokémon",
+          "Pokémon Horizons",
+          "Pokémon: The First Movie",
+          "Pokémon the Movie 2000",
+          "Pokémon 3: The Movie",
+          "Pokémon 4Ever",
+          "Pokémon Heroes",
+          "Pokémon: Jirachi Wish Maker",
+          "Pokémon: Destiny Deoxys",
+          "Pokémon: Lucario and the Mystery of Mew",
+          "Pokémon Ranger and the Temple of the Sea",
+          "Pokémon: The Rise of Darkrai",
+          "Pokémon: Giratina and the Sky Warrior",
+          "Pokémon: Arceus and the Jewel of Life",
+          "Pokémon: Zoroark, Master of Illusions",
+          "Pokémon the Movie: Black—Victini and Reshiram",
+          "Pokémon the Movie: White—Victini and Zekrom",
+          "Pokémon the Movie: Kyurem vs. the Sword of Justice",
+          "Pokémon the Movie: Genesect and the Legend Awakened",
+          "Pokémon the Movie: Diancie and the Cocoon of Destruction",
+          "Pokémon the Movie: Hoopa and the Clash of Ages",
+          "Pokémon the Movie: Volcanion and the Mechanical Marvel",
+          "Pokémon the Movie: I Choose You!",
+          "Pokémon the Movie: The Power of Us",
+          "Mewtwo Strikes Back: Evolution",
+          "Pokémon the Movie: Secrets of the Jungle",
+          "Pokémon: Detective Pikachu",
+          "Spirited Away",
+          "Princess Mononoke",
+          "My Neighbor Totoro",
+          "Howl's Moving Castle",
+          "Kiki's Delivery Service",
+          "Castle in the Sky",
+          "Ponyo",
+          "The Wind Rises",
+          "Grave of the Fireflies",
+          "Nausicaä of the Valley of the Wind",
+          "Porco Rosso",
+          "Whisper of the Heart",
+          "The Cat Returns",
+          "From Up on Poppy Hill",
+          "The Secret World of Arrietty",
+          "When Marnie Was There",
+          "Only Yesterday",
+          "Pom Poko",
+          "My Neighbors the Yamadas",
+          "The Boy and the Heron",
+          "The Tale of the Princess Kaguya",
+          "Earwig and the Witch",
+          "Mary and The Witch's Flower",
+          "Akira",
+          "Ghost in the Shell",
+          "Perfect Blue",
+          "Paprika",
+          "Tokyo Godfathers",
+          "Millennium Actress",
+          "Your Name.",
+          "Weathering with You",
+          "Suzume",
+          "A Silent Voice",
+          "A Silent Voice: The Movie",
+          "Belle",
+          "Mirai",
+          "Wolf Children",
+          "Summer Wars",
+          "The Girl Who Leapt Through Time",
+          "Ninja Scroll",
+          "Vampire Hunter D: Bloodlust",
+          "Jin-Roh: The Wolf Brigade",
+          "Metropolis",
+          "Demon Slayer: Kimetsu no Yaiba – The Movie: Mugen Train",
+          "Jujutsu Kaisen 0",
+          "One Piece Film: Red",
+          "One Piece Film: Gold",
+          "One Piece Film: Z",
+          "Dragon Ball Super: Broly",
+          "Dragon Ball Super: Super Hero",
+          "Dragon Ball Z: Broly – The Legendary Super Saiyan",
+          "The Last: Naruto the Movie",
+          "Boruto: Naruto the Movie",
+          "My Hero Academia: Heroes Rising",
+          "Digimon: The Movie",
+          "Yu-Gi-Oh! The Movie",
+          "Cowboy Bebop",
+          "Neon Genesis Evangelion",
+          "Attack on Titan",
+          "Death Note",
+          "Fullmetal Alchemist",
+          "Fullmetal Alchemist: Brotherhood",
+          "Steins;Gate",
+          "Vinland Saga",
+          "Demon Slayer: Kimetsu no Yaiba",
+          "Jujutsu Kaisen",
+          "Berserk",
+          "Hunter x Hunter",
+          "Code Geass",
+          "Code Geass: Lelouch of the Rebellion",
+          "Monster",
+          "Samurai Champloo",
+          "Ghost in the Shell: Stand Alone Complex",
+          "Trigun",
+          "Hellsing",
+          "Black Lagoon",
+          "Psycho-Pass",
+          "One-Punch Man",
+          "Naruto",
+          "Naruto: Shippuden",
+          "Boruto: Naruto Next Generations",
+          "Bleach",
+          "Dragon Ball",
+          "Dragon Ball Z",
+          "Dragon Ball Super",
+          "Dragon Ball GT",
+          "One Piece",
+          "My Hero Academia",
+          "Spy x Family",
+          "Chainsaw Man",
+          "Tokyo Ghoul",
+          "Sword Art Online",
+          "Re:Zero − Starting Life in Another World",
+          "Cyberpunk: Edgerunners",
+          "Castlevania",
+          "Arcane",
+          "Devilman Crybaby",
+          "JoJo's Bizarre Adventure",
+          "Mob Psycho 100",
+          "Erased",
+          "Parasyte -the maxim-",
+          "Yu-Gi-Oh!",
+          "Sailor Moon",
+          "Digimon Adventure",
+          "Beyblade",
+          "Yo-kai Watch",
+          "Doraemon",
+          "Bakugan Battle Brawlers",
+          "Sonic X",
+          "Astro Boy",
+          "Inazuma Eleven"
+        ]
+      }
+    },
+    {
+      "id": 61,
+      "number": 60,
+      "name": "MUSICALS",
+      "colorHex": "#C2185B",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Music",
+            "Musical"
+          ]
+        },
+        "keywords": [
+          "musical",
+          "based on play or musical",
+          "song and dance",
+          "broadway",
+          "singing"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Music",
+          "Comedy",
+          "Romance"
+        ],
+        "keywordGatedGenres": [
+          "Music"
+        ]
+      }
+    },
+    {
+      "id": 55,
+      "number": 61,
+      "name": "GAME SHOWS",
+      "colorHex": "#FFB300",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Game Show",
+            "Game-Show",
+            "Competition"
+          ]
+        },
+        "titleContains": [
+          "Whose Line Is It Anyway",
+          "Wheel of Fortune",
+          "Jeopardy",
+          "The Price Is Right",
+          "Family Feud",
+          "Guy's Grocery Games",
+          "Chopped",
+          "Master Chef",
+          "MasterChef",
+          "The Great British Bake Off",
+          "The Great British Baking Show",
+          "Nailed It",
+          "Hell's Kitchen",
+          "Top Chef",
+          "Iron Chef",
+          "Beat Bobby Flay",
+          "Cupcake Wars",
+          "Is It Cake",
+          "The Floor",
+          "The Weakest Link",
+          "Deal or No Deal",
+          "Match Game",
+          "Pyramid",
+          "Password",
+          "Card Sharks",
+          "Name That Tune",
+          "The Masked Singer",
+          "Don't Forget the Lyrics",
+          "Lego Masters",
+          "The Great Pottery Throw Down"
+        ]
+      }
+    },
+    {
+      "id": 63,
+      "number": 62,
+      "name": "ADULT CARTOONS",
+      "colorHex": "#8E44AD",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Animation",
+            "Animated",
+            "Cartoon"
+          ]
+        },
+        "titleContains": [
+          "The Simpsons",
+          "South Park",
+          "King of the Hill",
+          "Family Guy",
+          "Futurama",
+          "American Dad",
+          "The Boondocks",
+          "The Cleveland Show",
+          "Bob's Burgers",
+          "Rick and Morty",
+          "BoJack Horseman",
+          "Big Mouth",
+          "Archer",
+          "Beavis and Butt-Head",
+          "Aqua Teen Hunger Force",
+          "Robot Chicken",
+          "Metalocalypse",
+          "Solar Opposites",
+          "Inside Job",
+          "Harley Quinn",
+          "The Ren & Stimpy Show"
+        ]
+      }
+    },
+    {
+      "id": 64,
+      "number": 63,
+      "name": "DATE NIGHT",
+      "colorHex": "#E74C8B",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "requireAll": [
+            "Romance"
+          ],
+          "exclude": [
+            "Horror",
+            "Animation",
+            "Family",
+            "Children",
+            "Kids"
+          ]
+        },
+        "keywords": [
+          "love story",
+          "forbidden love",
+          "passion",
+          "affair",
+          "romance film",
+          "tragic romance",
+          "star-crossed lovers"
+        ],
+        "keywordsExclude": [
+          "romantic comedy",
+          "slapstick comedy"
+        ]
+      }
+    },
+    {
+      "id": 58,
+      "number": 64,
+      "name": "STAND-UP",
+      "colorHex": "#F5B041",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "genres": {
+          "include": [
+            "Comedy",
+            "Documentary"
+          ]
+        },
+        "keywords": [
+          "stand-up comedy",
+          "comedian"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Comedy"
+        ],
+        "manifestOnly": true
+      }
+    },
+    {
+      "id": 201,
+      "number": 65,
+      "name": "BIOPICS",
+      "colorHex": "#C9A84C",
+      "category": "premium",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "keywords": [
+          "biopic",
+          "based on a true story",
+          "based on true events",
+          "biographical",
+          "life story",
+          "historical figure"
+        ]
+      }
+    },
+    {
+      "id": 67,
+      "number": 66,
+      "name": "ALL TIME GREATS",
+      "colorHex": "#FFD700",
+      "category": "premium",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "ratingMin": 8.2,
+        "durationRange": {
+          "min": 60
+        }
+      }
+    },
+    {
+      "id": 68,
+      "number": 67,
+      "name": "CERTIFIED GOLD",
+      "colorHex": "#F56040",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "ratingMin": 8,
+        "durationRange": {
+          "min": 60
+        }
+      }
+    },
+    {
+      "id": 69,
+      "number": 68,
+      "name": "OSCAR WINNERS",
+      "colorHex": "#FFD700",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "The Godfather",
+          "Schindler's List",
+          "Parasite",
+          "Moonlight",
+          "Casablanca",
+          "On the Waterfront",
+          "My Fair Lady",
+          "The Sound of Music",
+          "Lawrence of Arabia",
+          "West Side Story",
+          "The English Patient",
+          "Titanic",
+          "Forrest Gump",
+          "The Silence of the Lambs",
+          "American Beauty",
+          "Gladiator",
+          "Chicago",
+          "Million Dollar Baby",
+          "The Departed",
+          "No Country for Old Men",
+          "Slumdog Millionaire",
+          "The King's Speech",
+          "The Artist",
+          "Argo",
+          "12 Years a Slave",
+          "Birdman",
+          "Spotlight",
+          "The Shape of Water",
+          "Green Book",
+          "Nomadland",
+          "CODA",
+          "Everything Everywhere All at Once",
+          "Oppenheimer",
+          "Anora",
+          "One Flew Over the Cuckoo's Nest",
+          "Rocky",
+          "Rain Man",
+          "Driving Miss Daisy",
+          "Braveheart",
+          "Shakespeare in Love",
+          "A Beautiful Mind",
+          "Crash",
+          "The Hurt Locker",
+          "The Revenant"
+        ],
+        "titleExcludes": [
+          "Rocky II",
+          "Rocky III",
+          "Rocky IV",
+          "Rocky V",
+          "Rocky Balboa",
+          "Gladiator II",
+          "The Godfather Part III"
+        ]
+      }
+    },
+    {
+      "id": 70,
+      "number": 70,
+      "name": "EPIC ADVENTURES",
+      "colorHex": "#D4A017",
+      "category": "adventureland",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Adventure",
+            "Fantasy"
+          ],
+          "exclude": [
+            "Animation",
+            "Animated",
+            "Family",
+            "Children",
+            "Kids"
+          ]
+        },
+        "durationRange": {
+          "min": 110
+        }
+      }
+    },
+    {
+      "id": 71,
+      "number": 71,
+      "name": "DISASTER MOVIES",
+      "colorHex": "#E67E22",
+      "category": "adventureland",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "exclude": [
+            "Animation",
+            "Animated",
+            "Family",
+            "Fantasy",
+            "Romance"
+          ]
+        },
+        "titleContains": [
+          "Twister",
+          "Armageddon",
+          "Deep Impact",
+          "The Day After Tomorrow",
+          "2012",
+          "San Andreas",
+          "Greenland",
+          "Geostorm",
+          "Volcano",
+          "Dante's Peak",
+          "Pompeii",
+          "Independence Day",
+          "Knowing",
+          "The Core",
+          "Titanic",
+          "The Poseidon Adventure",
+          "Poseidon",
+          "Earthquake",
+          "Towering Inferno",
+          "Sully",
+          "World War Z",
+          "Contagion",
+          "Outbreak"
+        ],
+        "titleExcludes": [
+          "Star Wars",
+          "Lord of the Rings",
+          "Harry Potter",
+          "Marvel",
+          "Avengers",
+          "Batman",
+          "Spider-Man",
+          "Jurassic Park"
+        ]
+      }
+    },
+    {
+      "id": 72,
+      "number": 72,
+      "name": "RUSH",
+      "colorHex": "#E74C3C",
+      "category": "adventureland",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Action",
+            "Thriller"
+          ],
+          "exclude": [
+            "Family",
+            "Kids",
+            "Children",
+            "Animation",
+            "Animated",
+            "Fantasy"
+          ]
+        },
+        "keywords": [
+          "car chase",
+          "heist",
+          "martial arts",
+          "assassin",
+          "mercenary",
+          "one man army",
+          "shootout",
+          "chase",
+          "gunfight",
+          "explosion"
+        ],
+        "ratingMin": 5.5,
+        "durationRange": {
+          "min": 80
+        },
+        "yearRange": {
+          "min": 2000
+        }
+      }
+    },
+    {
+      "id": 73,
+      "number": 73,
+      "name": "SCI-FI",
+      "colorHex": "#16A0C8",
+      "category": "adventureland",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Science Fiction",
+            "Horror"
+          ],
+          "exclude": [
+            "Animation",
+            "Family",
+            "Kids"
+          ],
+          "requireAll": [
+            "Science Fiction"
+          ]
+        },
+        "keywords": [
+          "dystopia",
+          "alien",
+          "cyberpunk",
+          "space travel",
+          "artificial intelligence (a.i.)",
+          "android",
+          "space opera",
+          "spacecraft"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Science Fiction"
+        ]
+      }
+    },
+    {
+      "id": 74,
+      "number": 74,
+      "name": "FANTASY",
+      "colorHex": "#8E44AD",
+      "category": "adventureland",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Fantasy",
+            "Adventure"
+          ],
+          "exclude": [
+            "Animation",
+            "Horror",
+            "Science Fiction"
+          ]
+        },
+        "keywords": [
+          "sword and sorcery",
+          "magic",
+          "good versus evil",
+          "fairy tale",
+          "castle",
+          "swordplay",
+          "witch"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Fantasy",
+          "Adventure"
+        ]
+      }
+    },
+    {
+      "id": 75,
+      "number": 75,
+      "name": "WESTERNS",
+      "colorHex": "#B9770E",
+      "category": "adventureland",
+      "minItems": 3,
+      "rules": {
+        "genres": {
+          "include": [
+            "Western"
+          ]
+        },
+        "keywords": [
+          "gunslinger",
+          "bounty hunter",
+          "shootout",
+          "outlaw",
+          "native american",
+          "spaghetti western",
+          "19th century"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Western"
+        ]
+      }
+    },
+    {
+      "id": 76,
+      "number": 76,
+      "name": "FRONT LINE",
+      "colorHex": "#5D6D7E",
+      "category": "adventureland",
+      "minItems": 3,
+      "rules": {
+        "genres": {
+          "include": [
+            "War",
+            "War & Politics"
+          ],
+          "exclude": [
+            "Documentary",
+            "Docuseries",
+            "Animation",
+            "Animated"
+          ]
+        },
+        "keywords": [
+          "world war ii",
+          "world war i",
+          "korean war",
+          "civil war",
+          "cold war",
+          "prisoner of war",
+          "holocaust",
+          "nazi",
+          "war crimes",
+          "siege",
+          "combat",
+          "soldier",
+          "battle",
+          "military",
+          "resistance",
+          "special forces"
+        ],
+        "keywordsRequireAnyGenre": [
+          "War",
+          "War & Politics",
+          "History",
+          "Biography"
+        ]
+      }
+    },
+    {
+      "id": 404,
+      "number": 52,
+      "name": "HISTORY & BIO",
+      "colorHex": "#A0522D",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "History",
+            "Biography"
+          ],
+          "exclude": [
+            "Documentary",
+            "Docuseries",
+            "Animation",
+            "Animated"
+          ]
+        }
+      }
+    },
+    {
+      "id": 141,
+      "number": 138,
+      "name": "FRIGHT NIGHT",
+      "colorHex": "#8B0000",
+      "category": "adventureland",
+      "minItems": 5,
+      "rules": {
+        "genres": {
+          "include": [
+            "Horror"
+          ]
+        }
+      }
+    },
+    {
+      "id": 65,
+      "number": 77,
+      "name": "SUPERHERO MOVIES",
+      "colorHex": "#E74C3C",
+      "category": "adventureland",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "Iron Man",
+          "Captain America",
+          "Thor",
+          "Avengers",
+          "Guardians of the Galaxy",
+          "Black Panther",
+          "Spider-Man",
+          "Ant-Man",
+          "Doctor Strange",
+          "Deadpool",
+          "Wolverine",
+          "X-Men",
+          "Batman",
+          "Superman",
+          "Wonder Woman",
+          "Aquaman",
+          "Justice League",
+          "Suicide Squad",
+          "Shazam",
+          "Venom",
+          "Logan",
+          "Dark Knight",
+          "Man of Steel",
+          "Captain Marvel",
+          "Eternals",
+          "Black Widow",
+          "Morbius",
+          "Fantastic Four",
+          "Incredible Hulk",
+          "Green Lantern",
+          "Flash"
+        ],
+        "titleExcludes": [
+          "Star Wars",
+          "Lord of the Rings",
+          "Harry Potter",
+          "Jurassic Park",
+          "Transformers"
+        ]
+      }
+    },
+    {
+      "id": 80,
+      "number": 80,
+      "name": "LOCKERROOM",
+      "colorHex": "#1DB954",
+      "category": "sports",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Sport",
+            "Sports",
+            "Sports Film"
+          ]
+        }
+      }
+    },
+    {
+      "id": 81,
+      "number": 81,
+      "name": "OVERTIME TV",
+      "colorHex": "#2ECC71",
+      "category": "sports",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Sport",
+            "Sports"
+          ]
+        },
+        "titleContains": [
+          "Shoresy"
+        ]
+      }
+    },
+    {
+      "id": 82,
+      "number": 82,
+      "name": "SPORTS DOCS",
+      "colorHex": "#27AE60",
+      "category": "sports",
+      "minItems": 3,
+      "rules": {
+        "genres": {
+          "include": [
+            "Documentary"
+          ],
+          "requireAll": [
+            "Sport"
+          ]
+        }
+      }
+    },
+    {
+      "id": 40,
+      "number": 85,
+      "name": "TRUE CRIME",
+      "colorHex": "#7B241C",
+      "category": "truecrime",
+      "minItems": 1,
+      "rules": {
+        "genres": {
+          "include": [
+            "Documentary",
+            "Docuseries"
+          ],
+          "requireAll": [
+            "Documentary"
+          ]
+        },
+        "keywords": [
+          "true crime",
+          "serial killer",
+          "murder",
+          "murderer",
+          "investigation",
+          "criminal investigation",
+          "police investigation",
+          "cold case",
+          "forensic",
+          "detective",
+          "unsolved",
+          "kidnapping",
+          "organized crime",
+          "scam",
+          "cult",
+          "fraud",
+          "heist"
+        ],
+        "keywordGatedGenres": [
+          "Documentary",
+          "Docuseries"
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "number": 86,
+      "name": "CRIME FLICKS",
+      "colorHex": "#A93226",
+      "category": "truecrime",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Crime"
+          ],
+          "exclude": [
+            "Documentary"
+          ]
+        },
+        "keywords": [
+          "gangster",
+          "mafia",
+          "organized crime",
+          "neo-noir",
+          "drug trafficking",
+          "heist",
+          "murder"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Crime"
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "number": 87,
+      "name": "THRILLERS",
+      "colorHex": "#5B2C6F",
+      "category": "truecrime",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Thriller"
+          ],
+          "exclude": [
+            "Horror",
+            "Documentary"
+          ]
+        },
+        "keywords": [
+          "psychological thriller",
+          "suspense",
+          "investigation",
+          "neo-noir",
+          "psychopath",
+          "serial killer",
+          "detective"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Thriller",
+          "Crime"
+        ]
+      }
+    },
+    {
+      "id": 43,
+      "number": 88,
+      "name": "MYSTERY",
+      "colorHex": "#1A5276",
+      "category": "truecrime",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Mystery"
+          ],
+          "exclude": [
+            "Horror",
+            "Documentary"
+          ]
+        },
+        "keywords": [
+          "whodunit",
+          "detective",
+          "murder mystery",
+          "neo-noir",
+          "investigation",
+          "suspense"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Mystery",
+          "Crime",
+          "Thriller"
+        ]
+      }
+    },
+    {
+      "id": 44,
+      "number": 89,
+      "name": "CRIME TV",
+      "colorHex": "#784212",
+      "category": "truecrime",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Crime"
+          ],
+          "exclude": [
+            "Documentary",
+            "Animation"
+          ]
+        },
+        "keywords": [
+          "police procedural",
+          "crime investigation",
+          "murder investigation",
+          "detective",
+          "homicide detective",
+          "criminal investigation"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Crime"
+        ]
+      }
+    },
+    {
+      "id": 419,
+      "number": 84,
+      "name": "MYSTERY BOX TV",
+      "colorHex": "#2E4053",
+      "category": "truecrime",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "manifestOnly": true,
+        "genres": {
+          "include": [
+            "Mystery",
+            "Horror"
+          ]
+        }
+      }
+    },
+    {
+      "id": 90,
+      "number": 90,
+      "name": "THE 60S",
+      "colorHex": "#C0392B",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 1960,
+          "max": 1969
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 91,
+      "number": 91,
+      "name": "THE 70S",
+      "colorHex": "#D2691E",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 1970,
+          "max": 1979
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 92,
+      "number": 92,
+      "name": "THE 80S",
+      "colorHex": "#FF1493",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 1980,
+          "max": 1989
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 93,
+      "number": 93,
+      "name": "THE 90S",
+      "colorHex": "#00CED1",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 1990,
+          "max": 1999
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 94,
+      "number": 94,
+      "name": "THE 00S",
+      "colorHex": "#7B68EE",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 2000,
+          "max": 2009
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 95,
+      "number": 95,
+      "name": "THE 10S",
+      "colorHex": "#20B2AA",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 2010,
+          "max": 2019
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 96,
+      "number": 96,
+      "name": "THE 20S",
+      "colorHex": "#FF6347",
+      "category": "decades",
+      "minItems": 5,
+      "rules": {
+        "yearRange": {
+          "min": 2020,
+          "max": 2029
+        },
+        "ratingMin": 6
+      }
+    },
+    {
+      "id": 100,
+      "name": "STAR WARS",
+      "colorHex": "#FFE81F",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "Star Wars"
+        ]
+      },
+      "number": 100
+    },
+    {
+      "id": 101,
+      "name": "MARVEL",
+      "colorHex": "#E74C3C",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Marvel Studios"
+        ]
+      },
+      "number": 101
+    },
+    {
+      "id": 102,
+      "name": "HARRY POTTER",
+      "colorHex": "#7B68EE",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "Harry Potter",
+          "Fantastic Beasts"
+        ]
+      },
+      "number": 102
+    },
+    {
+      "id": 103,
+      "name": "JURASSIC PARK",
+      "colorHex": "#2ECC71",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "titleContains": [
+          "Jurassic Park",
+          "Jurassic World",
+          "Camp Cretaceous",
+          "Chaos Theory"
+        ]
+      },
+      "number": 103
+    },
+    {
+      "id": 104,
+      "name": "LORD OF THE RINGS",
+      "colorHex": "#D4A017",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "Lord of the Rings",
+          "The Hobbit"
+        ]
+      },
+      "number": 104
+    },
+    {
+      "id": 105,
+      "name": "MISSION IMPOSSIBLE",
+      "colorHex": "#C0392B",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "Mission: Impossible",
+          "Mission Impossible"
+        ]
+      },
+      "number": 105
+    },
+    {
+      "id": 106,
+      "name": "JASON BOURNE",
+      "colorHex": "#566573",
+      "category": "franchise",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "titleContains": [
+          "Bourne"
+        ]
+      },
+      "number": 106
+    },
+    {
+      "id": 120,
+      "number": 119,
+      "name": "HBO",
+      "colorHex": "#8B5CF6",
+      "category": "streamers",
+      "minItems": 5,
+      "rules": {
+        "studios": [
+          "HBO",
+          "HBO Films",
+          "HBO Max"
+        ],
+        "networks": [
+          "HBO",
+          "Max",
+          "HBO Max"
+        ],
+        "titleContains": [
+          "Game of Thrones",
+          "House of the Dragon",
+          "The Sopranos",
+          "The Wire",
+          "Band of Brothers",
+          "The Pacific",
+          "Deadwood",
+          "Curb Your Enthusiasm",
+          "Veep",
+          "True Detective",
+          "Euphoria",
+          "Oz",
+          "Six Feet Under",
+          "The Leftovers",
+          "Succession",
+          "Barry",
+          "Chernobyl",
+          "Westworld",
+          "Big Little Lies",
+          "Sharp Objects",
+          "Mare of Easttown",
+          "The White Lotus",
+          "Boardwalk Empire",
+          "Rome",
+          "Carnivale",
+          "The Newsroom",
+          "Silicon Valley",
+          "Entourage",
+          "Sex and the City",
+          "Insecure",
+          "Girls",
+          "Flight of the Conchords",
+          "Hacks",
+          "The Righteous Gemstones",
+          "Eastbound & Down",
+          "Vice Principals",
+          "The Night Of",
+          "I May Destroy You",
+          "Watchmen",
+          "Lovecraft Country",
+          "The Last of Us",
+          "Station Eleven",
+          "Peacemaker",
+          "Our Flag Means Death",
+          "Somebody Somewhere",
+          "The Rehearsal",
+          "How To with John Wilson",
+          "My Brilliant Friend",
+          "Industry",
+          "Winning Time",
+          "The Penguin",
+          "The Gilded Age"
+        ]
+      }
+    },
+    {
+      "id": 121,
+      "number": 120,
+      "name": "APPLE TV+",
+      "colorHex": "#5AC8FA",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "studios": [
+          "Apple TV+",
+          "Apple",
+          "Apple Studios"
+        ],
+        "networks": [
+          "Apple TV+"
+        ],
+        "titleContains": [
+          "Ted Lasso",
+          "Shrinking",
+          "Severance",
+          "The Morning Show",
+          "For All Mankind",
+          "Foundation",
+          "Silo",
+          "Slow Horses",
+          "Pachinko",
+          "Black Bird",
+          "Bad Sisters",
+          "Platonic",
+          "The Afterparty",
+          "Mythic Quest",
+          "Loot",
+          "Acapulco",
+          "Physical",
+          "Trying",
+          "Servant",
+          "See",
+          "Invasion",
+          "Mosquito Coast",
+          "Truth Be Told",
+          "Defending Jacob",
+          "Little America",
+          "Dickinson",
+          "CODA",
+          "Killers of the Flower Moon",
+          "Napoleon",
+          "Wolfs",
+          "Argylle",
+          "Ghosted",
+          "Finch",
+          "Cherry",
+          "Greyhound",
+          "Palmer",
+          "Emancipation",
+          "Spirited",
+          "Luck",
+          "Stillwater",
+          "Stick",
+          "Disclaimer",
+          "Lessons in Chemistry",
+          "Masters of the Air",
+          "Monarch",
+          "Dark Matter",
+          "Constellation",
+          "Sugar",
+          "Lady in the Lake",
+          "The New Look",
+          "Presumed Innocent",
+          "Hijack",
+          "Extrapolations",
+          "Swagger",
+          "Lisey's Story",
+          "Calls",
+          "Shining Girls",
+          "Roar",
+          "Five Days at Memorial",
+          "WeCrashed",
+          "The Essex Serpent",
+          "Suspicion",
+          "Home Before Dark",
+          "Tehran",
+          "Prehistoric Planet",
+          "Ghostwriter",
+          "Harriet the Spy",
+          "Wolfboy",
+          "Schmigadoon",
+          "The Big Door Prize",
+          "High Desert",
+          "City on Fire",
+          "The Changeling",
+          "Lessons in Chemistry",
+          "Time Bandits",
+          "Fly Me to the Moon",
+          "Blitz",
+          "The Instigators",
+          "Bride",
+          "Spellbound"
+        ]
+      }
+    },
+    {
+      "id": 122,
+      "number": 121,
+      "name": "NETFLIX",
+      "colorHex": "#E50914",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "studios": [
+          "Netflix",
+          "Netflix Animation",
+          "Netflix Studios",
+          "Netflix International Pictures",
+          "Netflix Originals"
+        ],
+        "networks": [
+          "Netflix"
+        ],
+        "titleContains": [
+          "Stranger Things",
+          "Wednesday",
+          "The Crown",
+          "Bridgerton",
+          "Money Heist",
+          "Squid Game",
+          "Ozark",
+          "Narcos",
+          "The Witcher",
+          "BoJack Horseman",
+          "Black Mirror",
+          "Mindhunter",
+          "The Umbrella Academy",
+          "Cobra Kai",
+          "Sex Education",
+          "The Queen's Gambit",
+          "Russian Doll",
+          "Dead to Me",
+          "Big Mouth",
+          "Love, Death & Robots",
+          "Arcane",
+          "Castlevania",
+          "The Sandman",
+          "Shadow and Bone",
+          "Outer Banks",
+          "Ginny & Georgia",
+          "Emily in Paris",
+          "Never Have I Ever",
+          "1899",
+          "Glass Onion",
+          "The Irishman",
+          "Marriage Story",
+          "Roma",
+          "The Power of the Dog",
+          "Don't Look Up",
+          "Extraction",
+          "The Gray Man",
+          "Red Notice",
+          "Bird Box",
+          "The Adam Project"
+        ],
+        "editorialOverrides": [
+          "You",
+          "Dark",
+          "Beef",
+          "Lupin"
+        ]
+      }
+    },
+    {
+      "id": 123,
+      "number": 122,
+      "name": "PARAMOUNT+",
+      "colorHex": "#0064FF",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "studios": [
+          "Paramount+",
+          "Paramount Television",
+          "Paramount Television Studios",
+          "CBS Studios",
+          "MTV Entertainment Studios",
+          "Nickelodeon"
+        ],
+        "networks": [
+          "Paramount+",
+          "Paramount Network",
+          "Showtime",
+          "CBS",
+          "MTV",
+          "Comedy Central",
+          "Nickelodeon"
+        ],
+        "titleContains": [
+          "Star Trek: Discovery",
+          "Star Trek: Picard",
+          "Star Trek: Strange New Worlds",
+          "Star Trek: Lower Decks",
+          "Halo",
+          "1883",
+          "1923",
+          "Tulsa King",
+          "Yellowjackets",
+          "Mayor of Kingstown",
+          "The Good Fight",
+          "Evil",
+          "Why Women Kill",
+          "SEAL Team",
+          "The Offer",
+          "Rabbit Hole",
+          "Fatal Attraction",
+          "iCarly",
+          "Knuckles",
+          "A Gentleman in Moscow",
+          "School Spirits",
+          "Special Ops: Lioness"
+        ]
+      }
+    },
+    {
+      "id": 124,
+      "number": 123,
+      "name": "AMAZON",
+      "colorHex": "#00A8E1",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "studios": [
+          "Amazon",
+          "Amazon Studios",
+          "Amazon MGM Studios",
+          "Amazon Prime Video",
+          "Prime Video",
+          "Amazon Original"
+        ],
+        "networks": [
+          "Amazon Prime Video",
+          "Prime Video",
+          "Amazon"
+        ],
+        "titleContains": [
+          "The Boys",
+          "The Marvelous Mrs. Maisel",
+          "Reacher",
+          "Jack Ryan",
+          "Fleabag",
+          "The Wheel of Time",
+          "The Lord of the Rings: The Rings of Power",
+          "Invincible",
+          "Gen V",
+          "Fallout",
+          "The Terminal List",
+          "Bosch",
+          "The Expanse",
+          "Hunters",
+          "Carnival Row",
+          "Upload",
+          "The Underground Railroad",
+          "Good Omens",
+          "The Summer I Turned Pretty",
+          "Daisy Jones & The Six",
+          "Citadel",
+          "A League of Their Own",
+          "Homecoming",
+          "The Wilds",
+          "Paper Girls",
+          "Outer Range",
+          "Air",
+          "The Tomorrow War",
+          "Saltburn",
+          "Road House"
+        ]
+      }
+    },
+    {
+      "id": 125,
+      "number": 124,
+      "name": "HULU",
+      "colorHex": "#1CE783",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "studios": [
+          "Hulu",
+          "Hulu Originals",
+          "Onyx Collective",
+          "20th Television",
+          "ABC Signature"
+        ],
+        "networks": [
+          "Hulu"
+        ],
+        "titleContains": [
+          "The Handmaid's Tale",
+          "Only Murders in the Building",
+          "The Bear",
+          "Pam & Tommy",
+          "Dopesick",
+          "The Dropout",
+          "Castle Rock",
+          "Little Fires Everywhere",
+          "Nine Perfect Strangers",
+          "Normal People",
+          "Ramy",
+          "PEN15",
+          "Future Man",
+          "Reservation Dogs",
+          "The Great",
+          "Solar Opposites",
+          "Harlots",
+          "The Path",
+          "Welcome to Chippendales",
+          "Tiny Beautiful Things",
+          "Saint X",
+          "Fleishman Is in Trouble",
+          "Under the Banner of Heaven",
+          "Prey",
+          "Palm Springs",
+          "Fresh",
+          "Vacation Friends",
+          "Rosaline"
+        ]
+      }
+    },
+    {
+      "id": 126,
+      "number": 125,
+      "name": "SONY",
+      "colorHex": "#374151",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Sony",
+          "Sony Pictures",
+          "Sony Pictures Television",
+          "Columbia Pictures",
+          "TriStar Pictures",
+          "Screen Gems"
+        ],
+        "productionCompanies": [
+          "Columbia Pictures",
+          "Sony Pictures",
+          "TriStar Pictures",
+          "Screen Gems",
+          "Sony Pictures Animation"
+        ]
+      }
+    },
+    {
+      "id": 127,
+      "number": 126,
+      "name": "WARNER BROS",
+      "colorHex": "#B8860B",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Warner Bros.",
+          "Warner Bros. Pictures",
+          "Warner Bros. Television",
+          "New Line Cinema",
+          "Castle Rock Entertainment",
+          "HBO Max"
+        ],
+        "productionCompanies": [
+          "Warner Bros. Pictures",
+          "New Line Cinema",
+          "Castle Rock Entertainment",
+          "Warner Bros. Animation",
+          "DC Films"
+        ]
+      }
+    },
+    {
+      "id": 128,
+      "number": 127,
+      "name": "UNIVERSAL",
+      "colorHex": "#00A651",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Universal",
+          "Universal Pictures",
+          "Universal Television",
+          "DreamWorks",
+          "Focus Features",
+          "Peacock"
+        ],
+        "productionCompanies": [
+          "Universal Pictures",
+          "DreamWorks Pictures",
+          "DreamWorks Animation",
+          "Focus Features",
+          "Working Title Films"
+        ]
+      }
+    },
+    {
+      "id": 129,
+      "number": 128,
+      "name": "20TH CENTURY",
+      "colorHex": "#C8A951",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "20th Century Fox",
+          "20th Century Studios",
+          "20th Television",
+          "Fox",
+          "FX",
+          "FX Productions",
+          "Searchlight Pictures",
+          "Blue Sky Studios"
+        ],
+        "productionCompanies": [
+          "20th Century Fox",
+          "20th Century Studios",
+          "Searchlight Pictures",
+          "Fox 2000 Pictures",
+          "Regency Enterprises"
+        ]
+      }
+    },
+    {
+      "id": 130,
+      "number": 145,
+      "name": "HOLIDAZE",
+      "colorHex": "#C41E3A",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Holiday",
+            "Christmas"
+          ]
+        },
+        "titleContains": [
+          "Christmas",
+          "Holiday",
+          "Xmas",
+          "Santa",
+          "Grinch",
+          "Scrooge",
+          "Nutcracker",
+          "Reindeer",
+          "Snowman",
+          "Mistletoe",
+          "Noel",
+          "Merry",
+          "Rudolph",
+          "Frosty",
+          "Hanukkah",
+          "Kwanzaa",
+          "Yuletide",
+          "Winter Wonderland",
+          "Jingle"
+        ],
+        "editorialOverrides": [
+          "Home Alone",
+          "Home Alone 2",
+          "Home Alone 2: Lost in New York",
+          "Home Alone 3",
+          "Elf",
+          "Die Hard",
+          "Die Hard 2",
+          "It's a Wonderful Life",
+          "The Holiday",
+          "Love Actually",
+          "Klaus",
+          "Noelle",
+          "A Christmas Story",
+          "A Christmas Story Christmas",
+          "The Polar Express",
+          "Jingle All the Way",
+          "The Santa Clause",
+          "The Santa Clause 2",
+          "The Santa Clause 3",
+          "How the Grinch Stole Christmas",
+          "The Grinch",
+          "National Lampoon's Christmas Vacation",
+          "Miracle on 34th Street",
+          "White Christmas",
+          "Bad Santa",
+          "Bad Santa 2",
+          "The Night Before",
+          "Scrooged",
+          "Gremlins",
+          "Arthur Christmas",
+          "The Muppet Christmas Carol",
+          "Mickey's Christmas Carol",
+          "A Charlie Brown Christmas",
+          "The Year Without a Santa Claus",
+          "Rudolph the Red-Nosed Reindeer",
+          "Frosty the Snowman",
+          "Jack Frost",
+          "Fred Claus",
+          "Four Christmases",
+          "Deck the Halls",
+          "Surviving Christmas",
+          "Christmas with the Kranks",
+          "The Family Stone",
+          "Just Friends",
+          "Last Christmas",
+          "Happiest Season",
+          "Single All the Way",
+          "Spirited",
+          "Violent Night",
+          "Krampus",
+          "Better Watch Out",
+          "Black Christmas",
+          "Anna and the Apocalypse",
+          "Fatman",
+          "8-Bit Christmas",
+          "A Christmas Prince",
+          "The Knight Before Christmas",
+          "A Castle for Christmas",
+          "Falling for Christmas",
+          "A Bad Moms Christmas",
+          "Office Christmas Party",
+          "The Man Who Invented Christmas",
+          "Last Holiday",
+          "Mixed Nuts",
+          "Trading Places",
+          "Prancer",
+          "The Ref",
+          "Unaccompanied Minors",
+          "Ernest Saves Christmas",
+          "Jingle Jangle",
+          "A Boy Called Christmas",
+          "The Christmas Chronicles",
+          "The Christmas Chronicles 2",
+          "Spirited Away Christmas",
+          "The Shop Around the Corner",
+          "Holiday Inn",
+          "Meet Me in St. Louis",
+          "A Christmas Carol",
+          "Scrooge",
+          "The Bishop's Wife",
+          "Christmas in Connecticut",
+          "Babes in Toyland",
+          "Santa Claus: The Movie",
+          "Olive the Other Reindeer",
+          "Prep & Landing",
+          "The Star",
+          "Rise of the Guardians",
+          "Batman Returns",
+          "Lethal Weapon",
+          "Rocky IV",
+          "Edward Scissorhands",
+          "While You Were Sleeping",
+          "Serendipity",
+          "The Family Man",
+          "About a Boy",
+          "Bridget Jones's Diary",
+          "Daddy's Home 2",
+          "Eight Crazy Nights"
+        ],
+        "ratingMin": 5,
+        "titleExcludes": [
+          "Roman Holiday",
+          "Mr. Bean's Holiday",
+          "Summer Holiday"
+        ]
+      }
+    },
+    {
+      "id": 409,
+      "number": 146,
+      "name": "SANTA'S LIST",
+      "colorHex": "#2ECC71",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Holiday",
+            "Christmas"
+          ]
+        },
+        "titleContains": [
+          "8-Bit Christmas",
+          "A Bad Moms Christmas",
+          "A Boy Called Christmas",
+          "A Castle for Christmas",
+          "A Charlie Brown Christmas",
+          "A Christmas Carol",
+          "A Christmas Prince",
+          "A Christmas Story",
+          "A Christmas Story Christmas",
+          "About a Boy",
+          "Anna and the Apocalypse",
+          "Arthur Christmas",
+          "Babes in Toyland",
+          "Bad Santa",
+          "Bad Santa 2",
+          "Batman Returns",
+          "Better Watch Out",
+          "Black Christmas",
+          "Bridget Jones's Diary",
+          "Christmas",
+          "Christmas in Connecticut",
+          "Christmas with the Kranks",
+          "Daddy's Home 2",
+          "Deck the Halls",
+          "Die Hard",
+          "Die Hard 2",
+          "Edward Scissorhands",
+          "Eight Crazy Nights",
+          "Elf",
+          "Ernest Saves Christmas",
+          "Falling for Christmas",
+          "Fatman",
+          "Four Christmases",
+          "Fred Claus",
+          "Frosty",
+          "Frosty the Snowman",
+          "Gremlins",
+          "Grinch",
+          "Hanukkah",
+          "Happiest Season",
+          "Holiday",
+          "Holiday Inn",
+          "Home Alone",
+          "Home Alone 2",
+          "Home Alone 3",
+          "How the Grinch Stole Christmas",
+          "It's a Wonderful Life",
+          "Jack Frost",
+          "Jingle",
+          "Jingle All the Way",
+          "Jingle Jangle",
+          "Just Friends",
+          "Klaus",
+          "Krampus",
+          "Kwanzaa",
+          "Last Christmas",
+          "Last Holiday",
+          "Lethal Weapon",
+          "Love Actually",
+          "Meet Me in St. Louis",
+          "Merry",
+          "Mickey's Christmas Carol",
+          "Miracle on 34th Street",
+          "Mistletoe",
+          "Mixed Nuts",
+          "National Lampoon's Christmas Vacation",
+          "Noel",
+          "Noelle",
+          "Nutcracker",
+          "Office Christmas Party",
+          "Olive the Other Reindeer",
+          "Prancer",
+          "Prep & Landing",
+          "Reindeer",
+          "Rise of the Guardians",
+          "Rudolph",
+          "Rudolph the Red-Nosed Reindeer",
+          "Santa",
+          "Santa Claus: The Movie",
+          "Scrooge",
+          "Scrooged",
+          "Serendipity",
+          "Single All the Way",
+          "Snowman",
+          "Spirited",
+          "Spirited Away Christmas",
+          "Surviving Christmas",
+          "The Bishop's Wife",
+          "The Christmas Chronicles",
+          "The Christmas Chronicles 2",
+          "The Family Man",
+          "The Family Stone",
+          "The Grinch",
+          "The Holiday",
+          "The Knight Before Christmas",
+          "The Man Who Invented Christmas",
+          "The Muppet Christmas Carol",
+          "The Night Before",
+          "The Polar Express",
+          "The Ref",
+          "The Santa Clause",
+          "The Santa Clause 2",
+          "The Santa Clause 3",
+          "The Shop Around the Corner",
+          "The Star",
+          "The Year Without a Santa Claus",
+          "Trading Places",
+          "Unaccompanied Minors",
+          "Violent Night",
+          "While You Were Sleeping",
+          "White Christmas",
+          "Winter Wonderland",
+          "Xmas",
+          "Yuletide"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG"
+        ],
+        "allowUnrated": true,
+        "titleExcludes": [
+          "Die Hard with a Vengeance",
+          "A Good Day to Die Hard",
+          "Live Free or Die Hard",
+          "Lethal Weapon 2",
+          "Lethal Weapon 3",
+          "Lethal Weapon 4",
+          "Roman Holiday",
+          "Mr. Bean's Holiday",
+          "Summer Holiday"
+        ]
+      }
+    },
+    {
+      "id": 410,
+      "number": 147,
+      "name": "NAUGHTY LIST",
+      "colorHex": "#C0392B",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Holiday",
+            "Christmas"
+          ]
+        },
+        "titleContains": [
+          "8-Bit Christmas",
+          "A Bad Moms Christmas",
+          "A Boy Called Christmas",
+          "A Castle for Christmas",
+          "A Charlie Brown Christmas",
+          "A Christmas Carol",
+          "A Christmas Prince",
+          "A Christmas Story",
+          "A Christmas Story Christmas",
+          "About a Boy",
+          "Anna and the Apocalypse",
+          "Arthur Christmas",
+          "Babes in Toyland",
+          "Bad Santa",
+          "Bad Santa 2",
+          "Batman Returns",
+          "Better Watch Out",
+          "Black Christmas",
+          "Bridget Jones's Diary",
+          "Christmas",
+          "Christmas in Connecticut",
+          "Christmas with the Kranks",
+          "Daddy's Home 2",
+          "Deck the Halls",
+          "Die Hard",
+          "Die Hard 2",
+          "Edward Scissorhands",
+          "Eight Crazy Nights",
+          "Elf",
+          "Ernest Saves Christmas",
+          "Falling for Christmas",
+          "Fatman",
+          "Four Christmases",
+          "Fred Claus",
+          "Frosty",
+          "Frosty the Snowman",
+          "Gremlins",
+          "Grinch",
+          "Hanukkah",
+          "Happiest Season",
+          "Holiday",
+          "Holiday Inn",
+          "Home Alone",
+          "Home Alone 2",
+          "Home Alone 3",
+          "How the Grinch Stole Christmas",
+          "It's a Wonderful Life",
+          "Jack Frost",
+          "Jingle",
+          "Jingle All the Way",
+          "Jingle Jangle",
+          "Just Friends",
+          "Klaus",
+          "Krampus",
+          "Kwanzaa",
+          "Last Christmas",
+          "Last Holiday",
+          "Lethal Weapon",
+          "Love Actually",
+          "Meet Me in St. Louis",
+          "Merry",
+          "Mickey's Christmas Carol",
+          "Miracle on 34th Street",
+          "Mistletoe",
+          "Mixed Nuts",
+          "National Lampoon's Christmas Vacation",
+          "Noel",
+          "Noelle",
+          "Nutcracker",
+          "Office Christmas Party",
+          "Olive the Other Reindeer",
+          "Prancer",
+          "Prep & Landing",
+          "Reindeer",
+          "Rise of the Guardians",
+          "Rudolph",
+          "Rudolph the Red-Nosed Reindeer",
+          "Santa",
+          "Santa Claus: The Movie",
+          "Scrooge",
+          "Scrooged",
+          "Serendipity",
+          "Single All the Way",
+          "Snowman",
+          "Spirited",
+          "Spirited Away Christmas",
+          "Surviving Christmas",
+          "The Bishop's Wife",
+          "The Christmas Chronicles",
+          "The Christmas Chronicles 2",
+          "The Family Man",
+          "The Family Stone",
+          "The Grinch",
+          "The Holiday",
+          "The Knight Before Christmas",
+          "The Man Who Invented Christmas",
+          "The Muppet Christmas Carol",
+          "The Night Before",
+          "The Polar Express",
+          "The Ref",
+          "The Santa Clause",
+          "The Santa Clause 2",
+          "The Santa Clause 3",
+          "The Shop Around the Corner",
+          "The Star",
+          "The Year Without a Santa Claus",
+          "Trading Places",
+          "Unaccompanied Minors",
+          "Violent Night",
+          "While You Were Sleeping",
+          "White Christmas",
+          "Winter Wonderland",
+          "Xmas",
+          "Yuletide"
+        ],
+        "contentRatings": [
+          "PG-13",
+          "R",
+          "TV-14",
+          "TV-MA"
+        ],
+        "titleExcludes": [
+          "Die Hard with a Vengeance",
+          "A Good Day to Die Hard",
+          "Live Free or Die Hard",
+          "Lethal Weapon 2",
+          "Lethal Weapon 3",
+          "Lethal Weapon 4",
+          "Roman Holiday",
+          "Mr. Bean's Holiday",
+          "Summer Holiday"
+        ]
+      }
+    },
+    {
+      "id": 411,
+      "number": 148,
+      "name": "NOSTALGEX CHRISTMAS",
+      "colorHex": "#E74C3C",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Holiday",
+            "Christmas"
+          ]
+        },
+        "titleContains": [
+          "8-Bit Christmas",
+          "A Bad Moms Christmas",
+          "A Boy Called Christmas",
+          "A Castle for Christmas",
+          "A Charlie Brown Christmas",
+          "A Christmas Carol",
+          "A Christmas Prince",
+          "A Christmas Story",
+          "A Christmas Story Christmas",
+          "About a Boy",
+          "Anna and the Apocalypse",
+          "Arthur Christmas",
+          "Babes in Toyland",
+          "Bad Santa",
+          "Bad Santa 2",
+          "Batman Returns",
+          "Better Watch Out",
+          "Black Christmas",
+          "Bridget Jones's Diary",
+          "Christmas",
+          "Christmas in Connecticut",
+          "Christmas with the Kranks",
+          "Daddy's Home 2",
+          "Deck the Halls",
+          "Die Hard",
+          "Die Hard 2",
+          "Edward Scissorhands",
+          "Eight Crazy Nights",
+          "Elf",
+          "Ernest Saves Christmas",
+          "Falling for Christmas",
+          "Fatman",
+          "Four Christmases",
+          "Fred Claus",
+          "Frosty",
+          "Frosty the Snowman",
+          "Gremlins",
+          "Grinch",
+          "Hanukkah",
+          "Happiest Season",
+          "Holiday",
+          "Holiday Inn",
+          "Home Alone",
+          "Home Alone 2",
+          "Home Alone 3",
+          "How the Grinch Stole Christmas",
+          "It's a Wonderful Life",
+          "Jack Frost",
+          "Jingle",
+          "Jingle All the Way",
+          "Jingle Jangle",
+          "Just Friends",
+          "Klaus",
+          "Krampus",
+          "Kwanzaa",
+          "Last Christmas",
+          "Last Holiday",
+          "Lethal Weapon",
+          "Love Actually",
+          "Meet Me in St. Louis",
+          "Merry",
+          "Mickey's Christmas Carol",
+          "Miracle on 34th Street",
+          "Mistletoe",
+          "Mixed Nuts",
+          "National Lampoon's Christmas Vacation",
+          "Noel",
+          "Noelle",
+          "Nutcracker",
+          "Office Christmas Party",
+          "Olive the Other Reindeer",
+          "Prancer",
+          "Prep & Landing",
+          "Reindeer",
+          "Rise of the Guardians",
+          "Rudolph",
+          "Rudolph the Red-Nosed Reindeer",
+          "Santa",
+          "Santa Claus: The Movie",
+          "Scrooge",
+          "Scrooged",
+          "Serendipity",
+          "Single All the Way",
+          "Snowman",
+          "Spirited",
+          "Spirited Away Christmas",
+          "Surviving Christmas",
+          "The Bishop's Wife",
+          "The Christmas Chronicles",
+          "The Christmas Chronicles 2",
+          "The Family Man",
+          "The Family Stone",
+          "The Grinch",
+          "The Holiday",
+          "The Knight Before Christmas",
+          "The Man Who Invented Christmas",
+          "The Muppet Christmas Carol",
+          "The Night Before",
+          "The Polar Express",
+          "The Ref",
+          "The Santa Clause",
+          "The Santa Clause 2",
+          "The Santa Clause 3",
+          "The Shop Around the Corner",
+          "The Star",
+          "The Year Without a Santa Claus",
+          "Trading Places",
+          "Unaccompanied Minors",
+          "Violent Night",
+          "While You Were Sleeping",
+          "White Christmas",
+          "Winter Wonderland",
+          "Xmas",
+          "Yuletide"
+        ],
+        "yearRange": {
+          "max": 1999
+        },
+        "titleExcludes": [
+          "Die Hard with a Vengeance",
+          "A Good Day to Die Hard",
+          "Live Free or Die Hard",
+          "Lethal Weapon 2",
+          "Lethal Weapon 3",
+          "Lethal Weapon 4",
+          "Roman Holiday",
+          "Mr. Bean's Holiday",
+          "Summer Holiday"
+        ]
+      }
+    },
+    {
+      "id": 412,
+      "number": 149,
+      "name": "MISTLETOE",
+      "colorHex": "#D98880",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "matchTmdbGenres": true,
+        "titleContains": [
+          "Christmas",
+          "Christmases",
+          "Christmastime",
+          "Xmas",
+          "X-Mas",
+          "Holiday",
+          "Holidays",
+          "Santa",
+          "Mistletoe",
+          "Noel",
+          "Merry",
+          "Jingle",
+          "Yuletide",
+          "Hanukkah",
+          "Chanukah",
+          "Kwanzaa",
+          "Reindeer",
+          "Sleigh",
+          "North Pole"
+        ],
+        "titleExcludes": [
+          "Roman Holiday",
+          "Summer Holiday"
+        ],
+        "keywords": [
+          "christmas",
+          "christmas romance",
+          "christmastime",
+          "christmas eve",
+          "christmas spirit",
+          "christmas party",
+          "christmas tree",
+          "holiday season",
+          "hanukkah",
+          "chanukah",
+          "xmas",
+          "santa claus"
+        ],
+        "genres": {
+          "requireAll": [
+            "Romance"
+          ],
+          "exclude": [
+            "Animation",
+            "Animated"
+          ]
+        },
+        "contentRatings": [
+          "G",
+          "PG",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG",
+          "NR",
+          "Not Rated"
+        ],
+        "allowUnrated": true,
+        "yearRange": {
+          "min": 1980
+        },
+        "durationRange": {
+          "min": 70,
+          "max": 120
+        }
+      }
+    },
+    {
+      "id": 413,
+      "number": 150,
+      "name": "CHRISTMAS SPECIALS",
+      "colorHex": "#27AE60",
+      "category": "seasonal",
+      "minItems": 5,
+      "rules": {
+        "episodeTitleContains": [
+          "Christmas",
+          "Christmases",
+          "Christmastime",
+          "Xmas",
+          "X-Mas",
+          "Hanukkah",
+          "Chanukah",
+          "Hannukah",
+          "Kwanzaa",
+          "Chrismukkah",
+          "Festivus",
+          "Yuletide",
+          "Yule",
+          "Mistletoe",
+          "Nutcracker",
+          "Nutcrackers",
+          "Reindeer",
+          "Rudolph",
+          "North Pole",
+          "Sleigh",
+          "Santa Claus",
+          "Santa Clause",
+          "Secret Santa",
+          "Saint Nick",
+          "St. Nick",
+          "Jingle Bell",
+          "Jingle Bells",
+          "Deck the Halls",
+          "Silent Night",
+          "Feliz Navidad",
+          "Navidad",
+          "Krampus",
+          "Nativity",
+          "Winter Wonderland",
+          "Ho Ho Ho",
+          "Holiday Special",
+          "Eggnog",
+          "Season's Greetings"
+        ],
+        "episodeSeasonalTitleContains": [
+          "Holiday",
+          "Holidays",
+          "Santa",
+          "Merry",
+          "Jingle",
+          "Noel",
+          "Grinch",
+          "Scrooge",
+          "Snowman",
+          "Snowmen",
+          "Elf",
+          "Elves",
+          "Gingerbread",
+          "Tinsel",
+          "Ornament",
+          "Tis the Season"
+        ],
+        "episodeAirWindow": {
+          "from": "11-25",
+          "to": "01-07"
+        },
+        "episodeSummaryContains": [
+          "Christmas",
+          "Christmases",
+          "Christmastime",
+          "Xmas",
+          "X-Mas",
+          "Hanukkah",
+          "Chanukah",
+          "Hannukah",
+          "Kwanzaa",
+          "Chrismukkah",
+          "Festivus",
+          "Yuletide",
+          "Santa Claus",
+          "Saint Nick",
+          "St. Nick",
+          "Krampus",
+          "Nativity"
+        ],
+        "episodeTitleExcludes": [
+          "Christmas Island",
+          "Santa Monica",
+          "Santa Barbara",
+          "Santa Fe",
+          "Santa Cruz",
+          "Santa Clara",
+          "Santa Clarita",
+          "Santa Ana",
+          "Santa Anas",
+          "Santa Rosa",
+          "Santa Maria",
+          "Santa Catalina",
+          "Santa Anita",
+          "Roman Holiday",
+          "Bank Holiday",
+          "Summer Holiday",
+          "Summer Holidays",
+          "Spring Holiday"
+        ],
+        "contentRatings": [
+          "TV-PG",
+          "PG",
+          "TV-14",
+          "TV-MA",
+          "PG-13",
+          "R",
+          "NR",
+          "Not Rated"
+        ],
+        "durationRange": {
+          "max": 65
+        }
+      }
+    },
+    {
+      "id": 414,
+      "number": 151,
+      "name": "KIDS CHRISTMAS TV",
+      "colorHex": "#58D68D",
+      "category": "seasonal",
+      "minItems": 5,
+      "rules": {
+        "episodeTitleContains": [
+          "Christmas",
+          "Christmases",
+          "Christmastime",
+          "Xmas",
+          "X-Mas",
+          "Hanukkah",
+          "Chanukah",
+          "Hannukah",
+          "Kwanzaa",
+          "Chrismukkah",
+          "Festivus",
+          "Yuletide",
+          "Yule",
+          "Mistletoe",
+          "Nutcracker",
+          "Nutcrackers",
+          "Reindeer",
+          "Rudolph",
+          "North Pole",
+          "Sleigh",
+          "Santa Claus",
+          "Santa Clause",
+          "Secret Santa",
+          "Saint Nick",
+          "St. Nick",
+          "Jingle Bell",
+          "Jingle Bells",
+          "Deck the Halls",
+          "Silent Night",
+          "Feliz Navidad",
+          "Navidad",
+          "Krampus",
+          "Nativity",
+          "Winter Wonderland",
+          "Ho Ho Ho",
+          "Holiday Special",
+          "Eggnog",
+          "Season's Greetings"
+        ],
+        "episodeSeasonalTitleContains": [
+          "Holiday",
+          "Holidays",
+          "Santa",
+          "Merry",
+          "Jingle",
+          "Noel",
+          "Grinch",
+          "Scrooge",
+          "Snowman",
+          "Snowmen",
+          "Elf",
+          "Elves",
+          "Gingerbread",
+          "Tinsel",
+          "Ornament",
+          "Tis the Season"
+        ],
+        "episodeAirWindow": {
+          "from": "11-25",
+          "to": "01-07"
+        },
+        "episodeSummaryContains": [
+          "Christmas",
+          "Christmases",
+          "Christmastime",
+          "Xmas",
+          "X-Mas",
+          "Hanukkah",
+          "Chanukah",
+          "Hannukah",
+          "Kwanzaa",
+          "Chrismukkah",
+          "Festivus",
+          "Yuletide",
+          "Santa Claus",
+          "Saint Nick",
+          "St. Nick",
+          "Krampus",
+          "Nativity"
+        ],
+        "episodeTitleExcludes": [
+          "Christmas Island",
+          "Santa Monica",
+          "Santa Barbara",
+          "Santa Fe",
+          "Santa Cruz",
+          "Santa Clara",
+          "Santa Clarita",
+          "Santa Ana",
+          "Santa Anas",
+          "Santa Rosa",
+          "Santa Maria",
+          "Santa Catalina",
+          "Santa Anita",
+          "Roman Holiday",
+          "Bank Holiday",
+          "Summer Holiday",
+          "Summer Holidays",
+          "Spring Holiday"
+        ],
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "G"
+        ],
+        "allowUnrated": true,
+        "durationRange": {
+          "max": 65
+        }
+      }
+    },
+    {
+      "id": 422,
+      "number": 152,
+      "name": "TURKEY DAY",
+      "colorHex": "#B9770E",
+      "category": "seasonal",
+      "minItems": 5,
+      "rules": {
+        "episodeTitleContains": [
+          "Thanksgiving",
+          "Thanksgivings",
+          "Friendsgiving",
+          "Slapsgiving",
+          "Turkey Day"
+        ],
+        "episodeSeasonalTitleContains": [
+          "Turkey",
+          "Turkeys",
+          "Pilgrim",
+          "Pilgrims",
+          "Gobble",
+          "Mayflower",
+          "Cranberry"
+        ],
+        "episodeAirWindow": {
+          "from": "11-01",
+          "to": "11-30"
+        },
+        "episodeSummaryContains": [
+          "Thanksgiving",
+          "Friendsgiving"
+        ],
+        "durationRange": {
+          "max": 65
+        }
+      }
+    },
+    {
+      "id": 131,
+      "number": 137,
+      "name": "SCREAM KIDS",
+      "colorHex": "#FF8C00",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "exclude": [
+            "Horror"
+          ]
+        },
+        "titleContains": [
+          "Hocus Pocus",
+          "Casper",
+          "Nightmare Before Christmas",
+          "Coraline",
+          "Monster House",
+          "ParaNorman",
+          "Hotel Transylvania",
+          "Frankenweenie",
+          "Corpse Bride",
+          "Addams Family",
+          "Goosebumps",
+          "Monsters, Inc.",
+          "Monsters University",
+          "Ghostbusters",
+          "Witches",
+          "Halloweentown",
+          "Twitches",
+          "Great Pumpkin",
+          "Toy Story of Terror",
+          "Haunted Mansion",
+          "Scary Godmother",
+          "Wendell & Wild",
+          "House with a Clock in Its Walls",
+          "Wallace & Gromit",
+          "Igor",
+          "Beetlejuice",
+          "Spooky",
+          "Halloween",
+          "Monster",
+          "Witch",
+          "Ghost",
+          "Haunted",
+          "Zombie",
+          "Goblin",
+          "Pumpkin",
+          "Trick or Treat",
+          "Skeleton"
+        ],
+        "editorialOverrides": [
+          "Hocus Pocus",
+          "Hocus Pocus 2",
+          "Casper",
+          "Casper's Scare School",
+          "The Nightmare Before Christmas",
+          "Coraline",
+          "Monster House",
+          "ParaNorman",
+          "Hotel Transylvania",
+          "Hotel Transylvania 2",
+          "Hotel Transylvania 3",
+          "Hotel Transylvania 4",
+          "Coco",
+          "Frankenweenie",
+          "Corpse Bride",
+          "The Addams Family",
+          "Addams Family Values",
+          "The Addams Family (2019)",
+          "The Addams Family 2",
+          "Goosebumps",
+          "Goosebumps 2",
+          "Scooby-Doo",
+          "Scooby-Doo 2",
+          "Monsters, Inc.",
+          "Monsters University",
+          "Ghostbusters",
+          "Ghostbusters: Afterlife",
+          "The Witches",
+          "Halloweentown",
+          "Halloweentown II",
+          "Twitches",
+          "Mom's Got a Date with a Vampire",
+          "Under Wraps",
+          "Curious George: A Halloween Boo Fest",
+          "It's the Great Pumpkin, Charlie Brown",
+          "Toy Story of Terror",
+          "Ernest Scared Stupid",
+          "The Haunted Mansion",
+          "Scary Godmother",
+          "Wallace & Gromit: The Curse of the Were-Rabbit",
+          "Igor",
+          "Wendell & Wild",
+          "The House with a Clock in Its Walls"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG"
+        ]
+      }
+    },
+    {
+      "id": 132,
+      "number": 139,
+      "name": "SCREAM ADULTS",
+      "colorHex": "#8B0000",
+      "category": "seasonal",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Horror",
+            "Thriller"
+          ],
+          "exclude": [
+            "Family",
+            "Children",
+            "Kids",
+            "Animation",
+            "Animated"
+          ]
+        },
+        "titleContains": [
+          "Halloween",
+          "Scream",
+          "Nightmare on Elm Street",
+          "Friday the 13th",
+          "Texas Chain Saw",
+          "Texas Chainsaw",
+          "Exorcist",
+          "Conjuring",
+          "Insidious",
+          "Sinister",
+          "Hereditary",
+          "Midsommar",
+          "Babadook",
+          "Evil Dead",
+          "Child's Play",
+          "Candyman",
+          "Poltergeist",
+          "Omen",
+          "Shining",
+          "Psycho",
+          "Carrie",
+          "Ring",
+          "Grudge",
+          "Purge",
+          "Quiet Place",
+          "Get Out",
+          "Hellraiser",
+          "Blair Witch",
+          "Paranormal Activity",
+          "Saw",
+          "It Chapter",
+          "Annabelle",
+          "Nun",
+          "Orphan",
+          "Smile",
+          "Terrifier",
+          "Wrong Turn",
+          "Final Destination",
+          "Jeepers Creepers",
+          "I Know What You Did",
+          "Urban Legend",
+          "Prom Night",
+          "Sleepaway Camp",
+          "Pet Sematary",
+          "Cujo",
+          "Misery",
+          "Creepshow",
+          "Tremors",
+          "The Thing",
+          "Silence of the Lambs",
+          "American Psycho",
+          "Hostel",
+          "Wolf Creek"
+        ],
+        "titleExcludes": [
+          "Beetlejuice",
+          "Casper",
+          "Coraline",
+          "Grudge Match",
+          "Hocus Pocus",
+          "Hotel Transylvania",
+          "Hubie",
+          "Lord of the Rings",
+          "Monster House",
+          "Nightmare Before Christmas",
+          "Rocky Horror",
+          "Scooby",
+          "Shaun of the Dead",
+          "Young Frankenstein"
+        ],
+        "contentRatings": [
+          "R",
+          "NC-17",
+          "PG-13",
+          "TV-MA"
+        ]
+      }
+    },
+    {
+      "id": 150,
+      "number": 200,
+      "name": "HIGH ROTATION",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo"
+      }
+    },
+    {
+      "id": 151,
+      "number": 201,
+      "name": "POP",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Pop"
+          ]
+        }
+      }
+    },
+    {
+      "id": 152,
+      "number": 202,
+      "name": "ROCK'N",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Rock",
+            "Hard Rock",
+            "Classic Rock"
+          ]
+        }
+      }
+    },
+    {
+      "id": 153,
+      "number": 203,
+      "name": "COUNTRY SWAGGER",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Country",
+            "Country Rock"
+          ]
+        }
+      }
+    },
+    {
+      "id": 154,
+      "number": 204,
+      "name": "BALLIN",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Hip-Hop",
+            "Hip Hop"
+          ]
+        }
+      }
+    },
+    {
+      "id": 155,
+      "number": 205,
+      "name": "RAP GODS",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Rap"
+          ]
+        }
+      }
+    },
+    {
+      "id": 156,
+      "number": 206,
+      "name": "ALT ROCK",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Alternative",
+            "Indie Rock",
+            "Alternative Rock"
+          ]
+        }
+      }
+    },
+    {
+      "id": 157,
+      "number": 207,
+      "name": "SLOW JAMS",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "R&B",
+            "Soul",
+            "Acoustic"
+          ]
+        }
+      }
+    },
+    {
+      "id": 159,
+      "number": 208,
+      "name": "Y2K",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "yearRange": {
+          "min": 2000,
+          "max": 2019
+        }
+      }
+    },
+    {
+      "id": 160,
+      "number": 209,
+      "name": "CURRENT SPIN",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "yearRange": {
+          "min": 2020,
+          "max": 2100
+        }
+      }
+    },
+    {
+      "id": 161,
+      "number": 210,
+      "name": "DANCE FLOOR",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Electronic",
+            "Dance",
+            "House",
+            "Techno",
+            "EDM",
+            "Trance"
+          ]
+        }
+      }
+    },
+    {
+      "id": 162,
+      "number": 211,
+      "name": "CALIENTE",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Latin",
+            "Reggaeton"
+          ]
+        }
+      }
+    },
+    {
+      "id": 163,
+      "number": 212,
+      "name": "HEADBANGERS",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Metal"
+          ]
+        }
+      }
+    },
+    {
+      "id": 164,
+      "number": 213,
+      "name": "GET DOWN",
+      "colorHex": "#FF2DB4",
+      "category": "high-rotation",
+      "minItems": 3,
+      "rules": {
+        "source": "musicVideo",
+        "genres": {
+          "include": [
+            "Funk",
+            "Disco"
+          ]
+        }
+      }
+    },
+    {
+      "id": 211,
+      "number": 107,
+      "name": "CRITERION",
+      "colorHex": "#F5E6C8",
+      "category": "arthouse",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "manifestOnly": true
+      }
+    },
+    {
+      "id": 212,
+      "number": 108,
+      "name": "FOREIGN FILMS",
+      "colorHex": "#2C3E50",
+      "category": "arthouse",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "keywords": [
+          "foreign language film",
+          "french cinema",
+          "japanese cinema",
+          "italian cinema",
+          "german cinema",
+          "world cinema",
+          "arthouse",
+          "art house",
+          "european cinema",
+          "subtitled"
+        ],
+        "imdbRatingMin": 6.5,
+        "imdbVotesMin": 5000
+      }
+    },
+    {
+      "id": 213,
+      "number": 109,
+      "name": "MIDNIGHT",
+      "colorHex": "#1A0A2E",
+      "category": "arthouse",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "keywords": [
+          "midnight movie",
+          "cult film",
+          "grindhouse",
+          "exploitation",
+          "b-movie",
+          "drive-in",
+          "splatter",
+          "camp",
+          "video nasty"
+        ]
+      }
+    },
+    {
+      "id": 214,
+      "number": 110,
+      "name": "CULT CLASSICS",
+      "colorHex": "#6C1C8A",
+      "category": "arthouse",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "keywords": [
+          "cult film",
+          "cult following",
+          "cult classic",
+          "underground film",
+          "cult favorite"
+        ],
+        "imdbVotesMin": 30000
+      }
+    },
+    {
+      "id": 216,
+      "number": 19,
+      "name": "Y2K TOONS",
+      "colorHex": "#1ABC9C",
+      "category": "nostalgex",
+      "minItems": 5,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Animation",
+            "Kids",
+            "Children",
+            "Cartoon",
+            "Animated"
+          ]
+        },
+        "yearRange": {
+          "min": 2000,
+          "max": 2009
+        },
+        "contentRatings": [
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "G",
+          "TV-PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 217,
+      "number": 69,
+      "name": "SKETCH COMEDY",
+      "colorHex": "#5DADE2",
+      "category": "premium",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Comedy",
+            "Talk Show",
+            "News"
+          ]
+        },
+        "titleContains": [
+          "Saturday Night Live",
+          "Whose Line Is It Anyway",
+          "MADtv",
+          "Key & Peele",
+          "Chappelle's Show",
+          "In Living Color",
+          "The Kids in the Hall",
+          "Mr. Show",
+          "Portlandia",
+          "I Think You Should Leave",
+          "Inside Amy Schumer",
+          "Drunk History",
+          "The Daily Show",
+          "Conan",
+          "Late Night with",
+          "The Tonight Show",
+          "Last Week Tonight",
+          "The Eric Andre Show",
+          "Tim and Eric",
+          "Monty Python's Flying Circus",
+          "The Muppet Show",
+          "Reno 911!",
+          "Nathan for You",
+          "Comedy Bang! Bang!"
+        ]
+      }
+    },
+    {
+      "id": 218,
+      "number": 33,
+      "name": "DREAMWORKS",
+      "colorHex": "#2ECC71",
+      "category": "kids",
+      "minItems": 5,
+      "rules": {
+        "studios": [
+          "DreamWorks Animation",
+          "Pacific Data Images"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13",
+          "TV-Y",
+          "TV-Y7",
+          "TV-G",
+          "TV-PG"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 400,
+      "number": 34,
+      "name": "TOON TOWN",
+      "colorHex": "#FF9F1C",
+      "category": "kids",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "keywords": [
+          "live action and animation"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Animation",
+          "Family",
+          "Comedy"
+        ],
+        "contentRatings": [
+          "G",
+          "PG",
+          "PG-13"
+        ],
+        "allowUnrated": true
+      }
+    },
+    {
+      "id": 219,
+      "number": 78,
+      "name": "SPY GAMES",
+      "colorHex": "#34495E",
+      "category": "adventureland",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "keywords": [
+          "spy",
+          "espionage",
+          "secret agent",
+          "mi6",
+          "double agent",
+          "spy thriller",
+          "secret intelligence service (mi6)",
+          "spy comedy"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Action",
+          "Thriller",
+          "Adventure",
+          "Comedy"
+        ]
+      }
+    },
+    {
+      "id": 401,
+      "number": 129,
+      "name": "MIRAMAX",
+      "colorHex": "#C0392B",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "Miramax",
+          "Miramax Films",
+          "Dimension Films"
+        ],
+        "productionCompanies": [
+          "Miramax",
+          "Dimension Films"
+        ]
+      }
+    },
+    {
+      "id": 421,
+      "number": 118,
+      "name": "A24",
+      "colorHex": "#E5E5E5",
+      "category": "streamers",
+      "minItems": 3,
+      "rules": {
+        "type": "movie",
+        "studios": [
+          "A24"
+        ],
+        "productionCompanies": [
+          "A24"
+        ]
+      }
+    },
+    {
+      "id": 402,
+      "number": 53,
+      "name": "R RATED COMEDY",
+      "colorHex": "#E84393",
+      "category": "essentials",
+      "minItems": 5,
+      "rules": {
+        "type": "movie",
+        "genres": {
+          "include": [
+            "Comedy"
+          ],
+          "exclude": [
+            "Animation",
+            "Family",
+            "Children",
+            "Kids"
+          ]
+        },
+        "contentRatings": [
+          "R"
+        ],
+        "yearRange": {
+          "min": 1995,
+          "max": 2029
+        },
+        "titleExcludes": [
+          "Parasite",
+          "Once Upon a Time in... Hollywood",
+          "Man on the Moon",
+          "Varsity Blues",
+          "Downhill",
+          "Marty Supreme"
+        ]
+      }
+    },
+    {
+      "id": 403,
+      "number": 54,
+      "name": "PREMIERES",
+      "colorHex": "#F72585",
+      "category": "essentials",
+      "minItems": 1,
+      "isPremiereChannel": true,
+      "rules": {
+        "addedWithinDays": 14,
+        "genres": {
+          "include": [
+            "Action",
+            "Adventure",
+            "Animation",
+            "Anime",
+            "Biography",
+            "Cartoon",
+            "Children",
+            "Comedy",
+            "Crime",
+            "Documentary",
+            "Docuseries",
+            "Drama",
+            "Fantasy",
+            "History",
+            "Holiday",
+            "Horror",
+            "Kids",
+            "Music",
+            "Musical",
+            "Mystery",
+            "News",
+            "Romance",
+            "Science Fiction",
+            "Sport",
+            "Talk Show",
+            "Thriller",
+            "War",
+            "War & Politics",
+            "Western"
+          ]
+        }
+      }
+    },
+    {
+      "id": 420,
+      "number": 55,
+      "name": "CRINGE TV",
+      "colorHex": "#F7DC6F",
+      "category": "essentials",
+      "minItems": 3,
+      "rules": {
+        "type": "episode",
+        "genres": {
+          "include": [
+            "Comedy",
+            "Documentary"
+          ]
+        },
+        "titleContains": [
+          "The Office",
+          "Extras",
+          "Curb Your Enthusiasm",
+          "Peep Show",
+          "Nathan for You",
+          "The Rehearsal",
+          "How To with John Wilson",
+          "The Comeback",
+          "I Think You Should Leave",
+          "Jury Duty",
+          "Alan Partridge",
+          "Summer Heights High",
+          "Hello Ladies",
+          "The Larry Sanders Show",
+          "Tim and Eric",
+          "The Chair Company",
+          "Who Is America",
+          "Da Ali G Show",
+          "The Inbetweeners",
+          "Flight of the Conchords"
+        ],
+        "keywords": [
+          "cringe",
+          "cringe comedy",
+          "awkwardness",
+          "awkward",
+          "awkward situation",
+          "socially awkward",
+          "embarrassment",
+          "uncomfortable",
+          "anti-humor"
+        ],
+        "keywordsRequireAnyGenre": [
+          "Comedy"
+        ],
+        "keywordGatedGenres": [
+          "Comedy",
+          "Documentary"
+        ]
+      }
+    }
+  ]
+}

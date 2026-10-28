@@ -1,0 +1,2808 @@
+{
+ "_about": [
+  "Shared vectors for the schedule engine on the days the clocks change. Read by",
+  "Nostalgex/NostalgexTests/ScheduleDSTGoldenTests.swift and scripts/nostalgex-schedule-dst-smoke.mjs",
+  "(npm run test:schedule-dst). Both must pass every case.",
+  "Times are unix seconds. start and nextStart are the zone's real local midnights from the IANA",
+  "time zone database (the node test checks them against Intl). Where midnight is skipped",
+  "(America/Santiago 2026-09-06) the day starts at 1 AM.",
+  "days: every instant in `at` is on `date`; the engine must give that day's start, the next day's",
+  "start and the previous day's key. fill: packing the `small` pool (shorter than a day, so it",
+  "ends on filler) from an empty history must cover start to nextStart with no hole and no",
+  "overrun. yesterday: after packing `previous`, packing `date` with the `big` pool (about 115 h)",
+  "must air nothing `previous` aired, since unplayed-first never runs out.",
+  "Controls with no daylight saving (Phoenix, Kolkata, UTC) run on the US and EU change dates."
+ ],
+ "pools": {
+  "small": [
+   [
+    "s1",
+    "Small Film 1",
+    "movie",
+    95
+   ],
+   [
+    "s2",
+    "Small Film 2",
+    "movie",
+    102
+   ],
+   [
+    "s3",
+    "Small Film 3",
+    "movie",
+    88
+   ],
+   [
+    "s4",
+    "Small Film 4",
+    "movie",
+    117
+   ],
+   [
+    "s5",
+    "Small Film 5",
+    "movie",
+    91
+   ],
+   [
+    "s6",
+    "Small Film 6",
+    "movie",
+    110
+   ],
+   [
+    "s7",
+    "Small Film 7",
+    "movie",
+    99
+   ]
+  ],
+  "big": [
+   [
+    "b1e1",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e2",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e3",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e4",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e5",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e6",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e7",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e8",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e9",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e10",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e11",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e12",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e13",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e14",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e15",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e16",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e17",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e18",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e19",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e20",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e21",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e22",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b1e23",
+    "Show 1",
+    "episode",
+    23
+   ],
+   [
+    "b1e24",
+    "Show 1",
+    "episode",
+    24
+   ],
+   [
+    "b1e25",
+    "Show 1",
+    "episode",
+    22
+   ],
+   [
+    "b2e1",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e2",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e3",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e4",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e5",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e6",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e7",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e8",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e9",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e10",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e11",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e12",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e13",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e14",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e15",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e16",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e17",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e18",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e19",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e20",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e21",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e22",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b2e23",
+    "Show 2",
+    "episode",
+    24
+   ],
+   [
+    "b2e24",
+    "Show 2",
+    "episode",
+    22
+   ],
+   [
+    "b2e25",
+    "Show 2",
+    "episode",
+    23
+   ],
+   [
+    "b3e1",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e2",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e3",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e4",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e5",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e6",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e7",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e8",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e9",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e10",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e11",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e12",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e13",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e14",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e15",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e16",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e17",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e18",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e19",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e20",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e21",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e22",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b3e23",
+    "Show 3",
+    "episode",
+    22
+   ],
+   [
+    "b3e24",
+    "Show 3",
+    "episode",
+    23
+   ],
+   [
+    "b3e25",
+    "Show 3",
+    "episode",
+    24
+   ],
+   [
+    "b4e1",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e2",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e3",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e4",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e5",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e6",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e7",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e8",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e9",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e10",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e11",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e12",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e13",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e14",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e15",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e16",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e17",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e18",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e19",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e20",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e21",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e22",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b4e23",
+    "Show 4",
+    "episode",
+    23
+   ],
+   [
+    "b4e24",
+    "Show 4",
+    "episode",
+    24
+   ],
+   [
+    "b4e25",
+    "Show 4",
+    "episode",
+    22
+   ],
+   [
+    "b5e1",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e2",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e3",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e4",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e5",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e6",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e7",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e8",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e9",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e10",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e11",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e12",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e13",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e14",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e15",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e16",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e17",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e18",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e19",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e20",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e21",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e22",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b5e23",
+    "Show 5",
+    "episode",
+    24
+   ],
+   [
+    "b5e24",
+    "Show 5",
+    "episode",
+    22
+   ],
+   [
+    "b5e25",
+    "Show 5",
+    "episode",
+    23
+   ],
+   [
+    "b6e1",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e2",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e3",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e4",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e5",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e6",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e7",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e8",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e9",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e10",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e11",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e12",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e13",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e14",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e15",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e16",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e17",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e18",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e19",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e20",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e21",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e22",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b6e23",
+    "Show 6",
+    "episode",
+    22
+   ],
+   [
+    "b6e24",
+    "Show 6",
+    "episode",
+    23
+   ],
+   [
+    "b6e25",
+    "Show 6",
+    "episode",
+    24
+   ],
+   [
+    "b7e1",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e2",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e3",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e4",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e5",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e6",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e7",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e8",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e9",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e10",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e11",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e12",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e13",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e14",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e15",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e16",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e17",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e18",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e19",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e20",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e21",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e22",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b7e23",
+    "Show 7",
+    "episode",
+    23
+   ],
+   [
+    "b7e24",
+    "Show 7",
+    "episode",
+    24
+   ],
+   [
+    "b7e25",
+    "Show 7",
+    "episode",
+    22
+   ],
+   [
+    "b8e1",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e2",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e3",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e4",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e5",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e6",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e7",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e8",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e9",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e10",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e11",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e12",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e13",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e14",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e15",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e16",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e17",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e18",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e19",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e20",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e21",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e22",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b8e23",
+    "Show 8",
+    "episode",
+    24
+   ],
+   [
+    "b8e24",
+    "Show 8",
+    "episode",
+    22
+   ],
+   [
+    "b8e25",
+    "Show 8",
+    "episode",
+    23
+   ],
+   [
+    "b9e1",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e2",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e3",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e4",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e5",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e6",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e7",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e8",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e9",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e10",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e11",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e12",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e13",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e14",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e15",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e16",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e17",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e18",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e19",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e20",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e21",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e22",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b9e23",
+    "Show 9",
+    "episode",
+    22
+   ],
+   [
+    "b9e24",
+    "Show 9",
+    "episode",
+    23
+   ],
+   [
+    "b9e25",
+    "Show 9",
+    "episode",
+    24
+   ],
+   [
+    "b10e1",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e2",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e3",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e4",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e5",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e6",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e7",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e8",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e9",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e10",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e11",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e12",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e13",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e14",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e15",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e16",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e17",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e18",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e19",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e20",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e21",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e22",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b10e23",
+    "Show 10",
+    "episode",
+    23
+   ],
+   [
+    "b10e24",
+    "Show 10",
+    "episode",
+    24
+   ],
+   [
+    "b10e25",
+    "Show 10",
+    "episode",
+    22
+   ],
+   [
+    "b11e1",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e2",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e3",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e4",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e5",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e6",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e7",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e8",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e9",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e10",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e11",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e12",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e13",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e14",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e15",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e16",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e17",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e18",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e19",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e20",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e21",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e22",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b11e23",
+    "Show 11",
+    "episode",
+    24
+   ],
+   [
+    "b11e24",
+    "Show 11",
+    "episode",
+    22
+   ],
+   [
+    "b11e25",
+    "Show 11",
+    "episode",
+    23
+   ],
+   [
+    "b12e1",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e2",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e3",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e4",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e5",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e6",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e7",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e8",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e9",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e10",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e11",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e12",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e13",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e14",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e15",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e16",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e17",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e18",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e19",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e20",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e21",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e22",
+    "Show 12",
+    "episode",
+    24
+   ],
+   [
+    "b12e23",
+    "Show 12",
+    "episode",
+    22
+   ],
+   [
+    "b12e24",
+    "Show 12",
+    "episode",
+    23
+   ],
+   [
+    "b12e25",
+    "Show 12",
+    "episode",
+    24
+   ]
+  ]
+ },
+ "days": [
+  {
+   "zone": "America/New_York",
+   "date": "2026-10-31",
+   "previous": "2026-10-30",
+   "start": 1793419200,
+   "nextStart": 1793505600,
+   "hours": 24,
+   "at": [
+    1793419200,
+    1793421000,
+    1793462400,
+    1793505599
+   ]
+  },
+  {
+   "zone": "America/New_York",
+   "date": "2026-11-01",
+   "previous": "2026-10-31",
+   "start": 1793505600,
+   "nextStart": 1793595600,
+   "hours": 25,
+   "at": [
+    1793505600,
+    1793507400,
+    1793552400,
+    1793595599
+   ]
+  },
+  {
+   "zone": "America/New_York",
+   "date": "2026-11-02",
+   "previous": "2026-11-01",
+   "start": 1793595600,
+   "nextStart": 1793682000,
+   "hours": 24,
+   "at": [
+    1793595600,
+    1793597400,
+    1793638800,
+    1793681999
+   ]
+  },
+  {
+   "zone": "America/New_York",
+   "date": "2027-03-13",
+   "previous": "2027-03-12",
+   "start": 1804914000,
+   "nextStart": 1805000400,
+   "hours": 24,
+   "at": [
+    1804914000,
+    1804915800,
+    1804957200,
+    1805000399
+   ]
+  },
+  {
+   "zone": "America/New_York",
+   "date": "2027-03-14",
+   "previous": "2027-03-13",
+   "start": 1805000400,
+   "nextStart": 1805083200,
+   "hours": 23,
+   "at": [
+    1805000400,
+    1805002200,
+    1805040000,
+    1805083199
+   ]
+  },
+  {
+   "zone": "America/New_York",
+   "date": "2027-03-15",
+   "previous": "2027-03-14",
+   "start": 1805083200,
+   "nextStart": 1805169600,
+   "hours": 24,
+   "at": [
+    1805083200,
+    1805085000,
+    1805126400,
+    1805169599
+   ]
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2026-10-31",
+   "previous": "2026-10-30",
+   "start": 1793430000,
+   "nextStart": 1793516400,
+   "hours": 24,
+   "at": [
+    1793430000,
+    1793431800,
+    1793473200,
+    1793516399
+   ]
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2026-11-01",
+   "previous": "2026-10-31",
+   "start": 1793516400,
+   "nextStart": 1793606400,
+   "hours": 25,
+   "at": [
+    1793516400,
+    1793518200,
+    1793563200,
+    1793606399
+   ]
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2026-11-02",
+   "previous": "2026-11-01",
+   "start": 1793606400,
+   "nextStart": 1793692800,
+   "hours": 24,
+   "at": [
+    1793606400,
+    1793608200,
+    1793649600,
+    1793692799
+   ]
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2027-03-13",
+   "previous": "2027-03-12",
+   "start": 1804924800,
+   "nextStart": 1805011200,
+   "hours": 24,
+   "at": [
+    1804924800,
+    1804926600,
+    1804968000,
+    1805011199
+   ]
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2027-03-14",
+   "previous": "2027-03-13",
+   "start": 1805011200,
+   "nextStart": 1805094000,
+   "hours": 23,
+   "at": [
+    1805011200,
+    1805013000,
+    1805050800,
+    1805093999
+   ]
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2027-03-15",
+   "previous": "2027-03-14",
+   "start": 1805094000,
+   "nextStart": 1805180400,
+   "hours": 24,
+   "at": [
+    1805094000,
+    1805095800,
+    1805137200,
+    1805180399
+   ]
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2026-10-24",
+   "previous": "2026-10-23",
+   "start": 1792796400,
+   "nextStart": 1792882800,
+   "hours": 24,
+   "at": [
+    1792796400,
+    1792798200,
+    1792839600,
+    1792882799
+   ]
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2026-10-25",
+   "previous": "2026-10-24",
+   "start": 1792882800,
+   "nextStart": 1792972800,
+   "hours": 25,
+   "at": [
+    1792882800,
+    1792884600,
+    1792929600,
+    1792972799
+   ]
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2026-10-26",
+   "previous": "2026-10-25",
+   "start": 1792972800,
+   "nextStart": 1793059200,
+   "hours": 24,
+   "at": [
+    1792972800,
+    1792974600,
+    1793016000,
+    1793059199
+   ]
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2027-03-27",
+   "previous": "2027-03-26",
+   "start": 1806105600,
+   "nextStart": 1806192000,
+   "hours": 24,
+   "at": [
+    1806105600,
+    1806107400,
+    1806148800,
+    1806191999
+   ]
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2027-03-28",
+   "previous": "2027-03-27",
+   "start": 1806192000,
+   "nextStart": 1806274800,
+   "hours": 23,
+   "at": [
+    1806192000,
+    1806193800,
+    1806231600,
+    1806274799
+   ]
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2027-03-29",
+   "previous": "2027-03-28",
+   "start": 1806274800,
+   "nextStart": 1806361200,
+   "hours": 24,
+   "at": [
+    1806274800,
+    1806276600,
+    1806318000,
+    1806361199
+   ]
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2026-10-24",
+   "previous": "2026-10-23",
+   "start": 1792792800,
+   "nextStart": 1792879200,
+   "hours": 24,
+   "at": [
+    1792792800,
+    1792794600,
+    1792836000,
+    1792879199
+   ]
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2026-10-25",
+   "previous": "2026-10-24",
+   "start": 1792879200,
+   "nextStart": 1792969200,
+   "hours": 25,
+   "at": [
+    1792879200,
+    1792881000,
+    1792926000,
+    1792969199
+   ]
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2026-10-26",
+   "previous": "2026-10-25",
+   "start": 1792969200,
+   "nextStart": 1793055600,
+   "hours": 24,
+   "at": [
+    1792969200,
+    1792971000,
+    1793012400,
+    1793055599
+   ]
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2027-03-27",
+   "previous": "2027-03-26",
+   "start": 1806102000,
+   "nextStart": 1806188400,
+   "hours": 24,
+   "at": [
+    1806102000,
+    1806103800,
+    1806145200,
+    1806188399
+   ]
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2027-03-28",
+   "previous": "2027-03-27",
+   "start": 1806188400,
+   "nextStart": 1806271200,
+   "hours": 23,
+   "at": [
+    1806188400,
+    1806190200,
+    1806228000,
+    1806271199
+   ]
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2027-03-29",
+   "previous": "2027-03-28",
+   "start": 1806271200,
+   "nextStart": 1806357600,
+   "hours": 24,
+   "at": [
+    1806271200,
+    1806273000,
+    1806314400,
+    1806357599
+   ]
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2026-10-03",
+   "previous": "2026-10-02",
+   "start": 1790949600,
+   "nextStart": 1791036000,
+   "hours": 24,
+   "at": [
+    1790949600,
+    1790951400,
+    1790992800,
+    1791035999
+   ]
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2026-10-04",
+   "previous": "2026-10-03",
+   "start": 1791036000,
+   "nextStart": 1791118800,
+   "hours": 23,
+   "at": [
+    1791036000,
+    1791037800,
+    1791075600,
+    1791118799
+   ]
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2026-10-05",
+   "previous": "2026-10-04",
+   "start": 1791118800,
+   "nextStart": 1791205200,
+   "hours": 24,
+   "at": [
+    1791118800,
+    1791120600,
+    1791162000,
+    1791205199
+   ]
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2027-04-03",
+   "previous": "2027-04-02",
+   "start": 1806670800,
+   "nextStart": 1806757200,
+   "hours": 24,
+   "at": [
+    1806670800,
+    1806672600,
+    1806714000,
+    1806757199
+   ]
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2027-04-04",
+   "previous": "2027-04-03",
+   "start": 1806757200,
+   "nextStart": 1806847200,
+   "hours": 25,
+   "at": [
+    1806757200,
+    1806759000,
+    1806804000,
+    1806847199
+   ]
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2027-04-05",
+   "previous": "2027-04-04",
+   "start": 1806847200,
+   "nextStart": 1806933600,
+   "hours": 24,
+   "at": [
+    1806847200,
+    1806849000,
+    1806890400,
+    1806933599
+   ]
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2026-10-03",
+   "previous": "2026-10-02",
+   "start": 1790947800,
+   "nextStart": 1791034200,
+   "hours": 24,
+   "at": [
+    1790947800,
+    1790949600,
+    1790991000,
+    1791034199
+   ]
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2026-10-04",
+   "previous": "2026-10-03",
+   "start": 1791034200,
+   "nextStart": 1791118800,
+   "hours": 23.5,
+   "at": [
+    1791034200,
+    1791036000,
+    1791075600,
+    1791118799
+   ]
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2026-10-05",
+   "previous": "2026-10-04",
+   "start": 1791118800,
+   "nextStart": 1791205200,
+   "hours": 24,
+   "at": [
+    1791118800,
+    1791120600,
+    1791162000,
+    1791205199
+   ]
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2027-04-03",
+   "previous": "2027-04-02",
+   "start": 1806670800,
+   "nextStart": 1806757200,
+   "hours": 24,
+   "at": [
+    1806670800,
+    1806672600,
+    1806714000,
+    1806757199
+   ]
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2027-04-04",
+   "previous": "2027-04-03",
+   "start": 1806757200,
+   "nextStart": 1806845400,
+   "hours": 24.5,
+   "at": [
+    1806757200,
+    1806759000,
+    1806802200,
+    1806845399
+   ]
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2027-04-05",
+   "previous": "2027-04-04",
+   "start": 1806845400,
+   "nextStart": 1806931800,
+   "hours": 24,
+   "at": [
+    1806845400,
+    1806847200,
+    1806888600,
+    1806931799
+   ]
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2026-09-05",
+   "previous": "2026-09-04",
+   "start": 1788580800,
+   "nextStart": 1788667200,
+   "hours": 24,
+   "at": [
+    1788580800,
+    1788582600,
+    1788624000,
+    1788667199
+   ]
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2026-09-06",
+   "previous": "2026-09-05",
+   "start": 1788667200,
+   "nextStart": 1788750000,
+   "hours": 23,
+   "at": [
+    1788667200,
+    1788669000,
+    1788706800,
+    1788749999
+   ]
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2026-09-07",
+   "previous": "2026-09-06",
+   "start": 1788750000,
+   "nextStart": 1788836400,
+   "hours": 24,
+   "at": [
+    1788750000,
+    1788751800,
+    1788793200,
+    1788836399
+   ]
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2027-04-02",
+   "previous": "2027-04-01",
+   "start": 1806634800,
+   "nextStart": 1806721200,
+   "hours": 24,
+   "at": [
+    1806634800,
+    1806636600,
+    1806678000,
+    1806721199
+   ]
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2027-04-03",
+   "previous": "2027-04-02",
+   "start": 1806721200,
+   "nextStart": 1806811200,
+   "hours": 25,
+   "at": [
+    1806721200,
+    1806723000,
+    1806764400,
+    1806811199
+   ]
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2027-04-04",
+   "previous": "2027-04-03",
+   "start": 1806811200,
+   "nextStart": 1806897600,
+   "hours": 24,
+   "at": [
+    1806811200,
+    1806813000,
+    1806854400,
+    1806897599
+   ]
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2026-10-31",
+   "previous": "2026-10-30",
+   "start": 1793430000,
+   "nextStart": 1793516400,
+   "hours": 24,
+   "at": [
+    1793430000,
+    1793431800,
+    1793473200,
+    1793516399
+   ]
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2026-11-01",
+   "previous": "2026-10-31",
+   "start": 1793516400,
+   "nextStart": 1793602800,
+   "hours": 24,
+   "at": [
+    1793516400,
+    1793518200,
+    1793559600,
+    1793602799
+   ]
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2026-11-02",
+   "previous": "2026-11-01",
+   "start": 1793602800,
+   "nextStart": 1793689200,
+   "hours": 24,
+   "at": [
+    1793602800,
+    1793604600,
+    1793646000,
+    1793689199
+   ]
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2027-03-13",
+   "previous": "2027-03-12",
+   "start": 1804921200,
+   "nextStart": 1805007600,
+   "hours": 24,
+   "at": [
+    1804921200,
+    1804923000,
+    1804964400,
+    1805007599
+   ]
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2027-03-14",
+   "previous": "2027-03-13",
+   "start": 1805007600,
+   "nextStart": 1805094000,
+   "hours": 24,
+   "at": [
+    1805007600,
+    1805009400,
+    1805050800,
+    1805093999
+   ]
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2027-03-15",
+   "previous": "2027-03-14",
+   "start": 1805094000,
+   "nextStart": 1805180400,
+   "hours": 24,
+   "at": [
+    1805094000,
+    1805095800,
+    1805137200,
+    1805180399
+   ]
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2026-10-24",
+   "previous": "2026-10-23",
+   "start": 1792780200,
+   "nextStart": 1792866600,
+   "hours": 24,
+   "at": [
+    1792780200,
+    1792782000,
+    1792823400,
+    1792866599
+   ]
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2026-10-25",
+   "previous": "2026-10-24",
+   "start": 1792866600,
+   "nextStart": 1792953000,
+   "hours": 24,
+   "at": [
+    1792866600,
+    1792868400,
+    1792909800,
+    1792952999
+   ]
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2026-10-26",
+   "previous": "2026-10-25",
+   "start": 1792953000,
+   "nextStart": 1793039400,
+   "hours": 24,
+   "at": [
+    1792953000,
+    1792954800,
+    1792996200,
+    1793039399
+   ]
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2027-03-13",
+   "previous": "2027-03-12",
+   "start": 1804876200,
+   "nextStart": 1804962600,
+   "hours": 24,
+   "at": [
+    1804876200,
+    1804878000,
+    1804919400,
+    1804962599
+   ]
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2027-03-14",
+   "previous": "2027-03-13",
+   "start": 1804962600,
+   "nextStart": 1805049000,
+   "hours": 24,
+   "at": [
+    1804962600,
+    1804964400,
+    1805005800,
+    1805048999
+   ]
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2027-03-15",
+   "previous": "2027-03-14",
+   "start": 1805049000,
+   "nextStart": 1805135400,
+   "hours": 24,
+   "at": [
+    1805049000,
+    1805050800,
+    1805092200,
+    1805135399
+   ]
+  },
+  {
+   "zone": "UTC",
+   "date": "2026-10-24",
+   "previous": "2026-10-23",
+   "start": 1792800000,
+   "nextStart": 1792886400,
+   "hours": 24,
+   "at": [
+    1792800000,
+    1792801800,
+    1792843200,
+    1792886399
+   ]
+  },
+  {
+   "zone": "UTC",
+   "date": "2026-10-25",
+   "previous": "2026-10-24",
+   "start": 1792886400,
+   "nextStart": 1792972800,
+   "hours": 24,
+   "at": [
+    1792886400,
+    1792888200,
+    1792929600,
+    1792972799
+   ]
+  },
+  {
+   "zone": "UTC",
+   "date": "2026-10-26",
+   "previous": "2026-10-25",
+   "start": 1792972800,
+   "nextStart": 1793059200,
+   "hours": 24,
+   "at": [
+    1792972800,
+    1792974600,
+    1793016000,
+    1793059199
+   ]
+  },
+  {
+   "zone": "UTC",
+   "date": "2027-03-13",
+   "previous": "2027-03-12",
+   "start": 1804896000,
+   "nextStart": 1804982400,
+   "hours": 24,
+   "at": [
+    1804896000,
+    1804897800,
+    1804939200,
+    1804982399
+   ]
+  },
+  {
+   "zone": "UTC",
+   "date": "2027-03-14",
+   "previous": "2027-03-13",
+   "start": 1804982400,
+   "nextStart": 1805068800,
+   "hours": 24,
+   "at": [
+    1804982400,
+    1804984200,
+    1805025600,
+    1805068799
+   ]
+  },
+  {
+   "zone": "UTC",
+   "date": "2027-03-15",
+   "previous": "2027-03-14",
+   "start": 1805068800,
+   "nextStart": 1805155200,
+   "hours": 24,
+   "at": [
+    1805068800,
+    1805070600,
+    1805112000,
+    1805155199
+   ]
+  }
+ ],
+ "yesterday": [
+  {
+   "zone": "America/New_York",
+   "date": "2026-11-02",
+   "previous": "2026-11-01"
+  },
+  {
+   "zone": "America/New_York",
+   "date": "2027-03-15",
+   "previous": "2027-03-14"
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2026-11-02",
+   "previous": "2026-11-01"
+  },
+  {
+   "zone": "America/Los_Angeles",
+   "date": "2027-03-15",
+   "previous": "2027-03-14"
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2026-10-26",
+   "previous": "2026-10-25"
+  },
+  {
+   "zone": "Europe/London",
+   "date": "2027-03-29",
+   "previous": "2027-03-28"
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2026-10-26",
+   "previous": "2026-10-25"
+  },
+  {
+   "zone": "Europe/Berlin",
+   "date": "2027-03-29",
+   "previous": "2027-03-28"
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2026-10-05",
+   "previous": "2026-10-04"
+  },
+  {
+   "zone": "Australia/Sydney",
+   "date": "2027-04-05",
+   "previous": "2027-04-04"
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2026-10-05",
+   "previous": "2026-10-04"
+  },
+  {
+   "zone": "Australia/Lord_Howe",
+   "date": "2027-04-05",
+   "previous": "2027-04-04"
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2026-09-07",
+   "previous": "2026-09-06"
+  },
+  {
+   "zone": "America/Santiago",
+   "date": "2027-04-04",
+   "previous": "2027-04-03"
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2026-11-02",
+   "previous": "2026-11-01"
+  },
+  {
+   "zone": "America/Phoenix",
+   "date": "2027-03-15",
+   "previous": "2027-03-14"
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2026-10-26",
+   "previous": "2026-10-25"
+  },
+  {
+   "zone": "Asia/Kolkata",
+   "date": "2027-03-15",
+   "previous": "2027-03-14"
+  },
+  {
+   "zone": "UTC",
+   "date": "2026-10-26",
+   "previous": "2026-10-25"
+  },
+  {
+   "zone": "UTC",
+   "date": "2027-03-15",
+   "previous": "2027-03-14"
+  }
+ ]
+}

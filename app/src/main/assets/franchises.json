@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "verified": "2026-10-11",
+  "about": "Franchise dictionary shared by the Apple TV app (FranchiseDictionary.swift) and the web tuner (scripts/nostalgex-franchise-builder.js). Every tmdbCollectionIDs entry was verified against the live TMDB API on 2026-10-11 (collection exists and holds the films named in its note). Edit this file only; both engines read it, and scripts/franchise-golden.json pins the grouping both must produce.",
+  "fields": {
+    "canonicalName": "Channel-ready display name, upper-cased. Also the stable id: dict:<canonicalName>.",
+    "stockChannelID": "The channels.json channel this franchise folds into, or null to build a dynamic channel.",
+    "tmdbCollectionIDs": "TMDB belongs_to_collection ids that roll up into this franchise. Empty for a studio-ruled franchise.",
+    "nameMatchTokens": "Word-boundary, case-insensitive substrings. Join TV shows, and films TMDB leaves outside any collection.",
+    "tvShowTitles": "Shows that belong but do not name-match. Exact title, case and punctuation ignored.",
+    "filmTitles": "Films with no collection on TMDB that do not name-match. Exact title, trailing (YYYY) ignored.",
+    "studioRuled": "True when the stock channel's studio rule owns the films. Only TV joins, by exact tvShowTitles.",
+    "defaultOn": "A found dynamic franchise with this flag starts switched on."
+  },
+  "franchises": [
+    {
+      "canonicalName": "STAR WARS",
+      "stockChannelID": 100,
+      "tmdbCollectionIDs": [10],
+      "nameMatchTokens": ["star wars"],
+      "tvShowTitles": [
+        "The Mandalorian", "Andor", "Ahsoka", "Obi-Wan Kenobi",
+        "The Book of Boba Fett", "Star Wars: The Clone Wars",
+        "Star Wars Rebels", "The Acolyte", "Star Wars: Visions",
+        "Young Jedi Adventures", "Tales of the Jedi"
+      ],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "10 = Star Wars Collection, all nine Skywalker-saga films. Rogue One and Solo are belongs_to_collection null on TMDB and join by the star wars token (their titles end in A Star Wars Story)."
+    },
+    {
+      "canonicalName": "MARVEL",
+      "stockChannelID": 101,
+      "tmdbCollectionIDs": [],
+      "nameMatchTokens": [],
+      "tvShowTitles": [
+        "WandaVision", "The Falcon and the Winter Soldier", "Loki", "What If...?",
+        "Hawkeye", "Moon Knight", "Ms. Marvel", "She-Hulk: Attorney at Law",
+        "Secret Invasion", "Echo", "Agatha All Along", "Daredevil: Born Again",
+        "Ironheart",
+        "Daredevil", "Jessica Jones", "Luke Cage", "Iron Fist", "The Defenders",
+        "The Punisher",
+        "Marvel's Daredevil", "Marvel's Jessica Jones", "Marvel's Luke Cage",
+        "Marvel's Iron Fist", "Marvel's The Defenders", "Marvel's The Punisher",
+        "Agents of S.H.I.E.L.D.", "Agent Carter", "Inhumans",
+        "Marvel's Agents of S.H.I.E.L.D.", "Marvel's Agent Carter", "Marvel's Inhumans"
+      ],
+      "filmTitles": [],
+      "studioRuled": true,
+      "defaultOn": false,
+      "note": "Studio-ruled: CH101 carries studios: [Marvel Studios]. MCU films scatter across dozens of tiny TMDB collections, so collection grouping is the wrong tool. Shows join by EXACT title only, so Echo cannot pull in Echo Park. List order: Disney+ MCU, Netflix era, ABC era; the Marvel's spellings are how TVDB and older Plex agents title them."
+    },
+    {
+      "canonicalName": "HARRY POTTER",
+      "stockChannelID": 102,
+      "tmdbCollectionIDs": [1241, 435259],
+      "nameMatchTokens": ["harry potter", "fantastic beasts"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "1241 = Harry Potter Collection, 435259 = Fantastic Beasts Collection. Together the Wizarding World, both fold onto CH102."
+    },
+    {
+      "canonicalName": "JURASSIC PARK",
+      "stockChannelID": 103,
+      "tmdbCollectionIDs": [328],
+      "nameMatchTokens": ["jurassic"],
+      "tvShowTitles": ["Jurassic World: Camp Cretaceous", "Jurassic World: Chaos Theory"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "328 = Jurassic Park Collection, all eight films with Jurassic World included."
+    },
+    {
+      "canonicalName": "LORD OF THE RINGS",
+      "stockChannelID": 104,
+      "tmdbCollectionIDs": [119, 121938],
+      "nameMatchTokens": ["lord of the rings", "hobbit", "rings of power"],
+      "tvShowTitles": ["The Lord of the Rings: The Rings of Power"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "119 = The Lord of the Rings Collection, 121938 = The Hobbit Collection (121 from memory was dead)."
+    },
+    {
+      "canonicalName": "MISSION IMPOSSIBLE",
+      "stockChannelID": 105,
+      "tmdbCollectionIDs": [87359],
+      "nameMatchTokens": ["mission impossible", "mission: impossible"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "87359 = Mission: Impossible Collection."
+    },
+    {
+      "canonicalName": "JASON BOURNE",
+      "stockChannelID": 106,
+      "tmdbCollectionIDs": [31562],
+      "nameMatchTokens": ["bourne"],
+      "tvShowTitles": ["Treadstone"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "31562 = The Bourne Collection."
+    },
+    {
+      "canonicalName": "STAR TREK",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [151, 115570, 115575],
+      "nameMatchTokens": ["star trek"],
+      "tvShowTitles": [
+        "Star Trek: The Next Generation", "Star Trek: Deep Space Nine",
+        "Star Trek: Voyager", "Star Trek: Enterprise", "Star Trek: Discovery",
+        "Star Trek: Picard", "Star Trek: Strange New Worlds",
+        "Star Trek: Lower Decks", "Star Trek: Prodigy", "Star Trek: The Original Series"
+      ],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": true,
+      "note": "Three TMDB collections merged: 151 = The Original Series films, 115570 = The Next Generation films (151416 from memory was dead), 115575 = Alternate Reality (the 2009 reboot)."
+    },
+    {
+      "canonicalName": "FAST & FURIOUS",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [9485],
+      "nameMatchTokens": ["fast & furious", "fast and furious", "fast saga"],
+      "tvShowTitles": ["Fast & Furious Spy Racers"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": true,
+      "note": "9485 = The Fast and the Furious Collection, all twelve films including Tokyo Drift and Hobbs & Shaw."
+    },
+    {
+      "canonicalName": "JAMES BOND",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [645],
+      "nameMatchTokens": ["james bond", "007"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "645 = James Bond Collection."
+    },
+    {
+      "canonicalName": "THE MATRIX",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [2344],
+      "nameMatchTokens": ["matrix"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "2344 = The Matrix Collection."
+    },
+    {
+      "canonicalName": "INDIANA JONES",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [84],
+      "nameMatchTokens": ["indiana jones"],
+      "tvShowTitles": ["The Young Indiana Jones Chronicles"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "84 = Indiana Jones Collection."
+    },
+    {
+      "canonicalName": "PIRATES OF THE CARIBBEAN",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [295],
+      "nameMatchTokens": ["pirates of the caribbean"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "295 = Pirates of the Caribbean Collection."
+    },
+    {
+      "canonicalName": "TRANSFORMERS",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [8650],
+      "nameMatchTokens": ["transformers"],
+      "tvShowTitles": [],
+      "filmTitles": ["Bumblebee"],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "8650 = Transformers Collection. Bumblebee and Rise of the Beasts are belongs_to_collection null on TMDB. Rise of the Beasts joins by the transformers token; Bumblebee has no franchise word in its title, so it is listed."
+    },
+    {
+      "canonicalName": "JOHN WICK",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [404609],
+      "nameMatchTokens": ["john wick"],
+      "tvShowTitles": ["The Continental: From the World of John Wick"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "404609 = John Wick Collection."
+    },
+    {
+      "canonicalName": "THE HUNGER GAMES",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [131635],
+      "nameMatchTokens": ["hunger games"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "131635 = The Hunger Games Collection."
+    },
+    {
+      "canonicalName": "THE TERMINATOR",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [528],
+      "nameMatchTokens": ["terminator"],
+      "tvShowTitles": ["Terminator: The Sarah Connor Chronicles", "Terminator Zero"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "528 = The Terminator Collection."
+    },
+    {
+      "canonicalName": "BACK TO THE FUTURE",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [264],
+      "nameMatchTokens": ["back to the future"],
+      "tvShowTitles": [],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "264 = Back to the Future Collection."
+    },
+    {
+      "canonicalName": "SPIDER-MAN",
+      "stockChannelID": null,
+      "tmdbCollectionIDs": [556, 125574, 531241, 573436, 225941],
+      "nameMatchTokens": ["spider-man"],
+      "tvShowTitles": ["Spidey and His Amazing Friends"],
+      "filmTitles": [],
+      "studioRuled": false,
+      "defaultOn": false,
+      "note": "Five TMDB collections merged, verified live 2026-10-13 via search/collection: 556 = Spider-Man (Raimi trilogy), 125574 = The Amazing Spider-Man, 531241 = Spider-Man (MCU), 573436 = Spider-Man: Spider-Verse, 225941 = Spider-Man (TV), the 1977-80 TV films. Its own channel, not folded into MARVEL CH101; the MCU films also pass CH101's Marvel Studios rule, and Settings counts them under SPIDER-MAN only. The token joins shows (The Amazing Spider-Man, Spider-Man: The Animated Series)."
+    }
+  ]
+}

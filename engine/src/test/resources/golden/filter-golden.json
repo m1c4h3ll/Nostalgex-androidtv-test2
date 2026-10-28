@@ -1,0 +1,2177 @@
+{
+  "version": 1,
+  "about": "Golden vectors for the channel pool filter. Read by BOTH Nostalgex/NostalgexTests/FilterGoldenTests.swift (AppState.filterItems, tvOS) and scripts/nostalgex-filter-golden-smoke.mjs (scripts/nostalgex-channel-filter.cjs, web tuner and Docker; npm run test:filter-golden). Each case is one item run against the SHIPPED channels.json, its exclusiveRules and channels-memberships.json. `in` lists channel ids (not numbers) the item must reach, `out` the ids it must not. Item fields: title, artist (music videos), episodeTitle, summary, originallyAvailableAt (YYYY-MM-DD, first aired), year, type (movie|episode), librarySource (movie|tv|musicVideo), genres, contentRating (as the server sends it, so GB-15 or FSK-16 for a Jellyfin library outside the US), duration (minutes, default 100), rating, studio, tmdbID (string; only when the case is about a manifest claim), and enrichment ({ keywords, productionCompanies, networks, tmdbGenres }; absent means not enriched), backend (plex|jellyfin|emby, default plex; the server the item came from) and doviProfile (Dolby Vision profile; absent means unknown). When a rule changes, change both engines, then update or add a case here.",
+  "cases": [
+    {
+      "name": "kicking-and-screaming-is-not-a-scream-film",
+      "about": "The SCREAM lock matched any title containing 'scream', so this PG comedy was on no channel at all. The lock is an exact title list now.",
+      "item": {
+        "title": "Kicking & Screaming",
+        "year": 2005,
+        "type": "movie",
+        "genres": [
+          "Romance",
+          "Comedy"
+        ],
+        "contentRating": "PG"
+      },
+      "in": [
+        51,
+        52,
+        405,
+        406
+      ],
+      "out": [
+        132,
+        141
+      ]
+    },
+    {
+      "name": "scream-1996-is-locked-to-scream-adults-and-slasher",
+      "item": {
+        "title": "Scream",
+        "year": 1996,
+        "type": "movie",
+        "genres": [
+          "Crime",
+          "Horror"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        132,
+        415
+      ],
+      "out": [
+        141,
+        408,
+        51
+      ]
+    },
+    {
+      "name": "scream-2022-with-plex-year-suffix",
+      "item": {
+        "title": "Scream (2022)",
+        "year": 2022,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        132,
+        415
+      ],
+      "out": [
+        141
+      ]
+    },
+    {
+      "name": "halloween-h20-long-title-is-on-the-list",
+      "item": {
+        "title": "Halloween H20: 20 Years Later",
+        "year": 1998,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        132,
+        415
+      ],
+      "out": [
+        141,
+        408
+      ]
+    },
+    {
+      "name": "hubie-halloween-is-a-comedy",
+      "about": "Was locked away from every comedy channel by the substring 'halloween', and SCREAM ADULTS took it by its title word. Neither any more.",
+      "item": {
+        "title": "Hubie Halloween",
+        "year": 2020,
+        "type": "movie",
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "PG-13"
+      },
+      "in": [
+        51
+      ],
+      "out": [
+        141,
+        132,
+        415
+      ]
+    },
+    {
+      "name": "halloweentown-sequel-reaches-scream-kids",
+      "about": "Not on SCREAM KIDS' exact editorial list, and the old substring lock blocked its title match there.",
+      "item": {
+        "title": "Halloweentown II: Kalabar's Revenge",
+        "year": 2001,
+        "type": "movie",
+        "genres": [
+          "Family",
+          "Fantasy"
+        ],
+        "contentRating": "TV-G"
+      },
+      "in": [
+        131
+      ],
+      "out": [
+        132
+      ]
+    },
+    {
+      "name": "screaming-is-not-scream-music-video",
+      "item": {
+        "title": "Screaming for Vengeance",
+        "artist": "Judas Priest",
+        "year": 1982,
+        "type": "movie",
+        "librarySource": "musicVideo",
+        "genres": [],
+        "duration": 4
+      },
+      "in": [
+        150
+      ],
+      "out": [
+        132
+      ]
+    },
+    {
+      "name": "santana-is-not-santa",
+      "about": "The web matched the holiday lock against artist plus title, so 'Santa' caught every Santana video. Locks read the title only, by whole words.",
+      "item": {
+        "title": "Smooth",
+        "artist": "Santana",
+        "year": 1999,
+        "type": "movie",
+        "librarySource": "musicVideo",
+        "genres": [],
+        "duration": 4
+      },
+      "in": [
+        150
+      ],
+      "out": [
+        130
+      ]
+    },
+    {
+      "name": "holidays-2016-is-a-horror-anthology",
+      "about": "'Holiday' as a substring locked it to the holiday channels, which do not air horror.",
+      "item": {
+        "title": "Holidays",
+        "year": 2016,
+        "type": "movie",
+        "genres": [
+          "Horror"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        141
+      ],
+      "out": [
+        130
+      ]
+    },
+    {
+      "name": "a-christmas-story-is-locked-to-holiday",
+      "item": {
+        "title": "A Christmas Story",
+        "year": 1983,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "rating": 7.9
+      },
+      "in": [
+        130
+      ],
+      "out": [
+        3,
+        7
+      ]
+    },
+    {
+      "name": "elf-with-plex-year-suffix-is-locked-to-holiday",
+      "item": {
+        "title": "Elf (2003)",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "rating": 7
+      },
+      "in": [
+        130
+      ],
+      "out": [
+        406,
+        405
+      ]
+    },
+    {
+      "name": "the-santa-clause-is-still-locked-by-the-word-santa",
+      "item": {
+        "title": "The Santa Clause",
+        "year": 1994,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family",
+          "Fantasy"
+        ],
+        "contentRating": "PG",
+        "rating": 6.6
+      },
+      "in": [
+        130
+      ],
+      "out": [
+        7,
+        93
+      ]
+    },
+    {
+      "name": "plain-horror-is-genre-locked",
+      "item": {
+        "title": "Some Horror Film",
+        "year": 1990,
+        "type": "movie",
+        "genres": [
+          "Horror"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        141,
+        408
+      ],
+      "out": [
+        51,
+        7
+      ]
+    },
+    {
+      "name": "halloween-1978-unenriched-reaches-slasher-by-title",
+      "item": {
+        "title": "Halloween",
+        "year": 1978,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        132,
+        415
+      ],
+      "out": [
+        141,
+        408,
+        416
+      ]
+    },
+    {
+      "name": "friday-the-13th-is-a-slasher-and-not-locked",
+      "item": {
+        "title": "Friday the 13th",
+        "year": 1980,
+        "type": "movie",
+        "genres": [
+          "Horror"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        415,
+        132,
+        141,
+        408
+      ],
+      "out": [
+        416
+      ]
+    },
+    {
+      "name": "slasher-keyword-needs-horror",
+      "about": "TMDB tags Misery 'slasher'. Without the Horror genre the keyword does not count.",
+      "item": {
+        "title": "Misery",
+        "year": 1990,
+        "type": "movie",
+        "genres": [
+          "Drama",
+          "Thriller"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "slasher",
+            "obsession"
+          ]
+        }
+      },
+      "in": [
+        132
+      ],
+      "out": [
+        415
+      ]
+    },
+    {
+      "name": "slasher-keyword-on-plain-horror",
+      "item": {
+        "title": "Urban Legend",
+        "year": 1998,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "slasher",
+            "college"
+          ]
+        }
+      },
+      "in": [
+        415,
+        141,
+        408
+      ],
+      "out": [
+        416
+      ]
+    },
+    {
+      "name": "hollow-man-carries-slasher-but-is-not-one",
+      "item": {
+        "title": "Hollow Man",
+        "year": 2000,
+        "type": "movie",
+        "genres": [
+          "Science Fiction",
+          "Horror"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "slasher",
+            "invisibility"
+          ]
+        }
+      },
+      "in": [
+        141
+      ],
+      "out": [
+        415
+      ]
+    },
+    {
+      "name": "plain-horror-without-a-slasher-keyword-stays-off-slasher",
+      "item": {
+        "title": "The Descent",
+        "year": 2005,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "cave",
+            "claustrophobia"
+          ]
+        }
+      },
+      "in": [
+        141
+      ],
+      "out": [
+        415,
+        416,
+        417
+      ]
+    },
+    {
+      "name": "scary-movie-is-horror-comedy-not-slasher",
+      "item": {
+        "title": "Scary Movie",
+        "year": 2000,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Horror"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "slasher",
+            "parody"
+          ]
+        }
+      },
+      "in": [
+        416,
+        141
+      ],
+      "out": [
+        415
+      ]
+    },
+    {
+      "name": "shaun-of-the-dead-is-horror-comedy",
+      "item": {
+        "title": "Shaun of the Dead",
+        "year": 2004,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Comedy"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        416,
+        141
+      ],
+      "out": [
+        132,
+        415
+      ]
+    },
+    {
+      "name": "kids-horror-comedy-stays-off-horror-comedy",
+      "item": {
+        "title": "A Spooky Cartoon Special",
+        "year": 2023,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Horror"
+        ],
+        "contentRating": "TV-G"
+      },
+      "out": [
+        416
+      ]
+    },
+    {
+      "name": "blair-witch-is-found-footage",
+      "item": {
+        "title": "The Blair Witch Project",
+        "year": 1999,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Mystery"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "found footage",
+            "witch"
+          ]
+        }
+      },
+      "in": [
+        417,
+        141,
+        408
+      ],
+      "out": [
+        415
+      ]
+    },
+    {
+      "name": "found-footage-keyword-without-horror-or-sci-fi",
+      "about": "End of Watch is a cop drama shot partly on handheld cameras; TMDB tags it found footage.",
+      "item": {
+        "title": "End of Watch",
+        "year": 2012,
+        "type": "movie",
+        "genres": [
+          "Crime",
+          "Drama"
+        ],
+        "contentRating": "R",
+        "enrichment": {
+          "keywords": [
+            "found footage",
+            "police"
+          ]
+        }
+      },
+      "out": [
+        417
+      ]
+    },
+    {
+      "name": "paranormal-activity-unenriched-reaches-found-footage-by-title",
+      "item": {
+        "title": "Paranormal Activity",
+        "year": 2009,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Mystery"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        417,
+        141
+      ],
+      "out": [
+        415
+      ]
+    },
+    {
+      "name": "the-wailing-is-world-horror",
+      "about": "WORLD HORROR is manifestOnly: the claim comes from discover-world-horror.mjs (TMDB original language not English).",
+      "item": {
+        "title": "The Wailing",
+        "year": 2016,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Mystery"
+        ],
+        "contentRating": "NR",
+        "tmdbID": "293670"
+      },
+      "in": [
+        418,
+        141
+      ],
+      "out": [
+        51
+      ]
+    },
+    {
+      "name": "train-to-busan-is-world-horror",
+      "item": {
+        "title": "Train to Busan",
+        "year": 2016,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "NR",
+        "tmdbID": "396535"
+      },
+      "in": [
+        418,
+        141
+      ]
+    },
+    {
+      "name": "english-horror-is-not-world-horror",
+      "item": {
+        "title": "The Conjuring",
+        "year": 2013,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "contentRating": "R",
+        "tmdbID": "138843"
+      },
+      "in": [
+        141,
+        132
+      ],
+      "out": [
+        418
+      ]
+    },
+    {
+      "name": "world-horror-needs-a-tmdb-id",
+      "item": {
+        "title": "The Wailing",
+        "year": 2016,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Mystery"
+        ],
+        "contentRating": "NR"
+      },
+      "in": [
+        141
+      ],
+      "out": [
+        418
+      ]
+    },
+    {
+      "name": "lost-is-mystery-box-tv",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Lost",
+        "year": 2004,
+        "genres": [
+          "Mystery",
+          "Drama"
+        ],
+        "contentRating": "TV-14",
+        "tmdbID": "4607"
+      },
+      "in": [
+        419
+      ]
+    },
+    {
+      "name": "lost-in-space-is-not-mystery-box-tv",
+      "about": "Why MYSTERY BOX TV goes by TMDB id and not by title.",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Lost in Space",
+        "year": 2018,
+        "genres": [
+          "Drama",
+          "Science Fiction"
+        ],
+        "contentRating": "TV-PG",
+        "tmdbID": "75758"
+      },
+      "out": [
+        419
+      ]
+    },
+    {
+      "name": "a-film-called-lost-is-not-mystery-box-tv",
+      "item": {
+        "title": "Lost",
+        "year": 2004,
+        "type": "movie",
+        "genres": [
+          "Mystery",
+          "Thriller"
+        ],
+        "contentRating": "R"
+      },
+      "out": [
+        419
+      ]
+    },
+    {
+      "name": "from-tagged-horror-still-reaches-mystery-box-tv",
+      "about": "Plex can tag FROM Horror. The channel includes Horror so the horror genre lock lets its curated shows through; manifestOnly means nothing else gets in.",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "FROM",
+        "year": 2022,
+        "genres": [
+          "Drama",
+          "Horror"
+        ],
+        "contentRating": "TV-MA",
+        "tmdbID": "124364"
+      },
+      "in": [
+        419
+      ]
+    },
+    {
+      "name": "dark-matter-is-not-dark",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Dark Matter",
+        "year": 2024,
+        "genres": [
+          "Science Fiction",
+          "Drama"
+        ],
+        "contentRating": "TV-MA",
+        "tmdbID": "196322"
+      },
+      "out": [
+        419
+      ]
+    },
+    {
+      "name": "the-office-is-cringe-tv",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "The Office",
+        "year": 2005,
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "TV-14",
+        "tmdbID": "2316"
+      },
+      "in": [
+        420,
+        50
+      ]
+    },
+    {
+      "name": "nathan-for-you-tagged-documentary-is-cringe-tv",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Nathan for You",
+        "year": 2013,
+        "genres": [
+          "Comedy",
+          "Documentary"
+        ],
+        "contentRating": "TV-14"
+      },
+      "in": [
+        420
+      ]
+    },
+    {
+      "name": "a-mockumentary-sitcom-is-not-cringe-tv",
+      "about": "TMDB's mockumentary keyword covers Modern Family and Parks and Recreation, so it is not one of CRINGE TV's keywords.",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Modern Family",
+        "year": 2009,
+        "genres": [
+          "Comedy",
+          "Drama"
+        ],
+        "contentRating": "TV-PG",
+        "enrichment": {
+          "keywords": [
+            "mockumentary",
+            "family"
+          ]
+        }
+      },
+      "out": [
+        420
+      ]
+    },
+    {
+      "name": "cringe-keyword-on-a-comedy",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Hello Strangers",
+        "year": 2020,
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "TV-14",
+        "enrichment": {
+          "keywords": [
+            "socially awkward",
+            "dating"
+          ]
+        }
+      },
+      "in": [
+        420
+      ]
+    },
+    {
+      "name": "cringe-keyword-needs-comedy",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Some Docuseries",
+        "year": 2020,
+        "genres": [
+          "Documentary"
+        ],
+        "contentRating": "TV-14",
+        "enrichment": {
+          "keywords": [
+            "awkward"
+          ]
+        }
+      },
+      "out": [
+        420
+      ]
+    },
+    {
+      "name": "a-plain-sitcom-is-not-cringe-tv",
+      "item": {
+        "type": "episode",
+        "librarySource": "tv",
+        "duration": 30,
+        "title": "Friends",
+        "year": 1994,
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
+        "contentRating": "TV-14"
+      },
+      "in": [
+        50
+      ],
+      "out": [
+        420
+      ]
+    },
+    {
+      "name": "a24-by-studio-including-horror",
+      "about": "A studio channel skips the genre locks, so A24 horror airs on A24 with SCREAM switched off. Same as the other studio channels.",
+      "item": {
+        "title": "Hereditary",
+        "year": 2018,
+        "type": "movie",
+        "genres": [
+          "Horror",
+          "Mystery"
+        ],
+        "contentRating": "R",
+        "studio": "A24"
+      },
+      "in": [
+        421,
+        141
+      ],
+      "out": [
+        51
+      ]
+    },
+    {
+      "name": "a24-by-production-company",
+      "item": {
+        "title": "Moonlight",
+        "year": 2016,
+        "type": "movie",
+        "genres": [
+          "Drama"
+        ],
+        "contentRating": "R",
+        "studio": "Plan B Entertainment",
+        "enrichment": {
+          "productionCompanies": [
+            "A24",
+            "Plan B Entertainment",
+            "PASTEL"
+          ]
+        }
+      },
+      "in": [
+        421,
+        51
+      ]
+    },
+    {
+      "name": "not-a24",
+      "item": {
+        "title": "Arrival",
+        "year": 2016,
+        "type": "movie",
+        "genres": [
+          "Science Fiction",
+          "Drama"
+        ],
+        "contentRating": "PG-13",
+        "studio": "Paramount",
+        "enrichment": {
+          "productionCompanies": [
+            "Paramount Pictures",
+            "FilmNation Entertainment"
+          ]
+        }
+      },
+      "out": [
+        421
+      ]
+    },
+    {
+      "name": "hobbit-is-not-toon-town",
+      "about": "TMDB tags the Hobbit and Lord of the Rings films 'live action and animation' (CGI and motion capture). TOON TOWN is for live action and cartoon hybrids, so the keyword only counts on an Animation, Family or Comedy title.",
+      "item": {
+        "title": "The Hobbit: The Battle of the Five Armies",
+        "year": 2014,
+        "type": "movie",
+        "genres": [
+          "Adventure",
+          "Action",
+          "Fantasy"
+        ],
+        "contentRating": "PG-13",
+        "enrichment": {
+          "keywords": [
+            "live action and animation",
+            "dwarf"
+          ]
+        }
+      },
+      "in": [],
+      "out": [
+        400
+      ]
+    },
+    {
+      "name": "space-jam-is-toon-town",
+      "about": "The kind of film TOON TOWN is for: the keyword and an Animation or Family genre.",
+      "item": {
+        "title": "Space Jam",
+        "year": 1996,
+        "type": "movie",
+        "genres": [
+          "Animation",
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "enrichment": {
+          "keywords": [
+            "live action and animation",
+            "basketball"
+          ]
+        }
+      },
+      "in": [
+        400
+      ],
+      "out": []
+    },
+    {
+      "name": "scooby-doo-2002-stays-on-toon-town",
+      "about": "A live action and cartoon hybrid with no Animation or Family genre in Plex. Comedy keeps it on TOON TOWN.",
+      "item": {
+        "title": "Scooby-Doo",
+        "year": 2002,
+        "type": "movie",
+        "genres": [
+          "Adventure",
+          "Comedy",
+          "Mystery"
+        ],
+        "contentRating": "PG",
+        "enrichment": {
+          "keywords": [
+            "live action and animation"
+          ]
+        }
+      },
+      "in": [
+        400
+      ],
+      "out": []
+    },
+    {
+      "name": "emby-dolby-vision-5-film-is-on-no-channel",
+      "about": "Emby sends Dolby Vision profile 5 to Apple TV and browsers in a form they draw green and purple, so it goes on no channel (ChannelEligibility.swift, isLeftOffChannels in nostalgex-channel-filter.cjs). The same film with profile 8, without a profile, or from Jellyfin or Plex reaches these channels (the cases below).",
+      "item": {
+        "title": "Lab Clip Comedy",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "PG",
+        "backend": "emby",
+        "doviProfile": 5
+      },
+      "in": [],
+      "out": [
+        14,
+        405,
+        406,
+        51
+      ]
+    },
+    {
+      "name": "emby-dolby-vision-5-episode-is-on-no-channel",
+      "item": {
+        "title": "Lab Clip Show",
+        "episodeTitle": "Pilot",
+        "year": 2003,
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "TV-PG",
+        "duration": 25,
+        "backend": "emby",
+        "doviProfile": 5
+      },
+      "in": [],
+      "out": [
+        407,
+        30,
+        33,
+        50
+      ]
+    },
+    {
+      "name": "emby-dolby-vision-8-film-airs",
+      "about": "Profile 8 carries an HDR10 base layer and is not green on Apple TV.",
+      "item": {
+        "title": "Lab Clip Comedy",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "PG",
+        "backend": "emby",
+        "doviProfile": 8
+      },
+      "in": [
+        14,
+        405,
+        406,
+        51
+      ],
+      "out": []
+    },
+    {
+      "name": "emby-dolby-vision-8-episode-airs",
+      "item": {
+        "title": "Lab Clip Show",
+        "episodeTitle": "Pilot",
+        "year": 2003,
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "TV-PG",
+        "duration": 25,
+        "backend": "emby",
+        "doviProfile": 8
+      },
+      "in": [
+        407,
+        30,
+        33,
+        50
+      ],
+      "out": []
+    },
+    {
+      "name": "emby-film-without-a-profile-airs",
+      "about": "HDR10, SDR, or Dolby Vision whose profile Emby did not report: kept, never guessed.",
+      "item": {
+        "title": "Lab Clip Comedy",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "PG",
+        "backend": "emby"
+      },
+      "in": [
+        14,
+        405,
+        406,
+        51
+      ],
+      "out": []
+    },
+    {
+      "name": "jellyfin-dolby-vision-5-film-airs",
+      "about": "Jellyfin sends profile 5 as Dolby Vision to Apple TV and tone-maps it for browsers.",
+      "item": {
+        "title": "Lab Clip Comedy",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "PG",
+        "backend": "jellyfin",
+        "doviProfile": 5
+      },
+      "in": [
+        14,
+        405,
+        406,
+        51
+      ],
+      "out": []
+    },
+    {
+      "name": "plex-dolby-vision-5-film-airs",
+      "item": {
+        "title": "Lab Clip Comedy",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Action"
+        ],
+        "contentRating": "PG",
+        "backend": "plex",
+        "doviProfile": 5
+      },
+      "in": [
+        14,
+        405,
+        406,
+        51
+      ],
+      "out": []
+    },
+    {
+      "name": "holiday-armadillo-is-a-december-holiday-episode",
+      "about": "'Holiday' alone is ambiguous in an episode title. It counts for the holiday TV channels when the episode first aired inside the Christmas window (Nov 25 to Jan 7). The episode keeps its ordinary channels.",
+      "item": {
+        "title": "Friends",
+        "episodeTitle": "The One with the Holiday Armadillo",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
+        "contentRating": "TV-PG",
+        "duration": 22,
+        "originallyAvailableAt": "2000-12-14",
+        "year": 1994
+      },
+      "in": [
+        413,
+        5
+      ],
+      "out": [
+        414,
+        422
+      ]
+    },
+    {
+      "name": "phoebes-dad-is-christmas-by-its-summary",
+      "about": "No holiday word in the title, but the episode's own summary says Christmas.",
+      "item": {
+        "title": "Friends",
+        "episodeTitle": "The One with Phoebe's Dad",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
+        "contentRating": "TV-PG",
+        "duration": 22,
+        "summary": "It's Christmas time and Monica tries tipping with cookies, rather than cash, with mixed results.",
+        "originallyAvailableAt": "1995-12-14",
+        "year": 1994
+      },
+      "in": [
+        413
+      ],
+      "out": [
+        414
+      ]
+    },
+    {
+      "name": "roman-holiday-episode-is-a-trip-to-rome",
+      "about": "'Holiday' in a September episode, and a summary about a vacation: not a holiday episode.",
+      "item": {
+        "title": "Emily in Paris",
+        "episodeTitle": "Roman Holiday",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Drama"
+        ],
+        "contentRating": "TV-MA",
+        "duration": 22,
+        "summary": "Emily does the unthinkable and takes a vacation day, saying au revoir to work and ciao to a charming tour guide in Rome.",
+        "originallyAvailableAt": "2024-09-12"
+      },
+      "out": [
+        413,
+        414
+      ]
+    },
+    {
+      "name": "jingle-in-november-is-an-advertising-jingle",
+      "about": "Full House 'Jingle Hell' aired November 11 and is about writing a commercial jingle. 'Jingle' alone is a seasonal word and the date is outside the window.",
+      "item": {
+        "title": "Full House",
+        "episodeTitle": "Jingle Hell",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "TV-G",
+        "duration": 22,
+        "summary": "Joey gives Jesse the inspiration he needs to write an advertising jingle.",
+        "originallyAvailableAt": "1988-11-11"
+      },
+      "out": [
+        414,
+        413
+      ]
+    },
+    {
+      "name": "merry-scary-is-halloween",
+      "about": "'Merry' in an October episode title is not Christmas.",
+      "item": {
+        "title": "Stuck in the Middle",
+        "episodeTitle": "Stuck in a Merry Scary",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "TV-G",
+        "duration": 22,
+        "summary": "Harley comes up with different ways to celebrate the festivities of Halloween.",
+        "originallyAvailableAt": "2017-10-06"
+      },
+      "out": [
+        414
+      ]
+    },
+    {
+      "name": "santa-anas-is-the-wind",
+      "about": "'Santa' in a September episode title, and a place name the excludes list names anyway.",
+      "item": {
+        "title": "Primos",
+        "episodeTitle": "Summer of the Santa Anas",
+        "type": "episode",
+        "genres": [
+          "Animation",
+          "Comedy"
+        ],
+        "contentRating": "TV-Y7",
+        "duration": 22,
+        "summary": "Tater and the primos get trapped by a giant dust storm.",
+        "originallyAvailableAt": "2024-09-14"
+      },
+      "out": [
+        414
+      ]
+    },
+    {
+      "name": "santa-monica-in-december-is-still-a-place",
+      "about": "A December air date does not rescue a place name: episodeTitleExcludes vetoes the seasonal 'Santa'.",
+      "item": {
+        "title": "Some Cop Show",
+        "episodeTitle": "Santa Monica Boulevard",
+        "type": "episode",
+        "genres": [
+          "Crime",
+          "Drama"
+        ],
+        "contentRating": "TV-14",
+        "duration": 22,
+        "originallyAvailableAt": "2010-12-09"
+      },
+      "out": [
+        413
+      ]
+    },
+    {
+      "name": "christmas-island-is-not-christmas",
+      "about": "'Christmas' is a strong title word, but 'Christmas Island' is on the excludes list.",
+      "item": {
+        "title": "Some Drama",
+        "episodeTitle": "Escape from Christmas Island",
+        "type": "episode",
+        "genres": [
+          "Drama"
+        ],
+        "contentRating": "TV-14",
+        "duration": 22,
+        "originallyAvailableAt": "2012-03-14"
+      },
+      "out": [
+        413
+      ]
+    },
+    {
+      "name": "wakkorotti-holiday-concert-is-animated-and-in-window",
+      "about": "Animated shows reach the holiday TV channels: episode rules open the Animation lock the way a title list does. 'Holiday' plus a November 29 air date.",
+      "item": {
+        "title": "Animaniacs",
+        "episodeTitle": "The Great Wakkorotti: The Holiday Concert",
+        "type": "episode",
+        "genres": [
+          "Animation",
+          "Comedy"
+        ],
+        "contentRating": "TV-Y7",
+        "duration": 22,
+        "summary": "Wakko belches out the holiday song.",
+        "originallyAvailableAt": "1993-11-29"
+      },
+      "in": [
+        414
+      ],
+      "out": [
+        413
+      ]
+    },
+    {
+      "name": "simpsons-roasting-is-on-christmas-specials",
+      "about": "An adult animated Christmas episode lands on CHRISTMAS SPECIALS (TV-14), not the kids channel.",
+      "item": {
+        "title": "The Simpsons",
+        "episodeTitle": "Simpsons Roasting on an Open Fire",
+        "type": "episode",
+        "genres": [
+          "Animation",
+          "Comedy"
+        ],
+        "contentRating": "TV-14",
+        "duration": 22,
+        "summary": "Homer's Christmas bonus is canceled and the rainy-day funds are needed to pay for Bart's tattoo removal.",
+        "originallyAvailableAt": "1989-12-17"
+      },
+      "in": [
+        413
+      ],
+      "out": [
+        414
+      ]
+    },
+    {
+      "name": "chrismukkah-is-a-strong-title-word",
+      "item": {
+        "title": "The O.C.",
+        "episodeTitle": "The Best Chrismukkah Ever",
+        "type": "episode",
+        "genres": [
+          "Drama",
+          "Comedy"
+        ],
+        "contentRating": "TV-14",
+        "duration": 22,
+        "originallyAvailableAt": "2003-12-03"
+      },
+      "in": [
+        413
+      ],
+      "out": [
+        414
+      ]
+    },
+    {
+      "name": "carol-of-the-bells-aired-in-august",
+      "about": "A streaming episode can drop in August. The summary path does not look at the date.",
+      "item": {
+        "title": "Ted Lasso",
+        "episodeTitle": "Carol of the Bells",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Drama"
+        ],
+        "contentRating": "TV-MA",
+        "duration": 22,
+        "summary": "It's Christmas in Richmond. Rebecca enlists Ted for a secret mission.",
+        "originallyAvailableAt": "2021-08-13"
+      },
+      "in": [
+        413
+      ]
+    },
+    {
+      "name": "charlie-brown-special-stored-as-a-film",
+      "about": "A half-hour special stored as a film matches on its own title. Not Rated reaches CHRISTMAS SPECIALS, not the kids channel. The holiday lock names the TV channels so the film can air there.",
+      "item": {
+        "title": "A Charlie Brown Christmas",
+        "year": 1965,
+        "type": "movie",
+        "genres": [
+          "Family",
+          "Animation"
+        ],
+        "contentRating": "Not Rated",
+        "duration": 25
+      },
+      "in": [
+        413,
+        130
+      ],
+      "out": [
+        414,
+        20
+      ]
+    },
+    {
+      "name": "grinch-1966-special-is-on-kids-christmas-tv",
+      "item": {
+        "title": "How the Grinch Stole Christmas!",
+        "year": 1966,
+        "type": "movie",
+        "genres": [
+          "Family",
+          "Animation"
+        ],
+        "contentRating": "G",
+        "duration": 26
+      },
+      "in": [
+        414,
+        409
+      ],
+      "out": [
+        413
+      ]
+    },
+    {
+      "name": "elf-is-a-feature-not-a-special",
+      "about": "The holiday TV channels stop at 65 minutes, so feature films stay on the movie channels.",
+      "item": {
+        "title": "Elf",
+        "year": 2003,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "duration": 97
+      },
+      "in": [
+        130,
+        409
+      ],
+      "out": [
+        413,
+        414
+      ]
+    },
+    {
+      "name": "all-the-thanksgivings-is-turkey-day",
+      "item": {
+        "title": "Friends",
+        "episodeTitle": "The One with All the Thanksgivings",
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
+        "contentRating": "TV-PG",
+        "duration": 22,
+        "summary": "Monica's Thanksgiving dinner turns into a trip down memory lane.",
+        "originallyAvailableAt": "1998-11-19",
+        "year": 1994
+      },
+      "in": [
+        422,
+        5
+      ],
+      "out": [
+        413
+      ]
+    },
+    {
+      "name": "turkey-trouble-in-november",
+      "about": "'Turkey' is a seasonal word for TURKEY DAY: it counts in November.",
+      "item": {
+        "title": "Big City Greens",
+        "episodeTitle": "Turkey Trouble",
+        "type": "episode",
+        "genres": [
+          "Animation",
+          "Comedy"
+        ],
+        "contentRating": "TV-G",
+        "duration": 22,
+        "originallyAvailableAt": "2024-11-16"
+      },
+      "in": [
+        422
+      ]
+    },
+    {
+      "name": "turkey-shoot-in-february-is-not-thanksgiving",
+      "item": {
+        "title": "Schitt's Creek",
+        "episodeTitle": "Turkey Shoot",
+        "type": "episode",
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "TV-14",
+        "duration": 22,
+        "summary": "Johnny goes turkey hunting with Roland.",
+        "originallyAvailableAt": "2015-02-17"
+      },
+      "out": [
+        422
+      ]
+    },
+    {
+      "name": "show-named-santa-is-not-locked",
+      "about": "The holiday lock is scoped to films in a movie library. It used to read the show name, so every episode of a show with Santa in its name was locked to movie channels that cannot air it, and aired nowhere.",
+      "item": {
+        "title": "Santa Clarita Diet",
+        "episodeTitle": "Moral Gray Area",
+        "type": "episode",
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "TV-MA",
+        "duration": 22,
+        "originallyAvailableAt": "2017-02-03"
+      },
+      "in": [
+        50
+      ],
+      "out": [
+        413
+      ]
+    },
+    {
+      "name": "christmas-song-music-video-is-not-locked",
+      "about": "A Christmas song stays on HIGH ROTATION. The lock used to hand it to the holiday movie channels, which never air music videos.",
+      "item": {
+        "title": "Last Christmas",
+        "artist": "Wham!",
+        "year": 1984,
+        "type": "movie",
+        "librarySource": "musicVideo",
+        "genres": [
+          "Pop"
+        ],
+        "duration": 4
+      },
+      "in": [
+        150
+      ]
+    },
+    {
+      "name": "reindeer-games-is-a-year-round-thriller",
+      "about": "Like Die Hard, a Christmas-set thriller stays free for year-round channels. 'Reindeer' is no longer a lock word.",
+      "item": {
+        "title": "Reindeer Games",
+        "year": 2000,
+        "type": "movie",
+        "genres": [
+          "Thriller",
+          "Action"
+        ],
+        "contentRating": "R",
+        "duration": 104
+      },
+      "in": [
+        42,
+        410
+      ]
+    },
+    {
+      "name": "rocky-iv-is-a-boxing-film",
+      "about": "Off the lock and off SANTA'S LIST and NOSTALGEX CHRISTMAS; HOLIDAZE keeps it as an editorial pick.",
+      "item": {
+        "title": "Rocky IV",
+        "year": 1985,
+        "type": "movie",
+        "genres": [
+          "Drama",
+          "Sport"
+        ],
+        "contentRating": "PG",
+        "duration": 91
+      },
+      "in": [
+        80,
+        130
+      ],
+      "out": [
+        409,
+        411
+      ]
+    },
+    {
+      "name": "christmas-titled-film-stays-locked",
+      "about": "'Christmas' still locks a film to the holiday channels.",
+      "item": {
+        "title": "A Christmas Detour",
+        "year": 2015,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
+        "contentRating": "G",
+        "duration": 85
+      },
+      "in": [
+        412,
+        409
+      ],
+      "out": [
+        52
+      ]
+    },
+    {
+      "name": "santa-clause-3-full-title-is-locked",
+      "about": "Plex names the third film with its subtitle; the lock lists it exactly, and 'Santa Clause' is a lock phrase.",
+      "item": {
+        "title": "The Santa Clause 3: The Escape Clause",
+        "year": 2006,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "G",
+        "duration": 92
+      },
+      "in": [
+        409
+      ],
+      "out": [
+        20
+      ]
+    },
+    {
+      "name": "princess-switch-is-mistletoe-by-tmdb-genres",
+      "about": "Plex lists two genres (Comedy, Family). MISTLETOE reads TMDB genres too (matchTmdbGenres), which say Romance, and the TMDB christmas keyword is the holiday signal.",
+      "item": {
+        "title": "The Princess Switch",
+        "year": 2018,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "duration": 102,
+        "enrichment": {
+          "keywords": [
+            "holiday",
+            "royalty",
+            "christmas"
+          ],
+          "tmdbGenres": [
+            "Romance",
+            "Comedy"
+          ]
+        }
+      },
+      "in": [
+        412
+      ],
+      "out": [
+        52
+      ]
+    },
+    {
+      "name": "princess-switch-unenriched-has-no-romance",
+      "about": "Without enrichment only the server's genres are read, and they do not say Romance.",
+      "item": {
+        "title": "The Princess Switch",
+        "year": 2018,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "duration": 102
+      },
+      "out": [
+        412
+      ]
+    },
+    {
+      "name": "harry-potter-christmas-keyword-is-not-mistletoe",
+      "about": "TMDB tags most of the Harry Potter films 'christmas'. No Romance, and too long.",
+      "item": {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "year": 2002,
+        "type": "movie",
+        "genres": [
+          "Family",
+          "Fantasy"
+        ],
+        "contentRating": "PG",
+        "duration": 161,
+        "enrichment": {
+          "keywords": [
+            "christmas",
+            "magic"
+          ],
+          "tmdbGenres": [
+            "Adventure",
+            "Fantasy"
+          ]
+        }
+      },
+      "out": [
+        412
+      ]
+    },
+    {
+      "name": "the-holiday-is-a-theatrical-pg13-romance",
+      "about": "MISTLETOE is the cozy end: G to TV-PG. The Holiday stays on HOLIDAZE.",
+      "item": {
+        "title": "The Holiday",
+        "year": 2006,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Romance"
+        ],
+        "contentRating": "PG-13",
+        "duration": 136
+      },
+      "in": [
+        130
+      ],
+      "out": [
+        412
+      ]
+    },
+    {
+      "name": "tmdb-genres-stay-off-ordinary-channels",
+      "about": "Only a channel with matchTmdbGenres reads TMDB genres. FAMILY HOUR still sees the server's Family genre and ignores the TMDB Animation tag.",
+      "item": {
+        "title": "Diary of A Wimpy Kid: The Last Straw",
+        "year": 2025,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "contentRating": "PG",
+        "duration": 75,
+        "enrichment": {
+          "keywords": [
+            "christmas"
+          ],
+          "tmdbGenres": [
+            "Animation",
+            "Family",
+            "Comedy"
+          ]
+        }
+      },
+      "in": [
+        20
+      ]
+    },
+    {
+      "name": "eight-crazy-nights-is-a-holiday-film",
+      "about": "The Hanukkah film has no holiday word in its title. It is a HOLIDAZE pick and on the shared holiday title list, so PG-13 puts it on NAUGHTY LIST.",
+      "item": {
+        "title": "Eight Crazy Nights",
+        "year": 2002,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Animation"
+        ],
+        "contentRating": "PG-13",
+        "duration": 76
+      },
+      "in": [
+        130,
+        410
+      ],
+      "out": [
+        409,
+        412
+      ]
+    },
+    {
+      "name": "rocky-ii-is-not-an-oscar-winner",
+      "about": "OSCAR WINNERS matches winning titles as whole words, so 'Rocky' caught every sequel. Only Rocky (1976) won; the sequels are excluded by title.",
+      "item": {
+        "title": "Rocky II",
+        "year": 1979,
+        "type": "movie",
+        "genres": [
+          "Drama"
+        ],
+        "contentRating": "PG"
+      },
+      "in": [],
+      "out": [
+        69
+      ]
+    },
+    {
+      "name": "rocky-is-an-oscar-winner",
+      "about": "Rocky (1976) won Best Picture and stays on OSCAR WINNERS.",
+      "item": {
+        "title": "Rocky",
+        "year": 1976,
+        "type": "movie",
+        "genres": [
+          "Drama"
+        ],
+        "contentRating": "PG"
+      },
+      "in": [
+        69
+      ],
+      "out": []
+    },
+    {
+      "name": "scream-tv-series-is-not-locked",
+      "about": "The SCREAM lock keeps the Scream and Halloween films on SCREAM ADULTS and SLASHER. It is films only, so a TV series titled Scream airs on the horror TV channels instead of nowhere.",
+      "item": {
+        "title": "Scream",
+        "episodeTitle": "Pilot",
+        "year": 2015,
+        "type": "episode",
+        "genres": [
+          "Horror",
+          "Drama",
+          "Mystery"
+        ],
+        "contentRating": "TV-14",
+        "duration": 44
+      },
+      "in": [
+        141
+      ],
+      "out": [
+        132,
+        415
+      ]
+    },
+    {
+      "name": "scream-music-video-is-not-locked",
+      "about": "A music video titled Scream stays on the music video channels; the SCREAM lock only takes films.",
+      "item": {
+        "title": "Scream",
+        "artist": "Michael Jackson",
+        "year": 1995,
+        "type": "movie",
+        "librarySource": "musicVideo",
+        "genres": [
+          "Pop"
+        ],
+        "duration": 5
+      },
+      "in": [
+        150
+      ],
+      "out": [
+        132,
+        415
+      ]
+    },
+    {
+      "name": "gb-u-animated-film-reaches-family-hour-and-animation",
+      "about": "GitHub #41: Jellyfin stores a UK certificate as GB-U, which no allow-list named, so UK libraries had thin kids channels. GB-U on a film reads as G.",
+      "item": {
+        "title": "Wallace & Gromit: The Curse of the Were-Rabbit",
+        "year": 2005,
+        "type": "movie",
+        "genres": [
+          "Animation",
+          "Family",
+          "Comedy"
+        ],
+        "contentRating": "GB-U"
+      },
+      "in": [
+        20,
+        25
+      ],
+      "out": [
+        402
+      ]
+    },
+    {
+      "name": "gb-pg-family-film-reaches-family-hour",
+      "item": {
+        "title": "Paddington",
+        "year": 2014,
+        "type": "movie",
+        "genres": [
+          "Family",
+          "Comedy",
+          "Adventure"
+        ],
+        "contentRating": "GB-PG"
+      },
+      "in": [
+        20
+      ],
+      "out": [
+        402
+      ]
+    },
+    {
+      "name": "gb-12a-family-film-reads-as-pg-13",
+      "item": {
+        "title": "Harry Potter and the Goblet of Fire",
+        "year": 2005,
+        "type": "movie",
+        "genres": [
+          "Adventure",
+          "Fantasy",
+          "Family"
+        ],
+        "contentRating": "GB-12A"
+      },
+      "in": [
+        20
+      ]
+    },
+    {
+      "name": "gb-u-cartoon-episode-reads-as-tv-g",
+      "about": "SAT MORNING CARTOONS lists TV-G and G, so either would do here; the next case pins the episode side.",
+      "item": {
+        "title": "Danger Mouse",
+        "episodeTitle": "Rogue Robots",
+        "year": 1981,
+        "type": "episode",
+        "genres": [
+          "Animation",
+          "Kids",
+          "Comedy"
+        ],
+        "contentRating": "GB-U"
+      },
+      "in": [
+        4
+      ]
+    },
+    {
+      "name": "gb-u-episode-reads-as-tv-g-on-tween-tv",
+      "about": "TWEEN TV lists only TV labels (TV-G, TV-PG, TV-Y7). GB-U on an episode has to read as TV-G, not G, to get on.",
+      "item": {
+        "title": "Even Stevens",
+        "episodeTitle": "Pilot",
+        "year": 2000,
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "studio": "Disney Channel",
+        "contentRating": "GB-U"
+      },
+      "in": [
+        29
+      ]
+    },
+    {
+      "name": "gb-pg-episode-reaches-tween-tv-and-family-tv",
+      "item": {
+        "title": "Lizzie McGuire",
+        "episodeTitle": "Pilot",
+        "year": 2001,
+        "type": "episode",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "studio": "Disney Channel",
+        "contentRating": "GB-PG"
+      },
+      "in": [
+        29,
+        33
+      ]
+    },
+    {
+      "name": "tv-12a-episode-reads-as-tv-14",
+      "about": "The #41 reporter's library showed one title as TV-12A. That is a 12A, so TV-14 on an episode: FAMILY TV takes it, TWEEN TV (no TV-14) does not.",
+      "item": {
+        "title": "Merlin",
+        "episodeTitle": "The Dragon's Call",
+        "year": 2008,
+        "type": "episode",
+        "genres": [
+          "Drama",
+          "Family",
+          "Fantasy"
+        ],
+        "contentRating": "TV-12A"
+      },
+      "in": [
+        33
+      ],
+      "out": [
+        29
+      ]
+    },
+    {
+      "name": "gb-18-film-is-adult-on-minion-hq",
+      "about": "MINION HQ has no allow-list and leans on the kids adult gate alone, which matched GB-18 against US labels and let it through. GB-18 reads as R now.",
+      "item": {
+        "title": "Illumination Test Film",
+        "year": 2020,
+        "type": "movie",
+        "genres": [
+          "Comedy"
+        ],
+        "studio": "Illumination Entertainment",
+        "contentRating": "GB-18"
+      },
+      "out": [
+        28
+      ]
+    },
+    {
+      "name": "gb-u-film-still-on-minion-hq",
+      "item": {
+        "title": "Despicable Me",
+        "year": 2010,
+        "type": "movie",
+        "genres": [
+          "Animation",
+          "Family",
+          "Comedy"
+        ],
+        "studio": "Illumination Entertainment",
+        "contentRating": "GB-U"
+      },
+      "in": [
+        28
+      ]
+    },
+    {
+      "name": "fsk-16-film-is-adult-on-minion-hq",
+      "item": {
+        "title": "Illumination Test Film",
+        "year": 2020,
+        "type": "movie",
+        "genres": [
+          "Comedy"
+        ],
+        "studio": "Illumination Entertainment",
+        "contentRating": "FSK-16"
+      },
+      "out": [
+        28
+      ]
+    },
+    {
+      "name": "fsk-0-family-film-reaches-family-hour",
+      "item": {
+        "title": "Maya the Bee Movie",
+        "year": 2014,
+        "type": "movie",
+        "genres": [
+          "Animation",
+          "Family",
+          "Adventure"
+        ],
+        "contentRating": "FSK-0"
+      },
+      "in": [
+        20,
+        25
+      ]
+    },
+    {
+      "name": "gb-15-comedy-reaches-r-rated-comedy",
+      "item": {
+        "title": "Superbad",
+        "year": 2007,
+        "type": "movie",
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "GB-15"
+      },
+      "in": [
+        402
+      ],
+      "out": [
+        20
+      ]
+    },
+    {
+      "name": "gb-18-comedy-reaches-r-rated-comedy",
+      "item": {
+        "title": "The Wolf of Wall Street",
+        "year": 2013,
+        "type": "movie",
+        "genres": [
+          "Comedy",
+          "Crime",
+          "Drama"
+        ],
+        "contentRating": "GB-18"
+      },
+      "in": [
+        402
+      ]
+    },
+    {
+      "name": "gb-15-episode-is-tv-ma-not-family-tv",
+      "about": "A 15 sits between TV-14 and TV-MA, so it takes the stricter one: off FAMILY TV.",
+      "item": {
+        "title": "Skins",
+        "episodeTitle": "Tony",
+        "year": 2007,
+        "type": "episode",
+        "genres": [
+          "Drama",
+          "Comedy"
+        ],
+        "contentRating": "GB-15"
+      },
+      "out": [
+        33,
+        6
+      ]
+    },
+    {
+      "name": "us-labels-unchanged-r-film-still-on-r-rated-comedy",
+      "item": {
+        "title": "Superbad",
+        "year": 2007,
+        "type": "movie",
+        "genres": [
+          "Comedy"
+        ],
+        "contentRating": "R"
+      },
+      "in": [
+        402
+      ],
+      "out": [
+        20
+      ]
+    }
+  ]
+}
