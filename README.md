@@ -92,7 +92,7 @@ your remote has them.
 | Button | What it does |
 |---|---|
 | **▲ / ▼** | Move through the packages and options. |
-| **OK** | Switch a package, RETRO MODE or SUBTITLES on or off. RESCAN LIBRARY reads your server again, and SIGN OUT signs you out. |
+| **OK** | Switch a package, RETRO MODE or SUBTITLES on or off, or switch LANGUAGE between English and French. RESCAN LIBRARY reads your server again, and SIGN OUT signs you out. |
 | **Back** or **Menu** | Save and go back to the guide. |
 
 At least one package always stays on.
@@ -113,6 +113,9 @@ At least one package always stays on.
 - **The guide**, after the Apple TV app's look: the info panel and the picture at the top, a
   two-hour grid below with the now line, channel colours, VT323 and DM Mono.
 - **Full screen** with the channel banner, the channel strip and the Now Playing panel.
+- **English and French.** Change it with **LANGUAGE** in Settings. Until you choose, the app
+  follows your TV: French on a TV set to French, English otherwise. Channel and package names
+  stay as they are in the lineup.
 - **RETRO MODE** (on by default): the guide's picture is cropped to 4:3 under scanlines and a
   vignette, with static snow between channels. Switch it off in Settings or the Now Playing
   panel.

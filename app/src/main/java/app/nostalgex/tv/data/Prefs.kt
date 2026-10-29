@@ -42,6 +42,11 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("retro_mode", true)
         set(v) { sp.edit().putBoolean("retro_mode", v).apply() }
 
+    /** The language chosen in Settings ("en" or "fr"), or null to follow the TV's language. */
+    var language: String?
+        get() = sp.getString("language", null)
+        set(v) { sp.edit().apply { if (v == null) remove("language") else putString("language", v) }.apply() }
+
     /** Subtitles shown (the CC toggle). */
     var captions: Boolean
         get() = sp.getBoolean("captions", false)

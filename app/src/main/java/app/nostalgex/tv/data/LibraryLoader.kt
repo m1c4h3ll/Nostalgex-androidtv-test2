@@ -8,6 +8,7 @@ import app.nostalgex.engine.server.PlexResolve
 import app.nostalgex.engine.server.PlexServer
 import app.nostalgex.engine.server.ServerException
 import app.nostalgex.engine.server.Session
+import app.nostalgex.tv.i18n.S
 
 /** Reads the signed-in library from every server, in order. */
 class LibraryLoader(private val http: Http) {
@@ -52,7 +53,7 @@ class LibraryLoader(private val http: Http) {
                         try { all.addAll(scanOne()) } catch (e2: Exception) { failed.add(server.name) }
                     }
                 }
-                if (failed.size == servers.size) throw ServerException("Couldn't reach ${failed.joinToString(", ")}")
+                if (failed.size == servers.size) throw ServerException(S.couldntReach(failed.joinToString(", ")))
                 Result(all, session.copy(servers = servers), failed)
             }
         }

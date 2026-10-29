@@ -14,6 +14,7 @@ import app.nostalgex.engine.server.SavedPlexServer
 import app.nostalgex.engine.server.ServerKind
 import app.nostalgex.engine.server.Session
 import app.nostalgex.tv.AppGraph
+import app.nostalgex.tv.i18n.S
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -145,7 +146,7 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
                     plexChosen = if (plexChosen.contains(id)) plexChosen - id else plexChosen + id
                 } else if (plexChosen.isNotEmpty()) {
                     finishPlex(plexServers.filter { plexChosen.contains(it.machineIdentifier) })
-                } else error = "Pick at least one library."
+                } else error = S.pickAtLeastOneLibrary
             }
             Step.CHECKING -> {}
             Step.MB_START -> if (focus == 0) search() else go(Step.MB_ADDRESS)
@@ -166,8 +167,8 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
                 go(Step.MB_PASSWORD, 0)
             }
             Step.MB_PASSWORD -> when (focus) {
-                0 -> vm.textEntry = TextEntry("USERNAME", username, false) { username = it; focus = 1 }
-                1 -> vm.textEntry = TextEntry("PASSWORD", password, true) { password = it; signInPassword() }
+                0 -> vm.textEntry = TextEntry(S.username, username, false) { username = it; focus = 1 }
+                1 -> vm.textEntry = TextEntry(S.password, password, true) { password = it; signInPassword() }
                 else -> signInPassword()
             }
         }
@@ -178,7 +179,7 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
     private fun startPlex() {
         go(Step.PLEX_CODE)
         plexCode = ""
-        busy = "GETTING A CODE"
+        busy = S.gettingACode
         job?.cancel()
         job = vm.launch {
             val auth = PlexAuth(http, clientId)
@@ -187,11 +188,11 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
                     withContext(Dispatchers.IO) { auth.requestPin() }
                 } catch (e: Exception) {
                     busy = null
-                    error = "COULD NOT REACH PLEX.TV. CHECK YOUR CONNECTION"
+                    error = S.couldNotReachPlex
                     return@launch
                 }
                 plexCode = pin.code
-                busy = "WAITING FOR AUTHORIZATION"
+                busy = S.waitingForAuthorization
                 // Every 2 s for 5 minutes, then a new code.
                 repeat(150) {
                     delay(2_000)
@@ -207,17 +208,17 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
     }
 
     private suspend fun discoverPlex(token: String) {
-        busy = "FINDING YOUR SERVERS"
+        busy = S.findingYourServers
         val servers = try {
             withContext(Dispatchers.IO) { PlexAuth(http, clientId).servers(token) }
         } catch (e: Exception) {
             busy = null
-            error = "SERVER DISCOVERY FAILED. TRY AGAIN"
+            error = S.discoveryFailed
             return
         }
         busy = null
         when {
-            servers.isEmpty() -> error = "NO PLEX SERVERS FOUND ON THIS ACCOUNT"
+            servers.isEmpty() -> error = S.noPlexServers
             servers.size == 1 -> finishPlex(servers)
             else -> {
                 plexServers = servers
@@ -230,7 +231,7 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
     private fun finishPlex(chosen: List<PlexServer>) {
         val token = plexToken ?: return
         go(Step.CHECKING)
-        busy = "CHECKING YOUR SERVER"
+        busy = S.checkingYourServer
         job = vm.launch {
             val saved = withContext(Dispatchers.IO) {
                 chosen.mapNotNull { s ->
@@ -240,7 +241,7 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
             }
             busy = null
             if (saved.isEmpty()) {
-                error = "CAN'T REACH ${chosen.joinToString(", ") { it.name.uppercase() }}. IS IT ON?"
+                error = S.cantReachServers(chosen.joinToString(", ") { it.name })
                 go(if (plexServers.size > 1) Step.PLEX_SERVERS else Step.PICK)
                 return@launch
             }
@@ -251,7 +252,7 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
     // ── Jellyfin and Emby ──────────────────────────────────────────────────
 
     private fun search() {
-        busy = "SEARCHING..."
+        busy = S.searching
         go(Step.MB_FOUND)
         found = emptyList()
         job?.cancel()
@@ -259,13 +260,13 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
             val list = withContext(Dispatchers.IO) { MediaBrowser.discover(kind) }
             busy = null
             found = list
-            if (list.isEmpty()) error = "NO ${kind.display.uppercase()} SERVER ANSWERED ON THIS NETWORK. TYPE ITS ADDRESS INSTEAD."
+            if (list.isEmpty()) error = S.noServerAnswered(kind.display)
             focus = if (list.isEmpty()) list.size + 1 else 0
         }
     }
 
     private fun editAddress() {
-        vm.textEntry = TextEntry("SERVER ADDRESS", address.ifEmpty { "http://" }, false) {
+        vm.textEntry = TextEntry(S.serverAddress, address.ifEmpty { "http://" }, false) {
             address = it.trim()
             focus = 1
         }
@@ -273,18 +274,18 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
 
     private fun checkServer(raw: String) {
         if (raw.isBlank()) {
-            error = "TYPE YOUR SERVER'S ADDRESS"
+            error = S.typeYourServerAddress
             go(Step.MB_ADDRESS)
             return
         }
         address = raw
-        busy = "CHECKING THE ADDRESS"
+        busy = S.checkingTheAddress
         job?.cancel()
         job = vm.launch {
             val hit = withContext(Dispatchers.IO) { MediaBrowser.checkAddress(http, raw) }
             if (hit == null) {
                 busy = null
-                error = "NOTHING ANSWERED AT THAT ADDRESS"
+                error = S.nothingAnswered
                 go(Step.MB_ADDRESS, 0)
                 return@launch
             }
@@ -325,7 +326,7 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
             delay(2_000)
             val ok = withContext(Dispatchers.IO) { MediaBrowser.quickConnectApproved(http, base, deviceId, start.secret) }
             if (ok) {
-                busy = "SIGNING IN"
+                busy = S.signingIn
                 try {
                     val s = withContext(Dispatchers.IO) {
                         MediaBrowser.quickConnectSignIn(http, kind, base, deviceId, serverName, start.secret)
@@ -334,22 +335,22 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
                     vm.signedIn(Session.MediaBrowser(s))
                 } catch (e: Exception) {
                     busy = null
-                    error = "QUICK CONNECT DIDN'T FINISH. USE A PASSWORD INSTEAD."
+                    error = S.quickConnectDidntFinish
                 }
                 return
             }
         }
-        error = "THE CODE EXPIRED. TRY AGAIN, OR USE A PASSWORD."
+        error = S.codeExpired
     }
 
     private fun signInPassword() {
         val base = serverBase ?: return
         if (username.isBlank()) {
-            error = "TYPE YOUR USERNAME"
+            error = S.typeYourUsername
             focus = 0
             return
         }
-        busy = "SIGNING IN"
+        busy = S.signingIn
         job?.cancel()
         job = vm.launch {
             try {
@@ -361,9 +362,9 @@ class ConnectFlow(private val vm: AppViewModel, private val graph: AppGraph) {
             } catch (e: MediaBrowser.SignInException) {
                 busy = null
                 error = when (e.code) {
-                    "incorrect" -> "THAT NAME OR PASSWORD ISN'T RIGHT"
-                    "network" -> "COULDN'T REACH THE SERVER"
-                    else -> e.message?.uppercase() ?: "SIGN-IN FAILED"
+                    "incorrect" -> S.wrongNameOrPassword
+                    "network" -> S.couldntReachTheServer
+                    else -> e.message?.uppercase() ?: S.signInFailed
                 }
                 if (step != Step.MB_PASSWORD) go(Step.MB_PASSWORD, 1)
             }

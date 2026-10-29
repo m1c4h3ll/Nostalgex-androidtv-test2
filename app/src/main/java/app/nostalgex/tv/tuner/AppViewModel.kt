@@ -25,6 +25,9 @@ import app.nostalgex.engine.server.ServerException
 import app.nostalgex.engine.server.Session
 import app.nostalgex.tv.NostalgexApp
 import app.nostalgex.tv.data.LibraryLoader
+import app.nostalgex.tv.i18n.I18n
+import app.nostalgex.tv.i18n.Language
+import app.nostalgex.tv.i18n.S
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
@@ -170,8 +173,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 failuresInARow++
                 if (failure == Playback.Failure.SIGNED_OUT || failuresInARow >= 5) {
                     playState = PlayState.Stopped(
-                        if (failure == Playback.Failure.SIGNED_OUT) "Your server turned down the sign-in. Sign in again in Settings."
-                        else "Nothing on this channel will play right now",
+                        if (failure == Playback.Failure.SIGNED_OUT) S.signInRefusedInSettings
+                        else S.nothingWillPlay,
                     )
                     return
                 }
@@ -224,7 +227,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         if (cached != null && cached.items.isNotEmpty()) {
             showLoading()
             loadStep = 2
-            loadDetail = "Your saved library"
+            loadDetail = S.savedLibrary
             buildLineup(cached.items, s)
             enterGuide()
             // Refresh behind the guide; the guide changes only if the library did.
@@ -248,7 +251,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         if (!background) {
             showLoading()
             loadStep = 1
-            loadDetail = "Connecting to ${s.displayName}"
+            loadDetail = S.connectingTo(s.displayName)
         }
         stopWaiting.set(false)
         lastProgressAt = System.currentTimeMillis()
@@ -270,8 +273,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             watch?.cancel()
             if (background) return false
             val auth = e is ServerException && (e.status == 401 || e.status == 403)
-            errorMessage = if (auth) "Your server turned down the sign-in. Sign in again."
-            else "Couldn't read your library. ${e.message ?: ""}".trim()
+            errorMessage = if (auth) S.signInRefused
+            else S.couldntReadLibrary(e.message ?: "")
             screen = Screen.ERROR
             return false
         }
@@ -283,8 +286,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         }
         if (result.items.isEmpty()) {
             if (background) return false
-            errorMessage = if (stopWaiting.get()) "Stopped waiting. Nothing had come back from your server."
-            else "Your library looks empty. Add some films or shows to your server, then try again."
+            errorMessage = if (stopWaiting.get()) S.stoppedWaiting
+            else S.libraryEmpty
             screen = Screen.ERROR
             return false
         }
@@ -293,7 +296,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         if (background && sig == previousSignature) return true
         if (!background) {
             loadStep = 2
-            loadDetail = "Building channels"
+            loadDetail = S.buildingChannels
         }
         buildLineup(result.items, result.session)
         if (!background) enterGuide()
@@ -307,7 +310,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     private suspend fun stallWatch() {
         while (true) {
             delay(300)
-            pendingDetail?.let { loadDetail = it }
+            pendingDetail?.let { loadDetail = S.progressDetail(it) }
             loadCount = pendingCount
             val quiet = System.currentTimeMillis() - lastProgressAt
             stillWaiting = quiet >= 60_000
@@ -574,6 +577,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         for (b in graph.config.bundles) rows.add(SettingsRow.Package(b))
         rows.add(SettingsRow.Retro)
         rows.add(SettingsRow.Captions)
+        rows.add(SettingsRow.UiLanguage)
         rows.add(SettingsRow.Rescan)
         rows.add(SettingsRow.SignOut)
         return rows
@@ -604,13 +608,14 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 prefs.retroMode = retroMode
             }
             SettingsRow.Captions -> toggleCaptions()
+            SettingsRow.UiLanguage -> setLanguage(language.next())
             SettingsRow.Rescan -> {
                 val s = session ?: return
                 screen = Screen.GUIDE
-                showToast("Reading your library again…")
+                showToast(S.rereadingLibrary)
                 viewModelScope.launch {
                     val ok = refreshLibrary(s, background = true, previousSignature = null)
-                    showToast(if (ok) "Library read: $libraryCount items" else "Couldn't reach your server")
+                    showToast(if (ok) S.libraryRead(libraryCount) else S.couldntReachYourServer)
                 }
             }
             SettingsRow.SignOut -> signOut()
@@ -621,6 +626,14 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         captions = !captions
         prefs.captions = captions
         playback.setCaptions(captions)
+    }
+
+    /** The language on screen; saved, so it stays chosen over the TV's own. */
+    val language: Language get() = I18n.language
+
+    fun setLanguage(l: Language) {
+        I18n.language = l
+        prefs.language = l.code
     }
 
     fun toggleRetro() {
@@ -727,7 +740,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             if (ch != null) {
                 tune(ch.id)
                 guideFocus = guideChannels.indexOf(ch)
-            } else showToast("No channel $n")
+            } else showToast(S.noChannel(n))
         }
         return true
     }
@@ -775,7 +788,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 val now = System.currentTimeMillis()
                 if (now - lastBackAt < 2_500) return false // let the activity close
                 lastBackAt = now
-                showToast("Press BACK again to turn off the TV")
+                showToast(S.pressBackAgain)
             }
             else -> return false
         }
@@ -864,6 +877,7 @@ sealed class SettingsRow {
     data class Package(val bundle: Bundle) : SettingsRow()
     data object Retro : SettingsRow()
     data object Captions : SettingsRow()
+    data object UiLanguage : SettingsRow()
     data object Rescan : SettingsRow()
     data object SignOut : SettingsRow()
 }

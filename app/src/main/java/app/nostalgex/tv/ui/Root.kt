@@ -48,6 +48,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
+import app.nostalgex.tv.i18n.S
 import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.Screen
 
@@ -135,8 +136,8 @@ fun ErrorScreen(vm: AppViewModel) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(Px.u(28f))) {
             Logo(Px.u(80f))
             T(vm.errorMessage, 28f, Color.White, modifier = Modifier.width(Px.u(1200f)), maxLines = 4)
-            T("PRESS OK TO TRY AGAIN", 30f, Nx.Yellow, retro = true)
-            T("MENU TO SIGN OUT", 26f, Color.White.copy(alpha = 0.5f), retro = true)
+            T(S.pressOkToTryAgain, 30f, Nx.Yellow, retro = true)
+            T(S.menuToSignOut, 26f, Color.White.copy(alpha = 0.5f), retro = true)
         }
     }
 }
@@ -181,7 +182,7 @@ fun TextEntryOverlay(vm: AppViewModel) {
                     },
                 )
             }
-            T("DONE ON THE KEYBOARD TO CONFIRM · BACK TO CANCEL", 22f, Color.White.copy(alpha = 0.5f))
+            T(S.keyboardHint, 22f, Color.White.copy(alpha = 0.5f))
         }
     }
     LaunchedEffect(entry) {

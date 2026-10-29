@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import app.nostalgex.engine.model.Channel
 import app.nostalgex.engine.schedule.ChannelSchedule
-import app.nostalgex.engine.schedule.Season
+import app.nostalgex.tv.i18n.S
 import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.PlayState
 import java.time.LocalDateTime
@@ -69,7 +69,7 @@ private fun NavBar(focused: Boolean) {
             Modifier.background(if (focused) Nx.Yellow.copy(alpha = 0.15f) else Color.Transparent)
                 .padding(horizontal = Px.u(14f), vertical = Px.u(8f)),
         ) {
-            T("SETTINGS", 24f, if (focused) Nx.Yellow else Color.White.copy(alpha = 0.5f), medium = true)
+            T(S.settings, 24f, if (focused) Nx.Yellow else Color.White.copy(alpha = 0.5f), medium = true)
         }
     }
 }
@@ -83,14 +83,14 @@ private fun InfoPanel(vm: AppViewModel, ch: Channel, sched: ChannelSchedule) {
     val item = if (isCurrent) vm.currentItem ?: now?.item else now?.item
     Column(Modifier.fillMaxSize().padding(start = Px.u(40f), end = Px.u(40f), top = Px.u(4f))) {
         T(
-            "CH %02d — %s".format(ch.number, ch.name.uppercase()), 36f, color, retro = true,
+            S.channelTag(ch.number, ch.name.uppercase()), 36f, color, retro = true,
             tracking = Px.sp(2f), modifier = Modifier.padding(bottom = Px.u(14f)),
         )
         if (item != null) {
             T(displayLine(item), 38f, Color.White, medium = true, modifier = Modifier.padding(bottom = Px.u(8f)))
             val epLine = when {
                 item.type == "episode" -> listOfNotNull(
-                    item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { "“$it”" },
+                    item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { S.quote(it) },
                     Fmt.seasonEpisode(item.seasonNumber, item.episodeNumber).takeIf { it.isNotEmpty() },
                 ).joinToString(" · ")
                 !item.director.isNullOrEmpty() -> item.director!!
@@ -119,7 +119,7 @@ private fun InfoPanel(vm: AppViewModel, ch: Channel, sched: ChannelSchedule) {
             val next = sched.upNext
             if (next != null) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    T("UP NEXT ", 24f, Color.White.copy(alpha = 0.5f), retro = true, tracking = Px.sp(2f))
+                    T(S.upNext + " ", 24f, Color.White.copy(alpha = 0.5f), retro = true, tracking = Px.sp(2f))
                     T(displayLine(next.item), 18f, Color.White.copy(alpha = 0.75f))
                 }
             }
@@ -136,7 +136,7 @@ private fun Grid(vm: AppViewModel, modifier: Modifier) {
         Column(Modifier.fillMaxSize()) {
             // Header
             Row(Modifier.fillMaxWidth().height(Px.u(HEADER_HEIGHT)).background(Nx.HeaderBg), verticalAlignment = Alignment.CenterVertically) {
-                T("CHANNEL", 18f, Color.White.copy(alpha = 0.7f), medium = true, modifier = Modifier.width(Px.u(CHANNEL_COLUMN)).padding(start = Px.u(12f)))
+                T(S.channelColumn, 18f, Color.White.copy(alpha = 0.7f), medium = true, modifier = Modifier.width(Px.u(CHANNEL_COLUMN)).padding(start = Px.u(12f)))
                 for (i in 0 until 4) {
                     Row(Modifier.width(Px.u(programsWidth / 4)), verticalAlignment = Alignment.CenterVertically) {
                         Box(Modifier.width(Px.u(1f)).height(Px.u(HEADER_HEIGHT)).background(Color.White.copy(alpha = 0.2f)))
@@ -160,8 +160,8 @@ private fun RowsArea(vm: AppViewModel, windowStart: Long, programsWidth: Float) 
     if (channels.isEmpty()) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                T("NO CHANNELS FOUND", 30f, Nx.Yellow, retro = true)
-                T("Press OK to open Settings and switch on more packages.", 22f, Color.White.copy(alpha = 0.6f))
+                T(S.noChannelsFound, 30f, Nx.Yellow, retro = true)
+                T(S.noChannelsHint, 22f, Color.White.copy(alpha = 0.6f))
             }
         }
         return
@@ -192,8 +192,8 @@ private fun InviteRow(vm: AppViewModel, bundle: app.nostalgex.engine.model.Bundl
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Px.u(18f)),
     ) {
-        T(Season.inviteHeadline(bundle, LocalDateTime.now()), 22f, if (focused) Color.Black else Color.White, medium = true, modifier = Modifier.weight(1f))
-        val labels = listOf("SWITCH IT ON", "NOT THIS YEAR", "DON'T ASK AGAIN")
+        T(S.inviteHeadline(bundle, LocalDateTime.now()), 22f, if (focused) Color.Black else Color.White, medium = true, modifier = Modifier.weight(1f))
+        val labels = S.inviteChoices
         labels.forEachIndexed { i, l ->
             val sel = focused && vm.inviteChoice == i
             Box(
