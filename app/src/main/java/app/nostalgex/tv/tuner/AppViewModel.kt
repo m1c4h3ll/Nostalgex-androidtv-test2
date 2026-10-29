@@ -43,6 +43,15 @@ import java.util.concurrent.atomic.AtomicInteger
 
 enum class Screen { BOOT, CONNECT, LOADING, GUIDE, SETTINGS, ERROR }
 
+/** The schedule holds 24 hours (48 half hours) and the guide's grid shows 2: it scrolls 44 ahead. */
+private const val MAX_GUIDE_OFFSET = 44
+
+/** SUBTITLES, RETRO MODE and SLEEP TIMER in the Now Playing panel. */
+private const val PANEL_OPTIONS = 3
+
+/** What the sleep timer steps through, in minutes, before it goes off again. */
+private val SLEEP_STEPS = listOf(30, 60, 90, 120)
+
 sealed class PlayState {
     data object Idle : PlayState()
     data object Tuning : PlayState()
@@ -151,8 +160,32 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         private set
     var settingsFocus by mutableIntStateOf(0)
         private set
+    /** How far the guide's grid is scrolled ahead of now, in half hours. 0 is now. */
+    var guideOffset by mutableIntStateOf(0)
+        private set
     private var bundlesAtSettingsOpen: Set<String> = emptySet()
+    private var tracksAtSettingsOpen: Triple<String?, String, Boolean>? = null
     private var lastBackAt = 0L
+    private var enteredGuide = false
+
+    // ── Sleep timer ─────────────────────────────────────────────────────────
+    /** When the sleep timer turns the TV off (epoch ms), or 0 when it's off. */
+    var sleepAt by mutableLongStateOf(0L)
+        private set
+    /** The sleep timer went off: nothing plays, and the screen may sleep, until a button is pressed. */
+    var asleep by mutableStateOf(false)
+        private set
+    private var sleepWarned = false
+
+    // ── Audio and subtitle languages, and how the app starts ───────────────
+    /** The soundtrack to prefer ("fr" or "en"), or null for each programme's own default. */
+    var audioLanguage by mutableStateOf(prefs.audioLanguage)
+        private set
+    private var subtitleChoice by mutableStateOf(prefs.subtitleLanguage)
+    /** The subtitles to prefer: the language chosen, or the app's own. */
+    val subtitleLanguage: String get() = subtitleChoice ?: I18n.language.code
+    var startOnLastChannel by mutableStateOf(prefs.startOnLastChannel)
+        private set
 
     init {
         playback.events = object : Playback.Events {
@@ -187,6 +220,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             }
         }
         playback.setCaptions(captions)
+        playback.setLanguages(audioLanguage, subtitleLanguage)
         viewModelScope.launch { boot() }
         viewModelScope.launch { clock() }
     }
@@ -396,6 +430,9 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         val start = guideChannels.firstOrNull { it.id == last } ?: guideChannels.first()
         guideFocus = guideChannels.indexOf(start).coerceAtLeast(0)
         if (currentChannelId == null || guideChannels.none { it.id == currentChannelId }) tune(start.id)
+        // ON STARTUP: LAST CHANNEL opens full screen, once per launch.
+        if (!enteredGuide && startOnLastChannel && currentChannelId != null) enterFullscreen()
+        enteredGuide = true
     }
 
     // ── Schedules ───────────────────────────────────────────────────────────
@@ -435,6 +472,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             delay(5_000)
             nowSec = System.currentTimeMillis() / 1000
             ticks++
+            checkSleep()
             if (screen != Screen.GUIDE && screen != Screen.SETTINGS) continue
             if (ticks % 6 == 0) {
                 rebuildSchedules()
@@ -540,6 +578,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     /** Back in front: tune again to what is on now. */
     fun onStart() {
         if (screen == Screen.GUIDE || screen == Screen.SETTINGS) {
+            // Back from the TV's own sleep after the sleep timer: on again.
+            asleep = false
             viewModelScope.launch {
                 rebuildSchedules()
                 currentChannelId?.let { tune(it) }
@@ -551,14 +591,22 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     fun openSettings() {
         bundlesAtSettingsOpen = enabledBundles
+        tracksAtSettingsOpen = trackSnapshot()
         settingsFocus = 0
         fullscreen = false
         overlay = Overlay.NONE
         screen = Screen.SETTINGS
     }
 
+    private fun trackSnapshot() = Triple(audioLanguage, subtitleLanguage, captions)
+
     private fun closeSettings() {
         screen = Screen.GUIDE
+        // A server stream carries only the tracks the server picked: start it again with the new ones.
+        val rung = currentRung
+        if (tracksAtSettingsOpen != trackSnapshot() && rung != null && rung != Playback.Rung.DIRECT) {
+            currentChannelId?.let { tune(it) }
+        }
         if (enabledBundles != bundlesAtSettingsOpen) {
             refreshGuideChannels()
             if (guideChannels.none { it.id == currentChannelId }) {
@@ -577,7 +625,10 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         for (b in graph.config.bundles) rows.add(SettingsRow.Package(b))
         rows.add(SettingsRow.Retro)
         rows.add(SettingsRow.Captions)
+        rows.add(SettingsRow.SubtitleLanguage)
+        rows.add(SettingsRow.AudioLanguage)
         rows.add(SettingsRow.UiLanguage)
+        rows.add(SettingsRow.Startup)
         rows.add(SettingsRow.Rescan)
         rows.add(SettingsRow.SignOut)
         return rows
@@ -609,6 +660,24 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             }
             SettingsRow.Captions -> toggleCaptions()
             SettingsRow.UiLanguage -> setLanguage(language.next())
+            SettingsRow.SubtitleLanguage -> {
+                subtitleChoice = if (subtitleLanguage == "fr") "en" else "fr"
+                prefs.subtitleLanguage = subtitleChoice
+                playback.setLanguages(audioLanguage, subtitleLanguage)
+            }
+            SettingsRow.AudioLanguage -> {
+                audioLanguage = when (audioLanguage) {
+                    null -> "fr"
+                    "fr" -> "en"
+                    else -> null
+                }
+                prefs.audioLanguage = audioLanguage
+                playback.setLanguages(audioLanguage, subtitleLanguage)
+            }
+            SettingsRow.Startup -> {
+                startOnLastChannel = !startOnLastChannel
+                prefs.startOnLastChannel = startOnLastChannel
+            }
             SettingsRow.Rescan -> {
                 val s = session ?: return
                 screen = Screen.GUIDE
@@ -634,6 +703,55 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     fun setLanguage(l: Language) {
         I18n.language = l
         prefs.language = l.code
+        // Subtitles follow the app's language until one is chosen for them.
+        playback.setLanguages(audioLanguage, subtitleLanguage)
+    }
+
+    // ── Sleep timer ─────────────────────────────────────────────────────────
+
+    /** Minutes until the sleep timer goes off, rounded up, or 0 when it's off. */
+    fun sleepMinutesLeft(): Int {
+        val at = sleepAt
+        if (at == 0L) return 0
+        return ((at - nowSec * 1000 + 59_999) / 60_000).toInt().coerceAtLeast(1)
+    }
+
+    /** OK on SLEEP TIMER: 30, 60, 90, 120 minutes, then off, counting on from what's left. */
+    private fun cycleSleepTimer() {
+        val next = SLEEP_STEPS.firstOrNull { it > sleepMinutesLeft() }
+        sleepWarned = false
+        nowSec = System.currentTimeMillis() / 1000
+        sleepAt = if (next == null) 0L else System.currentTimeMillis() + next * 60_000L
+    }
+
+    private fun checkSleep() {
+        val at = sleepAt
+        if (at == 0L || asleep) return
+        val left = at - System.currentTimeMillis()
+        if (left <= 0) {
+            fallAsleep()
+        } else if (left <= 60_000 && !sleepWarned) {
+            sleepWarned = true
+            showToast(S.sleepWarning)
+        }
+    }
+
+    /** Stops the picture and lets the screen sleep, as a TV's sleep timer switches it off. */
+    private fun fallAsleep() {
+        sleepAt = 0L
+        sleepWarned = false
+        skipJob?.cancel()
+        tuneJob?.cancel()
+        token++ // whatever the programme reports from here on is ignored
+        playback.stop()
+        playState = PlayState.Idle
+        overlay = Overlay.NONE
+        asleep = true
+    }
+
+    private fun wake() {
+        asleep = false
+        currentChannelId?.let { tune(it) }
     }
 
     fun toggleRetro() {
@@ -696,7 +814,16 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     // ── The remote ──────────────────────────────────────────────────────────
 
     /** Every key press while no text field is open. Returns true when it was used. */
-    fun onKeyDown(code: Int): Boolean = when (screen) {
+    fun onKeyDown(code: Int): Boolean {
+        // After the sleep timer, any button turns the TV back on.
+        if (asleep) {
+            wake()
+            return true
+        }
+        return screenKey(code)
+    }
+
+    private fun screenKey(code: Int): Boolean = when (screen) {
         Screen.CONNECT -> connect.onKey(code)
         Screen.GUIDE -> if (fullscreen) fullscreenKey(code) else guideKey(code)
         Screen.SETTINGS -> settingsKey(code)
@@ -766,14 +893,22 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                     else -> -2
                 }
             }
-            code == KeyEvent.KEYCODE_DPAD_LEFT -> if (guideFocus == -1) inviteChoice = maxOf(0, inviteChoice - 1)
-            code == KeyEvent.KEYCODE_DPAD_RIGHT -> if (guideFocus == -1) inviteChoice = minOf(2, inviteChoice + 1)
+            // On the invite, its three answers; on the channels, the grid's time, by half hours.
+            code == KeyEvent.KEYCODE_DPAD_LEFT -> when {
+                guideFocus == -1 -> inviteChoice = maxOf(0, inviteChoice - 1)
+                guideFocus >= 0 -> guideOffset = maxOf(0, guideOffset - 1)
+            }
+            code == KeyEvent.KEYCODE_DPAD_RIGHT -> when {
+                guideFocus == -1 -> inviteChoice = minOf(2, inviteChoice + 1)
+                guideFocus >= 0 && n > 0 -> guideOffset = minOf(MAX_GUIDE_OFFSET, guideOffset + 1)
+            }
             isOk(code) -> when {
                 guideFocus == -2 -> openSettings()
                 guideFocus == -1 -> answerInvite(inviteChoice)
                 n == 0 -> openSettings()
                 else -> {
                     val ch = guideChannels[guideFocus.coerceIn(0, n - 1)]
+                    guideOffset = 0
                     if (ch.id == currentChannelId) {
                         if (playState is PlayState.Stopped) retryStopped() else enterFullscreen()
                     } else tune(ch.id)
@@ -785,6 +920,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             code == KeyEvent.KEYCODE_CHANNEL_DOWN || code == KeyEvent.KEYCODE_PAGE_DOWN -> stepChannel(-1)
             isBack(code) -> {
                 if (guideFocus < 0) { guideFocus = 0; return true }
+                if (guideOffset > 0) { guideOffset = 0; return true } // back to now
                 val now = System.currentTimeMillis()
                 if (now - lastBackAt < 2_500) return false // let the activity close
                 lastBackAt = now
@@ -796,6 +932,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun enterFullscreen() {
+        guideOffset = 0
         fullscreen = true
         overlay = Overlay.NONE
         showOsd()
@@ -821,10 +958,15 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             Overlay.NOW_PLAYING -> {
                 when {
                     code == KeyEvent.KEYCODE_DPAD_UP -> if (panelFocus > 0) panelFocus-- else overlay = Overlay.NONE
-                    code == KeyEvent.KEYCODE_DPAD_DOWN -> panelFocus = minOf(1, panelFocus + 1)
-                    isOk(code) -> if (panelFocus == 0) toggleCaptions() else toggleRetro()
+                    code == KeyEvent.KEYCODE_DPAD_DOWN || code == KeyEvent.KEYCODE_DPAD_RIGHT ->
+                        panelFocus = minOf(PANEL_OPTIONS - 1, panelFocus + 1)
+                    code == KeyEvent.KEYCODE_DPAD_LEFT -> panelFocus = maxOf(0, panelFocus - 1)
+                    isOk(code) -> when (panelFocus) {
+                        0 -> toggleCaptions()
+                        1 -> toggleRetro()
+                        else -> cycleSleepTimer()
+                    }
                     isBack(code) -> overlay = Overlay.NONE
-                    code == KeyEvent.KEYCODE_DPAD_LEFT || code == KeyEvent.KEYCODE_DPAD_RIGHT -> {}
                     else -> return false
                 }
                 return true
@@ -877,7 +1019,10 @@ sealed class SettingsRow {
     data class Package(val bundle: Bundle) : SettingsRow()
     data object Retro : SettingsRow()
     data object Captions : SettingsRow()
+    data object SubtitleLanguage : SettingsRow()
+    data object AudioLanguage : SettingsRow()
     data object UiLanguage : SettingsRow()
+    data object Startup : SettingsRow()
     data object Rescan : SettingsRow()
     data object SignOut : SettingsRow()
 }

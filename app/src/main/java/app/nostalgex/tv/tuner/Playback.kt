@@ -28,7 +28,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Locale
+import kotlinx.coroutines.withContext
 import androidx.media3.common.MediaItem as ExoItem
 
 /**
@@ -94,6 +94,10 @@ class Playback(
         var deadline: Job? = null
         var monitor: Job? = null
         var retry: Job? = null
+        /** Server streams: the audio and subtitle choice, asked of the server once per programme. */
+        var choiceJob: Job? = null
+        var choiceDone = false
+        var serverExtra = ""
         val rung get() = rungs[index]
     }
 
@@ -161,12 +165,51 @@ class Playback(
         player.release()
     }
 
+    /** Preferred audio language ("fr", "en"), or null for the programme's own default track. */
+    private var audioLanguage: String? = null
+    /** Subtitle language, when subtitles are on. */
+    private var subtitleLanguage: String = "en"
+    private var captionsOn = false
+
     fun setCaptions(on: Boolean) {
+        captionsOn = on
+        applyTrackPreferences()
+    }
+
+    /** From the next server stream on; direct play switches at once. */
+    fun setLanguages(audio: String?, subtitle: String) {
+        audioLanguage = audio
+        subtitleLanguage = subtitle
+        applyTrackPreferences()
+    }
+
+    private fun applyTrackPreferences() {
         player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
-            .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, !on)
-            .setPreferredTextLanguage(if (on) Locale.getDefault().language else null)
-            .setSelectUndeterminedTextLanguage(on)
+            .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, !captionsOn)
+            .setPreferredTextLanguage(if (captionsOn) subtitleLanguage else null)
+            .setSelectUndeterminedTextLanguage(captionsOn)
+            .setPreferredAudioLanguage(audioLanguage)
             .build()
+    }
+
+    /** What the server stream should carry, chosen on the server (see [TrackChoice]). */
+    private fun chooseServerTracks(req: Request): String {
+        val audio = audioLanguage
+        val subtitle = if (captionsOn) subtitleLanguage else null
+        if (audio == null && subtitle == null) return ""
+        return when (val s = req.session) {
+            is Session.Plex -> {
+                val server = s.servers.getOrNull(req.item.serverIndex) ?: return ""
+                TrackChoice.selectPlexStreams(http, server, mapOf("X-Plex-Token" to server.token), req.item, audio, subtitle)
+                ""
+            }
+            is Session.MediaBrowser -> {
+                val mb = s.session
+                val auth = MediaBrowser.authHeader(mb.deviceId, mb.token)
+                val headers = mapOf("Authorization" to auth, "X-Emby-Authorization" to auth, "X-Emby-Token" to mb.token)
+                TrackChoice.mediaBrowserParams(http, mb, headers, req.item, audio, subtitle)
+            }
+        }
     }
 
     private fun secondsIn(req: Request): Long {
@@ -177,7 +220,7 @@ class Playback(
 
     private class Stream(val url: String, val headers: Map<String, String>, val hls: Boolean, val stop: (() -> Unit)?)
 
-    private fun resolve(req: Request, rung: Rung, offsetSec: Long): Stream? {
+    private fun resolve(req: Request, rung: Rung, offsetSec: Long, serverExtra: String): Stream? {
         val c = caps()
         return when (val s = req.session) {
             is Session.Plex -> {
@@ -203,7 +246,7 @@ class Playback(
                 if (rung == Rung.DIRECT) Stream(MediaBrowserStreams.staticStreamUrl(mb, req.item), headers, false, null)
                 else {
                     val ps = MediaBrowserStreams.newPlaySessionId()
-                    val url = MediaBrowserStreams.hlsUrl(mb, req.item, ps, c, rung == Rung.CAPPED)
+                    val url = MediaBrowserStreams.hlsUrl(mb, req.item, ps, c, rung == Rung.CAPPED) + serverExtra
                     val stopUrl = MediaBrowserStreams.stopUrl(mb, ps)
                     Stream(url, headers, true) { fireAndForget("DELETE", stopUrl, headers) }
                 }
@@ -241,8 +284,22 @@ class Playback(
         a.deadline?.cancel()
         a.stop?.invoke()
         a.stop = null
+        // A server stream with a language preference asks the server for its tracks first.
+        if (a.rung != Rung.DIRECT && !a.choiceDone && (audioLanguage != null || captionsOn)) {
+            player.stop()
+            a.choiceJob?.cancel()
+            a.choiceJob = scope.launch {
+                val extra = withContext(Dispatchers.IO) {
+                    try { chooseServerTracks(a.req) } catch (_: Exception) { "" }
+                }
+                a.choiceDone = true
+                a.serverExtra = extra
+                if (active === a && a.index == index) start(a, index)
+            }
+            return
+        }
         val offset = secondsIn(a.req)
-        val stream = resolve(a.req, a.rung, offset)
+        val stream = resolve(a.req, a.rung, offset, a.serverExtra)
         if (stream == null) {
             fail(a, Failure.UNKNOWN)
             return
@@ -334,6 +391,7 @@ class Playback(
         a.deadline?.cancel()
         a.monitor?.cancel()
         a.retry?.cancel()
+        a.choiceJob?.cancel()
         if (stopStream) a.stop?.invoke()
         a.stop = null
     }

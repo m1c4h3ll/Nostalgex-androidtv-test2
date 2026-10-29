@@ -1,9 +1,15 @@
 package app.nostalgex.tv.ui
 
+import android.app.Activity
 import android.graphics.Color as AColor
+import android.view.WindowManager
 import android.view.ViewGroup
 import androidx.activity.compose.BackHandler
 import androidx.annotation.OptIn
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -28,6 +34,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
@@ -37,6 +46,7 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
@@ -51,6 +61,7 @@ import androidx.media3.ui.PlayerView
 import app.nostalgex.tv.i18n.S
 import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.Screen
+import kotlinx.coroutines.delay
 
 /** Guide geometry, after TunerView: the top section is 51.43% of the height, the video 4:3. */
 class GuideGeometry(val width: Float, val height: Float) {
@@ -61,12 +72,22 @@ class GuideGeometry(val width: Float, val height: Float) {
 
 @Composable
 fun NostalgexRoot(vm: AppViewModel) {
+    // The screen stays on while the TV plays; after the sleep timer it may sleep.
+    val window = (LocalContext.current as? Activity)?.window
+    LaunchedEffect(vm.asleep) {
+        if (vm.asleep) window?.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        else window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    }
     BoxWithConstraints(Modifier.fillMaxSize().background(Color.Black)) {
         val density = LocalDensity.current
         // Everything is laid out in 1080p pixels: one of them is maxWidth / 1920.
         Px.scale = maxWidth.value / 1920f
         Px.fontScale = density.fontScale
         val geo = GuideGeometry(1920f, maxHeight.value / Px.scale)
+        if (vm.asleep) {
+            SleepScreen()
+            return@BoxWithConstraints
+        }
 
         val showVideo = vm.screen == Screen.GUIDE || vm.screen == Screen.SETTINGS
         if (showVideo && vm.screen == Screen.GUIDE) VideoLayer(vm, geo)
@@ -120,6 +141,39 @@ fun VideoLayer(vm: AppViewModel, geo: GuideGeometry) {
         )
         if (vm.retroMode) CrtOverlay()
         TuningLayer(vm, compact = !full)
+    }
+}
+
+/**
+ * After the sleep timer: the picture collapses to a line, as an old set switching off, then
+ * GOODNIGHT, then black. Any button turns it back on.
+ */
+@Composable
+fun SleepScreen() {
+    val line = remember { Animatable(1f) }
+    val text = remember { Animatable(0f) }
+    LaunchedEffect(Unit) {
+        line.animateTo(0f, tween(700, easing = FastOutLinearInEasing))
+        text.animateTo(1f, tween(800))
+        delay(10_000)
+        text.animateTo(0f, tween(2_000))
+    }
+    Box(Modifier.fillMaxSize().background(Color.Black), contentAlignment = Alignment.Center) {
+        Canvas(Modifier.fillMaxSize()) {
+            val w = size.width * line.value
+            if (w > 1f) {
+                val h = maxOf(2f, size.height / 270f)
+                drawRect(Color.White.copy(alpha = 0.9f), topLeft = Offset((size.width - w) / 2, (size.height - h) / 2), size = Size(w, h))
+            }
+        }
+        Column(
+            Modifier.alpha(text.value),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(Px.u(24f)),
+        ) {
+            T(S.goodnight, 80f, Nx.Cyan, retro = true, tracking = Px.sp(8f))
+            T(S.wakeHint, 26f, Color.White.copy(alpha = 0.5f), retro = true)
+        }
     }
 }
 

@@ -122,7 +122,8 @@ private fun Osd(vm: AppViewModel) {
                     T(displayLine(item), 36f, Color.White, medium = true)
                     val left = (vm.airingStartSec + item.duration * 60 - vm.nowSec).toLong()
                     val ep = if (item.type == "episode") item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { S.quote(it) + " · " } ?: "" else ""
-                    T(ep + S.minutesLeft(maxOf(0L, left / 60), Fmt.clock(vm.nowSec)), 24f, Color.White.copy(alpha = 0.6f), retro = true)
+                    val sleep = vm.sleepMinutesLeft().takeIf { it > 0 }?.let { " · " + S.sleepShort(it) } ?: ""
+                    T(ep + S.minutesLeft(maxOf(0L, left / 60), Fmt.clock(vm.nowSec)) + sleep, 24f, Color.White.copy(alpha = 0.6f), retro = true)
                 }
             }
         }
@@ -193,6 +194,8 @@ private fun NowPlayingPanel(vm: AppViewModel) {
             Row(horizontalArrangement = Arrangement.spacedBy(Px.u(18f))) {
                 Slab(S.subtitles, vm.panelFocus == 0, trailing = if (vm.captions) S.on else S.off, modifier = Modifier.width(Px.u(420f)), size = 24f)
                 Slab(S.retroMode, vm.panelFocus == 1, trailing = if (vm.retroMode) S.on else S.off, modifier = Modifier.width(Px.u(420f)), size = 24f)
+                val sleep = vm.sleepMinutesLeft()
+                Slab(S.sleepTimer, vm.panelFocus == 2, trailing = if (sleep > 0) S.minutesShort(sleep) else S.off, modifier = Modifier.width(Px.u(420f)), size = 24f)
             }
             T(playbackInfo(vm), 20f, Color.White.copy(alpha = 0.4f))
         }

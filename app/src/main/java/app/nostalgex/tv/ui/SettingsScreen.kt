@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import app.nostalgex.tv.BuildConfig
 import app.nostalgex.engine.schedule.Season
+import app.nostalgex.tv.i18n.Language
 import app.nostalgex.tv.i18n.S
 import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.SettingsRow
@@ -60,6 +61,9 @@ fun SettingsScreen(vm: AppViewModel) {
                     }
                     SettingsRow.Retro -> Slab(S.retroMode, f, Modifier.fillMaxWidth(), sub = S.retroModeSub, trailing = if (vm.retroMode) S.on else S.off, size = 26f, accent = Nx.Pink)
                     SettingsRow.Captions -> Slab(S.subtitles, f, Modifier.fillMaxWidth(), sub = S.subtitlesSub, trailing = if (vm.captions) S.on else S.off, size = 26f, accent = Nx.Pink)
+                    SettingsRow.SubtitleLanguage -> Slab(S.subtitleLanguage, f, Modifier.fillMaxWidth(), sub = S.subtitleLanguageSub, trailing = Language.from(vm.subtitleLanguage)?.label ?: vm.subtitleLanguage.uppercase(), size = 26f, accent = Nx.Pink)
+                    SettingsRow.AudioLanguage -> Slab(S.audioLanguage, f, Modifier.fillMaxWidth(), sub = S.audioLanguageSub, trailing = vm.audioLanguage?.let { Language.from(it)?.label ?: it.uppercase() } ?: S.original, size = 26f, accent = Nx.Pink)
+                    SettingsRow.Startup -> Slab(S.onStartup, f, Modifier.fillMaxWidth(), sub = S.onStartupSub, trailing = if (vm.startOnLastChannel) S.lastChannel else S.guideLabel, size = 26f, accent = Nx.Pink)
                     SettingsRow.UiLanguage -> Slab(S.language, f, Modifier.fillMaxWidth(), sub = S.languageSub, trailing = vm.language.label, size = 26f, accent = Nx.Pink)
                     SettingsRow.Rescan -> Slab(S.rescanLibrary, f, Modifier.fillMaxWidth(), sub = S.rescanSub, size = 26f, accent = Nx.Yellow)
                     SettingsRow.SignOut -> Slab(S.signOut, f, Modifier.fillMaxWidth(), sub = vm.session?.displayName ?: "", size = 26f, accent = Nx.Amber)

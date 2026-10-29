@@ -47,6 +47,21 @@ class Prefs(context: Context) {
         get() = sp.getString("language", null)
         set(v) { sp.edit().apply { if (v == null) remove("language") else putString("language", v) }.apply() }
 
+    /** The soundtrack to prefer ("fr" or "en"), or null for each programme's own default. */
+    var audioLanguage: String?
+        get() = sp.getString("audio_language", null)
+        set(v) { sp.edit().apply { if (v == null) remove("audio_language") else putString("audio_language", v) }.apply() }
+
+    /** The subtitles to prefer ("fr" or "en"), or null to match the app's language. */
+    var subtitleLanguage: String?
+        get() = sp.getString("subtitle_language", null)
+        set(v) { sp.edit().apply { if (v == null) remove("subtitle_language") else putString("subtitle_language", v) }.apply() }
+
+    /** Open straight onto the last channel, full screen, rather than on the guide. */
+    var startOnLastChannel: Boolean
+        get() = sp.getBoolean("start_on_last_channel", false)
+        set(v) { sp.edit().putBoolean("start_on_last_channel", v).apply() }
+
     /** Subtitles shown (the CC toggle). */
     var captions: Boolean
         get() = sp.getBoolean("captions", false)

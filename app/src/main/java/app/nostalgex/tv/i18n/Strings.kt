@@ -180,6 +180,28 @@ interface Strings {
     val couldntReachTheServer: String
     val signInFailed: String
 
+    // ── Guide browsing, sleep timer, track languages, startup ───────────────
+    /** The guide's channel column header when the grid has scrolled past midnight. */
+    val tomorrow: String
+    fun startsAt(clock: String): String
+    val sleepTimer: String
+    /** The nav bar's reminder that the sleep timer is on. */
+    fun sleepShort(minutes: Int): String
+    fun minutesShort(minutes: Int): String
+    val sleepWarning: String
+    val goodnight: String
+    val wakeHint: String
+    val subtitleLanguage: String
+    val subtitleLanguageSub: String
+    val audioLanguage: String
+    val audioLanguageSub: String
+    /** AUDIO LANGUAGE set to each programme's own default track. */
+    val original: String
+    val onStartup: String
+    val onStartupSub: String
+    val guideLabel: String
+    val lastChannel: String
+
     // ── Formats ─────────────────────────────────────────────────────────────
     fun clock(sec: Long): String
     fun minutes(min: Int): String
@@ -321,6 +343,24 @@ object En : Strings {
     override val wrongNameOrPassword = "THAT NAME OR PASSWORD ISN'T RIGHT"
     override val couldntReachTheServer = "COULDN'T REACH THE SERVER"
     override val signInFailed = "SIGN-IN FAILED"
+
+    override val tomorrow = "TOMORROW"
+    override fun startsAt(clock: String) = "STARTS $clock"
+    override val sleepTimer = "SLEEP TIMER"
+    override fun sleepShort(minutes: Int) = "SLEEP $minutes MIN"
+    override fun minutesShort(minutes: Int) = "$minutes MIN"
+    override val sleepWarning = "The TV turns off in 1 minute"
+    override val goodnight = "GOODNIGHT"
+    override val wakeHint = "PRESS ANY BUTTON TO TURN THE TV BACK ON"
+    override val subtitleLanguage = "SUBTITLE LANGUAGE"
+    override val subtitleLanguageSub = "Which subtitles to show when SUBTITLES is on"
+    override val audioLanguage = "AUDIO LANGUAGE"
+    override val audioLanguageSub = "Which soundtrack to play when a programme has more than one"
+    override val original = "ORIGINAL"
+    override val onStartup = "ON STARTUP"
+    override val onStartupSub = "Open on the guide, or straight onto the last channel, full screen"
+    override val guideLabel = "GUIDE"
+    override val lastChannel = "LAST CHANNEL"
 
     override fun clock(sec: Long): String = clockFormat.format(Instant.ofEpochSecond(sec).atZone(ZoneId.systemDefault()))
     override fun minutes(min: Int) = if (min >= 60) "${min / 60}h ${min % 60}m" else "${min}m"
@@ -511,6 +551,24 @@ object Fr : Strings {
     override val wrongNameOrPassword = "CE NOM OU CE MOT DE PASSE N'EST PAS LE BON"
     override val couldntReachTheServer = "IMPOSSIBLE DE JOINDRE LE SERVEUR"
     override val signInFailed = "LA CONNEXION A ÉCHOUÉ"
+
+    override val tomorrow = "DEMAIN"
+    override fun startsAt(clock: String) = "COMMENCE À $clock"
+    override val sleepTimer = "MINUTERIE"
+    override fun sleepShort(minutes: Int) = "VEILLE $minutes MIN"
+    override fun minutesShort(minutes: Int) = "$minutes MIN"
+    override val sleepWarning = "La télé s'éteint dans 1 minute"
+    override val goodnight = "BONNE NUIT"
+    override val wakeHint = "APPUYEZ SUR UN BOUTON POUR RALLUMER LA TÉLÉ"
+    override val subtitleLanguage = "LANGUE DES SOUS-TITRES"
+    override val subtitleLanguageSub = "Les sous-titres à afficher quand SOUS-TITRES est activé"
+    override val audioLanguage = "LANGUE AUDIO"
+    override val audioLanguageSub = "La piste sonore à jouer quand une émission en a plusieurs"
+    override val original = "ORIGINALE"
+    override val onStartup = "AU DÉMARRAGE"
+    override val onStartupSub = "Ouvrir sur le guide, ou directement sur le dernier canal, en plein écran"
+    override val guideLabel = "GUIDE"
+    override val lastChannel = "DERNIER CANAL"
 
     override fun clock(sec: Long): String = clockFormat.format(Instant.ofEpochSecond(sec).atZone(ZoneId.systemDefault()))
     override fun minutes(min: Int) = if (min >= 60) "${min / 60} h %02d".format(min % 60) else "$min min"
