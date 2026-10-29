@@ -18,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import app.nostalgex.engine.schedule.Season
 import app.nostalgex.tv.BuildConfig
+import app.nostalgex.engine.schedule.Season
+import app.nostalgex.tv.i18n.Language
+import app.nostalgex.tv.i18n.S
 import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.SettingsRow
 import java.time.LocalDateTime
@@ -38,7 +40,7 @@ fun SettingsScreen(vm: AppViewModel) {
             Modifier.width(Px.u(1180f)).fillMaxHeight().padding(start = Px.u(90f), top = Px.u(60f), end = Px.u(40f)).clipToBounds(),
             verticalArrangement = Arrangement.spacedBy(Px.u(12f)),
         ) {
-            T("SETTINGS", 44f, Nx.Yellow, retro = true, tracking = Px.sp(3f))
+            T(S.settings, 44f, Nx.Yellow, retro = true, tracking = Px.sp(3f))
             Spacer(Modifier.height(Px.u(8f)))
             if (top > 0) T("▲", 22f, Color.White.copy(alpha = 0.4f))
             for (i in top until minOf(rows.size, top + visible)) {
@@ -49,18 +51,22 @@ fun SettingsScreen(vm: AppViewModel) {
                         val b = row.bundle
                         val on = vm.enabledBundles.contains(b.id)
                         val (avail, total) = vm.packageCounts(b)
-                        val season = Season.spotlightLabel(b, now)
+                        val season = S.spotlightLabel(b, now)
                         val sub = buildString {
-                            append(b.description)
-                            append(" · $avail of $total channels have enough to air")
+                            append(S.bundleDescription(b))
+                            append(" · ").append(S.channelsWithEnough(avail, total))
                             if (season.isNotEmpty() && !Season.isInSeason(b, now)) append(" · $season")
                         }
-                        Slab(b.name, f, Modifier.fillMaxWidth(), sub = sub, trailing = if (on) "ON" else "OFF", size = 26f)
+                        Slab(b.name, f, Modifier.fillMaxWidth(), sub = sub, trailing = if (on) S.on else S.off, size = 26f)
                     }
-                    SettingsRow.Retro -> Slab("RETRO MODE", f, Modifier.fillMaxWidth(), sub = "The picture cropped to 4:3 under scanlines, and snow between channels", trailing = if (vm.retroMode) "ON" else "OFF", size = 26f, accent = Nx.Pink)
-                    SettingsRow.Captions -> Slab("SUBTITLES", f, Modifier.fillMaxWidth(), sub = "Show subtitles when a programme has them", trailing = if (vm.captions) "ON" else "OFF", size = 26f, accent = Nx.Pink)
-                    SettingsRow.Rescan -> Slab("RESCAN LIBRARY", f, Modifier.fillMaxWidth(), sub = "Read every server again, behind the guide", size = 26f, accent = Nx.Yellow)
-                    SettingsRow.SignOut -> Slab("SIGN OUT", f, Modifier.fillMaxWidth(), sub = vm.session?.displayName ?: "", size = 26f, accent = Nx.Amber)
+                    SettingsRow.Retro -> Slab(S.retroMode, f, Modifier.fillMaxWidth(), sub = S.retroModeSub, trailing = if (vm.retroMode) S.on else S.off, size = 26f, accent = Nx.Pink)
+                    SettingsRow.Captions -> Slab(S.subtitles, f, Modifier.fillMaxWidth(), sub = S.subtitlesSub, trailing = if (vm.captions) S.on else S.off, size = 26f, accent = Nx.Pink)
+                    SettingsRow.SubtitleLanguage -> Slab(S.subtitleLanguage, f, Modifier.fillMaxWidth(), sub = S.subtitleLanguageSub, trailing = Language.from(vm.subtitleLanguage)?.label ?: vm.subtitleLanguage.uppercase(), size = 26f, accent = Nx.Pink)
+                    SettingsRow.AudioLanguage -> Slab(S.audioLanguage, f, Modifier.fillMaxWidth(), sub = S.audioLanguageSub, trailing = vm.audioLanguage?.let { Language.from(it)?.label ?: it.uppercase() } ?: S.original, size = 26f, accent = Nx.Pink)
+                    SettingsRow.Startup -> Slab(S.onStartup, f, Modifier.fillMaxWidth(), sub = S.onStartupSub, trailing = if (vm.startOnLastChannel) S.lastChannel else S.guideLabel, size = 26f, accent = Nx.Pink)
+                    SettingsRow.UiLanguage -> Slab(S.language, f, Modifier.fillMaxWidth(), sub = S.languageSub, trailing = vm.language.label, size = 26f, accent = Nx.Pink)
+                    SettingsRow.Rescan -> Slab(S.rescanLibrary, f, Modifier.fillMaxWidth(), sub = S.rescanSub, size = 26f, accent = Nx.Yellow)
+                    SettingsRow.SignOut -> Slab(S.signOut, f, Modifier.fillMaxWidth(), sub = vm.session?.displayName ?: "", size = 26f, accent = Nx.Amber)
                 }
             }
             if (top + visible < rows.size) T("▼", 22f, Color.White.copy(alpha = 0.4f))
@@ -71,14 +77,14 @@ fun SettingsScreen(vm: AppViewModel) {
             verticalArrangement = Arrangement.spacedBy(Px.u(18f)),
         ) {
             Logo(Px.u(46f))
-            T("${vm.guideChannels.size} CHANNELS ON · ${vm.libraryCount} PROGRAMMES", 26f, Nx.Cyan, retro = true)
+            T(S.channelsOnSummary(vm.guideChannels.size, vm.libraryCount), 26f, Nx.Cyan, retro = true)
             T(vm.session?.displayName ?: "", 22f, Color.White.copy(alpha = 0.6f), maxLines = 2)
             Spacer(Modifier.height(Px.u(20f)))
-            T("OK switches · BACK saves and returns to the guide", 20f, Color.White.copy(alpha = 0.45f), maxLines = 2)
+            T(S.settingsHint, 20f, Color.White.copy(alpha = 0.45f), maxLines = 2)
             Spacer(Modifier.weight(1f))
             Box(Modifier.padding(bottom = Px.u(50f))) {
                 T(
-                    "NOSTALGEX FOR ANDROID TV ${BuildConfig.VERSION_NAME}\nChannels, schedule and guide from Nostalgex by Chad Mueller (MIT), github.com/chadMueller/Nostalgex. Fonts: VT323, DM Mono (OFL).",
+                    S.about(BuildConfig.VERSION_NAME),
                     17f, Color.White.copy(alpha = 0.35f), maxLines = 5, lineHeight = 24f,
                 )
             }

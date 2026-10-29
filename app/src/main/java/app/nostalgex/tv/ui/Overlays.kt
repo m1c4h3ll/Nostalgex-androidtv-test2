@@ -26,6 +26,7 @@ import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.Overlay
 import app.nostalgex.tv.tuner.PlayState
 import app.nostalgex.tv.tuner.Playback
+import app.nostalgex.tv.i18n.S
 import kotlinx.coroutines.delay
 
 /** Over the picture while it tunes, fails or stops: snow (RETRO MODE) or a dim TUNING card. */
@@ -37,20 +38,20 @@ fun TuningLayer(vm: AppViewModel, compact: Boolean) {
         PlayState.Tuning -> {
             if (vm.retroMode) StaticSnow() else Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.7f)))
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                T("TUNING${ch?.let { " CH ${it.number}" } ?: ""}", 44f * scale, Color.White, retro = true, tracking = Px.sp(4f))
+                T(S.tuning(ch?.number), 44f * scale, Color.White, retro = true, tracking = Px.sp(4f))
             }
         }
         is PlayState.Failed -> Card(
             title = vm.currentItem?.let { displayLine(it) } ?: "",
-            message = st.failure.message,
-            hint = "NEXT PROGRAMME IN A MOMENT",
+            message = S.failure(st.failure),
+            hint = S.nextProgrammeSoon,
             accent = if (st.failure.serverSide) Nx.Amber else Nx.Red,
             scale = scale,
         )
         is PlayState.Stopped -> Card(
-            title = ch?.let { "CH ${it.number} — ${it.name}" } ?: "",
+            title = ch?.let { S.channelShort(it.number, it.name) } ?: "",
             message = st.message,
-            hint = "PRESS OK TO TRY AGAIN",
+            hint = S.pressOkToTryAgain,
             accent = Nx.Amber,
             scale = scale,
         )
@@ -120,8 +121,9 @@ private fun Osd(vm: AppViewModel) {
                 if (item != null) {
                     T(displayLine(item), 36f, Color.White, medium = true)
                     val left = (vm.airingStartSec + item.duration * 60 - vm.nowSec).toLong()
-                    val ep = if (item.type == "episode") item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { "“$it” · " } ?: "" else ""
-                    T("$ep${maxOf(0L, left / 60)} MIN LEFT · ${Fmt.clock(vm.nowSec)}", 24f, Color.White.copy(alpha = 0.6f), retro = true)
+                    val ep = if (item.type == "episode") item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { S.quote(it) + " · " } ?: "" else ""
+                    val sleep = vm.sleepMinutesLeft().takeIf { it > 0 }?.let { " · " + S.sleepShort(it) } ?: ""
+                    T(ep + S.minutesLeft(maxOf(0L, left / 60), Fmt.clock(vm.nowSec)) + sleep, 24f, Color.White.copy(alpha = 0.6f), retro = true)
                 }
             }
         }
@@ -168,11 +170,11 @@ private fun NowPlayingPanel(vm: AppViewModel) {
             Modifier.fillMaxWidth().background(Color(0xF0070714)).padding(horizontal = Px.u(80f), vertical = Px.u(44f)),
             verticalArrangement = Arrangement.spacedBy(Px.u(12f)),
         ) {
-            T("CH %02d — %s".format(ch.number, ch.name.uppercase()), 32f, color, retro = true, tracking = Px.sp(2f))
+            T(S.channelTag(ch.number, ch.name.uppercase()), 32f, color, retro = true, tracking = Px.sp(2f))
             if (item != null) {
                 T(displayLine(item), 38f, Color.White, medium = true)
                 val meta = listOfNotNull(
-                    item.episodeTitle?.takeIf { item.type == "episode" && it.isNotEmpty() }?.let { "“$it”" },
+                    item.episodeTitle?.takeIf { item.type == "episode" && it.isNotEmpty() }?.let { S.quote(it) },
                     Fmt.seasonEpisode(item.seasonNumber, item.episodeNumber).takeIf { it.isNotEmpty() },
                     item.year?.toString(),
                     item.contentRating?.takeIf { it.isNotEmpty() },
@@ -186,12 +188,14 @@ private fun NowPlayingPanel(vm: AppViewModel) {
                     Bar(if (total > 0) elapsed.toFloat() / total else 0f, color, Modifier.weight(1f))
                     T("${Fmt.hms(elapsed)} / ${Fmt.hms(total)}", 24f, Color.White.copy(alpha = 0.55f), retro = true)
                 }
-                vm.schedules[ch.id]?.upNext?.let { T("UP NEXT  ${displayLine(it.item)}", 22f, Color.White.copy(alpha = 0.6f), retro = true) }
+                vm.schedules[ch.id]?.upNext?.let { T("${S.upNext}  ${displayLine(it.item)}", 22f, Color.White.copy(alpha = 0.6f), retro = true) }
             }
             Spacer(Modifier.height(Px.u(8f)))
             Row(horizontalArrangement = Arrangement.spacedBy(Px.u(18f))) {
-                Slab("SUBTITLES", vm.panelFocus == 0, trailing = if (vm.captions) "ON" else "OFF", modifier = Modifier.width(Px.u(420f)), size = 24f)
-                Slab("RETRO MODE", vm.panelFocus == 1, trailing = if (vm.retroMode) "ON" else "OFF", modifier = Modifier.width(Px.u(420f)), size = 24f)
+                Slab(S.subtitles, vm.panelFocus == 0, trailing = if (vm.captions) S.on else S.off, modifier = Modifier.width(Px.u(420f)), size = 24f)
+                Slab(S.retroMode, vm.panelFocus == 1, trailing = if (vm.retroMode) S.on else S.off, modifier = Modifier.width(Px.u(420f)), size = 24f)
+                val sleep = vm.sleepMinutesLeft()
+                Slab(S.sleepTimer, vm.panelFocus == 2, trailing = if (sleep > 0) S.minutesShort(sleep) else S.off, modifier = Modifier.width(Px.u(420f)), size = 24f)
             }
             T(playbackInfo(vm), 20f, Color.White.copy(alpha = 0.4f))
         }
@@ -202,15 +206,15 @@ private fun NowPlayingPanel(vm: AppViewModel) {
 private fun playbackInfo(vm: AppViewModel): String {
     val item = vm.currentItem ?: return ""
     val how = when (vm.currentRung) {
-        Playback.Rung.DIRECT -> "DIRECT PLAY"
-        Playback.Rung.SERVER -> "SERVER STREAM"
-        Playback.Rung.CAPPED -> "SERVER STREAM 1080p"
-        null -> "STARTING"
+        Playback.Rung.DIRECT -> S.directPlay
+        Playback.Rung.SERVER -> S.serverStream
+        Playback.Rung.CAPPED -> S.serverStream1080
+        null -> S.starting
     }
     val file = listOfNotNull(
         item.container?.uppercase(), item.videoCodec?.uppercase(), item.audioCodec?.uppercase(),
         item.videoHeight.takeIf { it > 0 }?.let { "${it}p" },
-        item.bitrate.takeIf { it > 0 }?.let { "%.1f Mb/s".format(it / 1000.0) },
+        item.bitrate.takeIf { it > 0 }?.let { S.bitrate(it) },
     ).joinToString(" · ")
     return "$how · $file"
 }

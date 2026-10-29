@@ -9,6 +9,8 @@ import app.nostalgex.tv.data.Capabilities
 import app.nostalgex.tv.data.FileManifestStore
 import app.nostalgex.tv.data.LibraryStore
 import app.nostalgex.tv.data.Prefs
+import app.nostalgex.tv.i18n.I18n
+import app.nostalgex.tv.i18n.Language
 
 class NostalgexApp : Application() {
     lateinit var graph: AppGraph
@@ -17,6 +19,7 @@ class NostalgexApp : Application() {
     override fun onCreate() {
         super.onCreate()
         graph = AppGraph(this)
+        I18n.language = Language.from(graph.prefs.language) ?: Language.system()
     }
 }
 

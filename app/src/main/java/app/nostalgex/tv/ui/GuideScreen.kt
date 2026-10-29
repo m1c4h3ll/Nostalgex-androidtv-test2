@@ -23,10 +23,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import app.nostalgex.engine.model.Channel
 import app.nostalgex.engine.schedule.ChannelSchedule
-import app.nostalgex.engine.schedule.Season
+import app.nostalgex.tv.i18n.S
 import app.nostalgex.tv.tuner.AppViewModel
 import app.nostalgex.tv.tuner.PlayState
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneId
 
 private const val CHANNEL_COLUMN = 220f
 private const val ROW_HEIGHT = 80f
@@ -43,7 +45,7 @@ fun GuideScreen(vm: AppViewModel, geo: GuideGeometry) {
                     .background(Brush.linearGradient(listOf(Nx.Panel0, Nx.Panel1))),
             ) {
                 Column(Modifier.fillMaxSize()) {
-                    NavBar(focused = vm.guideFocus == -2)
+                    NavBar(focused = vm.guideFocus == -2, sleepMinutes = vm.sleepMinutesLeft())
                     val previewId = vm.guideChannels.getOrNull(vm.guideFocus)?.id ?: vm.currentChannelId
                     val ch = vm.channelById(previewId)
                     val sched = ch?.let { vm.schedules[it.id] }
@@ -58,39 +60,53 @@ fun GuideScreen(vm: AppViewModel, geo: GuideGeometry) {
 }
 
 @Composable
-private fun NavBar(focused: Boolean) {
+private fun NavBar(focused: Boolean, sleepMinutes: Int) {
     Row(
         Modifier.fillMaxWidth().height(Px.u(140f)).padding(start = Px.u(40f), end = Px.u(40f), top = Px.u(40f)),
         verticalAlignment = Alignment.Top,
     ) {
         Logo(Px.u(54f), Modifier.padding(top = Px.u(10f)))
         Spacer(Modifier.weight(1f))
+        if (sleepMinutes > 0) {
+            T(S.sleepShort(sleepMinutes), 24f, Nx.Pink, retro = true, modifier = Modifier.padding(top = Px.u(8f), end = Px.u(24f)))
+        }
         Box(
             Modifier.background(if (focused) Nx.Yellow.copy(alpha = 0.15f) else Color.Transparent)
                 .padding(horizontal = Px.u(14f), vertical = Px.u(8f)),
         ) {
-            T("SETTINGS", 24f, if (focused) Nx.Yellow else Color.White.copy(alpha = 0.5f), medium = true)
+            T(S.settings, 24f, if (focused) Nx.Yellow else Color.White.copy(alpha = 0.5f), medium = true)
         }
     }
 }
 
-/** InfoPanelView: channel tag, title, episode, description, year, progress, up next. */
+/**
+ * InfoPanelView: channel tag, title, episode, description, year, progress, up next. With the grid
+ * scrolled ahead, the programme on at the grid's left edge, and when it starts.
+ */
 @Composable
 private fun InfoPanel(vm: AppViewModel, ch: Channel, sched: ChannelSchedule) {
     val color = Nx.hex(ch.colorHex)
     val isCurrent = ch.id == vm.currentChannelId
+    val browseAt = gridStart(vm)
+    val later = if (vm.guideOffset > 0) {
+        sched.entries.firstOrNull { it.startSec <= browseAt && it.endSec > browseAt } ?: sched.entries.firstOrNull { it.startSec >= browseAt }
+    } else null
     val now = sched.nowPlaying
-    val item = if (isCurrent) vm.currentItem ?: now?.item else now?.item
+    val item = when {
+        later != null -> later.item
+        isCurrent -> vm.currentItem ?: now?.item
+        else -> now?.item
+    }
     Column(Modifier.fillMaxSize().padding(start = Px.u(40f), end = Px.u(40f), top = Px.u(4f))) {
         T(
-            "CH %02d — %s".format(ch.number, ch.name.uppercase()), 36f, color, retro = true,
+            S.channelTag(ch.number, ch.name.uppercase()), 36f, color, retro = true,
             tracking = Px.sp(2f), modifier = Modifier.padding(bottom = Px.u(14f)),
         )
         if (item != null) {
             T(displayLine(item), 38f, Color.White, medium = true, modifier = Modifier.padding(bottom = Px.u(8f)))
             val epLine = when {
                 item.type == "episode" -> listOfNotNull(
-                    item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { "“$it”" },
+                    item.episodeTitle?.takeIf { it.isNotEmpty() }?.let { S.quote(it) },
                     Fmt.seasonEpisode(item.seasonNumber, item.episodeNumber).takeIf { it.isNotEmpty() },
                 ).joinToString(" · ")
                 !item.director.isNullOrEmpty() -> item.director!!
@@ -102,7 +118,7 @@ private fun InfoPanel(vm: AppViewModel, ch: Channel, sched: ChannelSchedule) {
             if (item.summary.isNotEmpty()) {
                 T(item.summary, 20f, Color.White.copy(alpha = 0.65f), maxLines = 2, lineHeight = 28f, modifier = Modifier.padding(bottom = Px.u(14f)))
             }
-            // Year badge, progress bar and times.
+            // Year badge, then the progress bar and times, or when a later programme starts.
             val start = if (isCurrent && vm.currentItem != null) vm.airingStartSec.toLong() else now?.startSec ?: 0L
             val total = item.duration * 60L
             val elapsed = (vm.nowSec - start).coerceIn(0L, total)
@@ -112,14 +128,18 @@ private fun InfoPanel(vm: AppViewModel, ch: Channel, sched: ChannelSchedule) {
                         T(it.toString(), 24f, Color.White.copy(alpha = 0.7f), retro = true)
                     }
                 }
-                Bar(if (total > 0) elapsed.toFloat() / total else 0f, color, Modifier.weight(1f))
-                T("${Fmt.hms(elapsed)} / ${Fmt.hms(total)}", 24f, Color.White.copy(alpha = 0.55f), retro = true)
+                if (later != null) {
+                    T("${S.startsAt(Fmt.clock(later.startSec))} · ${Fmt.minutes(item.duration)}", 24f, color, retro = true)
+                } else {
+                    Bar(if (total > 0) elapsed.toFloat() / total else 0f, color, Modifier.weight(1f))
+                    T("${Fmt.hms(elapsed)} / ${Fmt.hms(total)}", 24f, Color.White.copy(alpha = 0.55f), retro = true)
+                }
             }
             Spacer(Modifier.height(Px.u(16f)))
-            val next = sched.upNext
+            val next = if (later != null) sched.entries.getOrNull(sched.entries.indexOf(later) + 1) else sched.upNext
             if (next != null) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    T("UP NEXT ", 24f, Color.White.copy(alpha = 0.5f), retro = true, tracking = Px.sp(2f))
+                    T(S.upNext + " ", 24f, Color.White.copy(alpha = 0.5f), retro = true, tracking = Px.sp(2f))
                     T(displayLine(next.item), 18f, Color.White.copy(alpha = 0.75f))
                 }
             }
@@ -127,16 +147,22 @@ private fun InfoPanel(vm: AppViewModel, ch: Channel, sched: ChannelSchedule) {
     }
 }
 
+/** The time at the grid's left edge: this half hour, plus however far ◀ / ▶ have scrolled it. */
+private fun gridStart(vm: AppViewModel): Long = (vm.nowSec / 1800) * 1800 + vm.guideOffset * 1800L
+
 /** ChannelGuideView: a header of half hours, then a row per channel. */
 @Composable
 private fun Grid(vm: AppViewModel, modifier: Modifier) {
-    val windowStart = (vm.nowSec / 1800) * 1800
+    val windowStart = gridStart(vm)
     val programsWidth = 1920f - CHANNEL_COLUMN
+    val zone = ZoneId.systemDefault()
+    val pastMidnight = Instant.ofEpochSecond(windowStart).atZone(zone).toLocalDate() !=
+        Instant.ofEpochSecond(vm.nowSec).atZone(zone).toLocalDate()
     Box(modifier.background(Nx.GridBg).clipToBounds()) {
         Column(Modifier.fillMaxSize()) {
             // Header
             Row(Modifier.fillMaxWidth().height(Px.u(HEADER_HEIGHT)).background(Nx.HeaderBg), verticalAlignment = Alignment.CenterVertically) {
-                T("CHANNEL", 18f, Color.White.copy(alpha = 0.7f), medium = true, modifier = Modifier.width(Px.u(CHANNEL_COLUMN)).padding(start = Px.u(12f)))
+                T(if (pastMidnight) S.tomorrow else S.channelColumn, 18f, if (pastMidnight) Nx.Yellow else Color.White.copy(alpha = 0.7f), medium = true, modifier = Modifier.width(Px.u(CHANNEL_COLUMN)).padding(start = Px.u(12f)))
                 for (i in 0 until 4) {
                     Row(Modifier.width(Px.u(programsWidth / 4)), verticalAlignment = Alignment.CenterVertically) {
                         Box(Modifier.width(Px.u(1f)).height(Px.u(HEADER_HEIGHT)).background(Color.White.copy(alpha = 0.2f)))
@@ -147,9 +173,11 @@ private fun Grid(vm: AppViewModel, modifier: Modifier) {
             Box(Modifier.fillMaxWidth().height(Px.u(1f)).background(Color.White.copy(alpha = 0.25f)))
             RowsArea(vm, windowStart, programsWidth)
         }
-        // The now line.
-        val x = CHANNEL_COLUMN + (vm.nowSec - windowStart).toFloat() / WINDOW_SEC * programsWidth
-        Box(Modifier.offset(x = Px.u(x)).width(Px.u(2f)).fillMaxHeight().background(Nx.Cyan))
+        // The now line, while now is on the grid.
+        if (vm.nowSec in windowStart..windowStart + WINDOW_SEC) {
+            val x = CHANNEL_COLUMN + (vm.nowSec - windowStart).toFloat() / WINDOW_SEC * programsWidth
+            Box(Modifier.offset(x = Px.u(x)).width(Px.u(2f)).fillMaxHeight().background(Nx.Cyan))
+        }
     }
 }
 
@@ -160,8 +188,8 @@ private fun RowsArea(vm: AppViewModel, windowStart: Long, programsWidth: Float) 
     if (channels.isEmpty()) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                T("NO CHANNELS FOUND", 30f, Nx.Yellow, retro = true)
-                T("Press OK to open Settings and switch on more packages.", 22f, Color.White.copy(alpha = 0.6f))
+                T(S.noChannelsFound, 30f, Nx.Yellow, retro = true)
+                T(S.noChannelsHint, 22f, Color.White.copy(alpha = 0.6f))
             }
         }
         return
@@ -192,8 +220,8 @@ private fun InviteRow(vm: AppViewModel, bundle: app.nostalgex.engine.model.Bundl
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Px.u(18f)),
     ) {
-        T(Season.inviteHeadline(bundle, LocalDateTime.now()), 22f, if (focused) Color.Black else Color.White, medium = true, modifier = Modifier.weight(1f))
-        val labels = listOf("SWITCH IT ON", "NOT THIS YEAR", "DON'T ASK AGAIN")
+        T(S.inviteHeadline(bundle, LocalDateTime.now()), 22f, if (focused) Color.Black else Color.White, medium = true, modifier = Modifier.weight(1f))
+        val labels = S.inviteChoices
         labels.forEachIndexed { i, l ->
             val sel = focused && vm.inviteChoice == i
             Box(
@@ -237,6 +265,10 @@ private fun ChannelRow(
         // Programmes
         Box(Modifier.width(Px.u(programsWidth)).fillMaxHeight().clipToBounds()) {
             val windowEnd = windowStart + WINDOW_SEC
+            // Scrolled ahead, the focused row marks the programme the info panel shows.
+            val picked = if (focused && vm.guideOffset > 0) sched?.entries?.let { list ->
+                list.firstOrNull { it.startSec <= windowStart && it.endSec > windowStart } ?: list.firstOrNull { it.startSec >= windowStart }
+            } else null
             sched?.entries?.forEach { e ->
                 if (e.endSec <= windowStart || e.startSec >= windowEnd) return@forEach
                 val s = maxOf(e.startSec, windowStart)
@@ -244,14 +276,16 @@ private fun ChannelRow(
                 val x = (s - windowStart).toFloat() / WINDOW_SEC * programsWidth
                 val w = maxOf(1f, (t - s).toFloat() / WINDOW_SEC * programsWidth)
                 val onNow = e.isNowPlaying
+                val isPicked = e == picked
                 Box(
                     Modifier.offset(x = Px.u(x)).width(Px.u(w)).fillMaxHeight()
                         .background(
                             when {
-                                onNow -> color.copy(alpha = if (focused) 0.55f else 0.25f)
+                                onNow || isPicked -> color.copy(alpha = if (focused) 0.55f else 0.25f)
                                 else -> Color.White.copy(alpha = 0.02f)
                             },
-                        ),
+                        )
+                        .then(if (isPicked) Modifier.border(Px.u(2f), Color.White.copy(alpha = 0.85f)) else Modifier),
                     contentAlignment = Alignment.CenterStart,
                 ) {
                     Box(Modifier.width(Px.u(1f)).fillMaxHeight().background(Color.White.copy(alpha = 0.12f)))

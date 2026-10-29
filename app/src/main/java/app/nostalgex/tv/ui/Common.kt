@@ -15,10 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import app.nostalgex.tv.R
-import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.util.Locale
+import app.nostalgex.tv.i18n.S
 
 @Composable
 fun Logo(height: Dp, modifier: Modifier = Modifier) {
@@ -66,9 +63,8 @@ fun Bar(fraction: Float, color: Color, modifier: Modifier = Modifier, height: Fl
 }
 
 object Fmt {
-    private val clock = DateTimeFormatter.ofPattern("h:mm a", Locale.US)
-
-    fun clock(sec: Long): String = clock.format(Instant.ofEpochSecond(sec).atZone(ZoneId.systemDefault()))
+    /** "8:30 PM", or "20 h 30" in French. */
+    fun clock(sec: Long): String = S.clock(sec)
 
     /** 1:52:12, or 52:12 under an hour. */
     fun hms(totalSec: Long): String {
@@ -79,7 +75,7 @@ object Fmt {
         return if (h > 0) "%d:%02d:%02d".format(h, m, ss) else "%d:%02d".format(m, ss)
     }
 
-    fun minutes(min: Int): String = if (min >= 60) "${min / 60}h ${min % 60}m" else "${min}m"
+    fun minutes(min: Int): String = S.minutes(min)
 
     fun seasonEpisode(season: Int?, episode: Int?): String {
         val sNum = season?.takeIf { it > 0 }?.let { "S%02d".format(it) } ?: ""

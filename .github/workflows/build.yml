@@ -27,7 +27,25 @@ jobs:
       - name: Engine tests (upstream Nostalgex golden vectors)
         run: ./gradlew :engine:test --stacktrace
 
+      # The release key, from the repository's secrets. With it every build is signed the same
+      # way, so a new APK installs over the last one. Without it (a fork, or before the secrets
+      # are added) the release APK is signed with this run's throwaway debug key.
+      - name: Release key
+        env:
+          KEYSTORE_B64: ${{ secrets.NOSTALGEX_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/nostalgex-release.p12"
+            echo "NOSTALGEX_KEYSTORE=$RUNNER_TEMP/nostalgex-release.p12" >> "$GITHUB_ENV"
+          else
+            echo "::warning title=Release signing::NOSTALGEX_KEYSTORE_B64 is not set, so this APK is signed with a throwaway debug key and won't install over other builds."
+          fi
+
       - name: Build the APKs
+        env:
+          NOSTALGEX_KEYSTORE_PASSWORD: ${{ secrets.NOSTALGEX_KEYSTORE_PASSWORD }}
+          NOSTALGEX_KEY_PASSWORD: ${{ secrets.NOSTALGEX_KEYSTORE_PASSWORD }}
+          NOSTALGEX_KEY_ALIAS: nostalgex
         run: ./gradlew :app:assembleDebug :app:assembleRelease --stacktrace
 
       - name: Name the APKs
@@ -35,6 +53,12 @@ jobs:
           mkdir -p out
           cp app/build/outputs/apk/debug/app-debug.apk out/nostalgex-android-tv-debug.apk
           cp app/build/outputs/apk/release/app-release.apk out/nostalgex-android-tv.apk
+
+      - name: Show the release signer
+        run: |
+          APKSIGNER="$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)apksigner"
+          FP="$("$APKSIGNER" verify --print-certs out/nostalgex-android-tv.apk | grep -m1 'SHA-256 digest' | sed 's/.*: //')"
+          echo "::notice title=Release signer::SHA-256 $FP"
 
       - uses: actions/upload-artifact@v4
         with:

@@ -67,12 +67,13 @@ your remote has them.
 | **OK** | Tune the highlighted channel. It plays in the picture at the top right. |
 | **OK** again, on the channel that's playing | Go full screen. |
 | **OK** on SETTINGS | Open Settings. |
+| **◀ / ▶** | Move the guide's time back or forward by half an hour, up to 24 hours ahead. The info panel shows what's on at that time. **OK** still tunes the channel live. |
 | **◀ / ▶** on the seasonal invite | Choose SWITCH IT ON, NOT THIS YEAR or DON'T ASK AGAIN, then press **OK**. |
 | **CH+ / CH−** | Tune the next or previous channel. |
 | **0–9** | Type a channel number. It tunes a moment after the last digit. |
 | **Play/Pause** | Go full screen on the channel that's playing. |
 | **Menu** | Open Settings. |
-| **Back** | From SETTINGS or the invite, go back to the channels. Otherwise, press it twice to leave the app. |
+| **Back** | From SETTINGS or the invite, go back to the channels. From later in the guide, go back to now. Otherwise, press it twice to leave the app. |
 
 ### Watching full screen
 
@@ -80,7 +81,7 @@ your remote has them.
 |---|---|
 | **◀ / ▶** or **CH− / CH+** | Previous or next channel. |
 | **▲** | Open the channel strip to see what's on elsewhere. **◀ / ▶** browse it, **OK** tunes, and **▲**, **▼** or **Back** close it. |
-| **▼** (or **Info**) | Open the Now Playing panel: the programme's details, **SUBTITLES**, **RETRO MODE** and how it's playing. **▲ / ▼** choose an option and **OK** switches it. **▲** from the top, or **Back**, closes the panel. |
+| **▼** (or **Info**) | Open the Now Playing panel: the programme's details, **SUBTITLES**, **RETRO MODE**, **SLEEP TIMER** and how it's playing. The arrows choose an option and **OK** switches it. **▲** from the first option, or **Back**, closes the panel. |
 | **OK** or **Play/Pause** | Show the channel banner again. If a channel has stopped, **OK** tries it again. |
 | **CC** (captions) | Subtitles on or off. |
 | **0–9** | Tune a channel by number. |
@@ -92,7 +93,7 @@ your remote has them.
 | Button | What it does |
 |---|---|
 | **▲ / ▼** | Move through the packages and options. |
-| **OK** | Switch a package, RETRO MODE or SUBTITLES on or off. RESCAN LIBRARY reads your server again, and SIGN OUT signs you out. |
+| **OK** | Switch a package, RETRO MODE or SUBTITLES on or off, or step through the choices of SUBTITLE LANGUAGE, AUDIO LANGUAGE, LANGUAGE and ON STARTUP. RESCAN LIBRARY reads your server again, and SIGN OUT signs you out. |
 | **Back** or **Menu** | Save and go back to the guide. |
 
 At least one package always stays on.
@@ -104,6 +105,7 @@ At least one package always stays on.
   back a step.
 - **Loading:** if your server hasn't answered for a minute, **OK** means STOP WAITING.
 - **Error screen:** **OK** tries again, and **Menu** signs out.
+- **After the sleep timer:** any button turns the TV back on, on the same channel.
 
 **Game controller or keyboard:** **A** or **Enter** is OK, **B** or **Esc** is Back, and
 **Page Up / Page Down** work as CH+ / CH−.
@@ -113,6 +115,21 @@ At least one package always stays on.
 - **The guide**, after the Apple TV app's look: the info panel and the picture at the top, a
   two-hour grid below with the now line, channel colours, VT323 and DM Mono.
 - **Full screen** with the channel banner, the channel strip and the Now Playing panel.
+- **Browse ahead in the guide.** **◀ / ▶** scroll the grid by half hours across the day the
+  schedule already holds, with TOMORROW in the corner once it passes midnight.
+- **Sleep timer** in the Now Playing panel: 30, 60, 90 or 120 minutes. A minute before, a
+  message warns you; then the picture switches off like an old set, the screen is free to
+  sleep, and any button turns it back on.
+- **Audio and subtitle languages.** AUDIO LANGUAGE (ORIGINAL, FRANÇAIS or ENGLISH) and SUBTITLE
+  LANGUAGE in Settings. Direct play picks the tracks from the file. For a server stream the
+  app asks the server for them first: Jellyfin and Emby by stream number, Plex by selecting
+  the part's streams on the server, as Plex's own apps do. Only text subtitles are picked,
+  so picture subtitles are never burned in.
+- **ON STARTUP: LAST CHANNEL** opens straight onto the last channel, full screen, like
+  switching on a TV.
+- **English and French.** Change it with **LANGUAGE** in Settings. Until you choose, the app
+  follows your TV: French on a TV set to French, English otherwise. Channel and package names
+  stay as they are in the lineup.
 - **RETRO MODE** (on by default): the guide's picture is cropped to 4:3 under scanlines and a
   vignette, with static snow between channels. Switch it off in Settings or the Now Playing
   panel.
@@ -175,9 +192,14 @@ Locally, with Android Studio or the Android SDK and JDK 17:
 ./gradlew :app:assembleRelease  # app/build/outputs/apk/release/app-release.apk
 ```
 
-The release build is signed with the debug key unless the `NOSTALGEX_KEYSTORE`,
-`NOSTALGEX_KEYSTORE_PASSWORD`, `NOSTALGEX_KEY_ALIAS` and `NOSTALGEX_KEY_PASSWORD` environment
-variables point at your own. On a phone or tablet the app opens too, for testing, with a
+**Signing.** On GitHub, the workflow signs the release APK with the key in two repository
+secrets: `NOSTALGEX_KEYSTORE_B64` (the keystore, base64-encoded) and
+`NOSTALGEX_KEYSTORE_PASSWORD` (the key alias is `nostalgex`). With them, every build is signed the
+same way, so a new APK installs over the last one and keeps your sign-in and settings. Each run
+shows the signer's SHA-256 fingerprint as a notice. Without the secrets, the APK is signed with
+that run's throwaway debug key and won't install over another build. Locally, set
+`NOSTALGEX_KEYSTORE`, `NOSTALGEX_KEYSTORE_PASSWORD`, `NOSTALGEX_KEY_ALIAS` and
+`NOSTALGEX_KEY_PASSWORD` to use your own key. On a phone or tablet the app opens too, for testing, with a
 keyboard or a game controller.
 
 ## Not ported yet
@@ -190,8 +212,8 @@ keyboard or a game controller.
   - keyword and network matches don't fire;
   - production companies match on the server's studio alone;
   - the IMDb gates leave FOREIGN FILMS and CULT CLASSICS empty.
-- **MusicBrainz music-video enrichment**, **Show Now Playing / Mark Watched**, the **sleep
-  timer**, **audio and subtitle language** choices and **stream quality** settings.
+- **MusicBrainz music-video enrichment**, **Show Now Playing / Mark Watched** and **stream
+  quality** settings.
 
 ## Credits and licence
 
